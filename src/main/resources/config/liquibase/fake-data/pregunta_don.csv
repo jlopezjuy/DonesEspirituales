@@ -1,0 +1,11 @@
+id;peso;activa;pregunta_id;don_espiritual_id
+1;1;true;1;1
+2;8;false;2;2
+3;1;true;3;3
+4;10;false;4;4
+5;2;false;5;5
+6;1;true;6;6
+7;9;true;7;7
+8;1;true;8;8
+9;1;true;9;9
+10;3;false;10;10

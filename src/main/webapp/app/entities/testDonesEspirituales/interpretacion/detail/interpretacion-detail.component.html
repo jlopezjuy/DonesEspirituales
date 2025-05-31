@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (interpretacion(); as interpretacionRef) {
+      <div>
+        <h2 data-cy="interpretacionDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.detail.title">Interpretacion</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.puntuacionMinima">Puntuacion Minima</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.puntuacionMinima }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.puntuacionMaxima">Puntuacion Maxima</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.puntuacionMaxima }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.nivel">Nivel</span></dt>
+          <dd>
+            <span [jhiTranslate]="'donesEspiritualesApp.NivelInterpretacion.' + (interpretacionRef.nivel ?? 'null')">{{
+              { null: '', MUY_BAJO: 'MUY_BAJO', BAJO: 'BAJO', MEDIO: 'MEDIO', ALTO: 'ALTO', MUY_ALTO: 'MUY_ALTO' }[
+                interpretacionRef.nivel ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.descripcionNivel">Descripcion Nivel</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.descripcionNivel }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.recomendaciones">Recomendaciones</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.recomendaciones }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.areasServicio">Areas Servicio</span></dt>
+          <dd>
+            <span>{{ interpretacionRef.areasServicio }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.donEspiritual">Don Espiritual</span></dt>
+          <dd>
+            @if (interpretacion()!.donEspiritual) {
+              <div>
+                <a [routerLink]="['/don-espiritual', interpretacion()!.donEspiritual?.id, 'view']">{{
+                  interpretacionRef.donEspiritual?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/interpretacion', interpretacionRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

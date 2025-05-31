@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (donEspiritual(); as donEspiritualRef) {
+      <div>
+        <h2 data-cy="donEspiritualDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.detail.title">Don Espiritual</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.nombreCorto">Nombre Corto</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.nombreCorto }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.caracteristicas">Caracteristicas</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.caracteristicas }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.versiculosBiblicos">Versiculos Biblicos</span>
+          </dt>
+          <dd>
+            <span>{{ donEspiritualRef.versiculosBiblicos }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.activo">Activo</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.ordenPresentacion">Orden Presentacion</span></dt>
+          <dd>
+            <span>{{ donEspiritualRef.ordenPresentacion }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/don-espiritual', donEspiritualRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

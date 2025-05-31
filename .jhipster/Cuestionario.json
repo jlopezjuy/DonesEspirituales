@@ -1,0 +1,72 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234346"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "titulo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "instrucciones",
+      "fieldType": "TextBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalPreguntas",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "1000",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaCreacion",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaActualizacion",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "1"
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "Cuestionario",
+  "relationships": [
+    {
+      "otherEntityName": "pregunta",
+      "otherEntityRelationshipName": "cuestionario",
+      "relationshipName": "preguntas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "respuestaUsuario",
+      "otherEntityRelationshipName": "cuestionario",
+      "relationshipName": "respuestas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,95 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234351"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaCompletado",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoRespuesta",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INICIADA,EN_PROGRESO,COMPLETADA,ABANDONADA"
+    },
+    {
+      "fieldName": "tiempoTotalSegundos",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "ipAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "userAgent",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "microserviceName": "testDonesEspirituales",
+  "name": "RespuestaUsuario",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "detalleRespuesta",
+      "otherEntityRelationshipName": "respuestaUsuario",
+      "relationshipName": "detalleRespuestas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "resultadoDon",
+      "otherEntityRelationshipName": "respuestaUsuario",
+      "relationshipName": "resultadoDones",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sesionUsuario",
+      "otherEntityRelationshipName": "respuestaUsuario",
+      "relationshipName": "sesiones",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "auditoriaRespuesta",
+      "otherEntityRelationshipName": "respuestaUsuario",
+      "relationshipName": "auditorias",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "respuestas",
+      "relationshipName": "usuario",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "cuestionario",
+      "otherEntityRelationshipName": "respuestas",
+      "relationshipName": "cuestionario",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

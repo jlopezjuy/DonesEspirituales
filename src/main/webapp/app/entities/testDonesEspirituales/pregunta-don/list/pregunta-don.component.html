@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="PreguntaDonHeading">
+    <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.home.title">Pregunta Dons</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pregunta-don"
+        [routerLink]="['/pregunta-don/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.home.createLabel">Crear nuevo Pregunta Don</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (preguntaDons().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.home.notFound">Ningún Pregunta Dons encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="peso">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.peso">Peso</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activa">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.activa">Activa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pregunta.id">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.pregunta">Pregunta</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="donEspiritual.id">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.donEspiritual">Don Espiritual</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (preguntaDon of preguntaDons(); track trackId(preguntaDon)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/pregunta-don', preguntaDon.id, 'view']">{{ preguntaDon.id }}</a>
+              </td>
+              <td>{{ preguntaDon.peso }}</td>
+              <td>{{ preguntaDon.activa }}</td>
+              <td>
+                @if (preguntaDon.pregunta) {
+                  <div>
+                    <a [routerLink]="['/pregunta', preguntaDon.pregunta.id, 'view']">{{ preguntaDon.pregunta.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (preguntaDon.donEspiritual) {
+                  <div>
+                    <a [routerLink]="['/don-espiritual', preguntaDon.donEspiritual.id, 'view']">{{ preguntaDon.donEspiritual.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/pregunta-don', preguntaDon.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/pregunta-don', preguntaDon.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(preguntaDon)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

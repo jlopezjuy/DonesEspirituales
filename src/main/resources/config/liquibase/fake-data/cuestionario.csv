@@ -1,0 +1,11 @@
+id;titulo;descripcion;instrucciones;total_preguntas;activo;fecha_creacion;fecha_actualizacion;version
+1;before;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;871;true;2025-05-31T17:38:01;2025-05-31T13:23:43;19894
+2;mmm why consequently;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;656;true;2025-05-31T01:56:44;2025-05-31T10:07:53;15565
+3;oh;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;870;true;2025-05-31T13:32:18;2025-05-31T07:07:17;21704
+4;hornet;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;978;true;2025-05-31T08:30:59;2025-05-31T13:47:37;2864
+5;ramp off how;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;541;true;2025-05-31T02:28:42;2025-05-31T16:14:42;20600
+6;yum near;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;364;false;2025-05-31T12:44:00;2025-05-31T01:49:11;20855
+7;whenever stack graffiti;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;8;false;2025-05-31T00:51:55;2025-05-31T15:03:44;28139
+8;trash;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;142;false;2025-05-31T05:17:40;2025-05-31T02:57:16;24833
+9;contrast service;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;592;true;2025-05-31T04:18:19;2025-05-31T19:54:58;689
+10;provision;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;105;true;2025-05-31T07:44:46;2025-05-31T11:13:55;5371

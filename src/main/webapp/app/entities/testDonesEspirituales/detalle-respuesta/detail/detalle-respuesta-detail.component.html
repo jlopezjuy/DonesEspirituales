@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (detalleRespuesta(); as detalleRespuestaRef) {
+      <div>
+        <h2 data-cy="detalleRespuestaDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.detail.title">Detalle Respuesta</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ detalleRespuestaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.valorRespuesta">Valor Respuesta</span></dt>
+          <dd>
+            <span>{{ detalleRespuestaRef.valorRespuesta }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.timestampRespuesta">Timestamp Respuesta</span>
+          </dt>
+          <dd>
+            <span>{{ detalleRespuestaRef.timestampRespuesta | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.tiempoPreguntaSegundos"
+              >Tiempo Pregunta Segundos</span
+            >
+          </dt>
+          <dd>
+            <span>{{ detalleRespuestaRef.tiempoPreguntaSegundos }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.escalaRespuesta">Escala Respuesta</span></dt>
+          <dd>
+            @if (detalleRespuesta()!.escalaRespuesta) {
+              <div>
+                <a [routerLink]="['/escala-respuesta', detalleRespuesta()!.escalaRespuesta?.id, 'view']">{{
+                  detalleRespuestaRef.escalaRespuesta?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.pregunta">Pregunta</span></dt>
+          <dd>
+            @if (detalleRespuesta()!.pregunta) {
+              <div>
+                <a [routerLink]="['/pregunta', detalleRespuesta()!.pregunta?.id, 'view']">{{ detalleRespuestaRef.pregunta?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDetalleRespuesta.respuestaUsuario">Respuesta Usuario</span></dt>
+          <dd>
+            @if (detalleRespuesta()!.respuestaUsuario) {
+              <div>
+                <a [routerLink]="['/respuesta-usuario', detalleRespuesta()!.respuestaUsuario?.id, 'view']">{{
+                  detalleRespuestaRef.respuestaUsuario?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/detalle-respuesta', detalleRespuestaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesCuestionario": {
+      "home": {
+        "title": "Cuestionarios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cuestionario",
+        "createOrEditLabel": "Create or edit a Cuestionario",
+        "notFound": "No Cuestionarios found"
+      },
+      "created": "A new Cuestionario is created with identifier {{ param }}",
+      "updated": "A Cuestionario is updated with identifier {{ param }}",
+      "deleted": "A Cuestionario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cuestionario {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuestionario"
+      },
+      "id": "ID",
+      "titulo": "Titulo",
+      "descripcion": "Descripcion",
+      "instrucciones": "Instrucciones",
+      "totalPreguntas": "Total Preguntas",
+      "activo": "Activo",
+      "fechaCreacion": "Fecha Creacion",
+      "fechaActualizacion": "Fecha Actualizacion",
+      "version": "Version",
+      "preguntas": "Preguntas",
+      "respuestas": "Respuestas"
+    }
+  }
+}

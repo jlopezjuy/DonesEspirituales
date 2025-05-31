@@ -1,0 +1,11 @@
+{
+  "donesEspiritualesApp": {
+    "EstadoRespuesta": {
+      "null": "",
+      "INICIADA": "INICIADA",
+      "EN_PROGRESO": "EN_PROGRESO",
+      "COMPLETADA": "COMPLETADA",
+      "ABANDONADA": "ABANDONADA"
+    }
+  }
+}

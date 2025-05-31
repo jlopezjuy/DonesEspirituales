@@ -1,0 +1,27 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesEscalaRespuesta": {
+      "home": {
+        "title": "Escala Respuestas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Escala Respuesta",
+        "createOrEditLabel": "Crear o editar Escala Respuesta",
+        "notFound": "Ningún Escala Respuestas encontrado"
+      },
+      "created": "Un nuevo Escala Respuesta ha sido creado con el identificador {{ param }}",
+      "updated": "Un Escala Respuesta ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Escala Respuesta ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Escala Respuesta {{ id }}?"
+      },
+      "detail": {
+        "title": "Escala Respuesta"
+      },
+      "id": "ID",
+      "valor": "Valor",
+      "etiqueta": "Etiqueta",
+      "descripcion": "Descripcion",
+      "orden": "Orden"
+    }
+  }
+}

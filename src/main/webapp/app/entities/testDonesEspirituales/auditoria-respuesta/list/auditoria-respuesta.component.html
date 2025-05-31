@@ -1,0 +1,169 @@
+<div>
+  <h2 id="page-heading" data-cy="AuditoriaRespuestaHeading">
+    <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.home.title">Auditoria Respuestas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-auditoria-respuesta"
+        [routerLink]="['/auditoria-respuesta/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.home.createLabel"
+          >Crear nuevo Auditoria Respuesta</span
+        >
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (auditoriaRespuestas().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.home.notFound"
+        >Ningún Auditoria Respuestas encontrado</span
+      >
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorAnterior">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.valorAnterior">Valor Anterior</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="valorNuevo">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.valorNuevo">Valor Nuevo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="timestampCambio">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.timestampCambio">Timestamp Cambio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="motivoCambio">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.motivoCambio">Motivo Cambio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="respuestaUsuario.id">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.respuestaUsuario">Respuesta Usuario</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="detalleRespuesta.id">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.detalleRespuesta">Detalle Respuesta</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (auditoriaRespuesta of auditoriaRespuestas(); track trackId(auditoriaRespuesta)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/auditoria-respuesta', auditoriaRespuesta.id, 'view']">{{ auditoriaRespuesta.id }}</a>
+              </td>
+              <td>{{ auditoriaRespuesta.valorAnterior }}</td>
+              <td>{{ auditoriaRespuesta.valorNuevo }}</td>
+              <td>{{ auditoriaRespuesta.timestampCambio | formatMediumDatetime }}</td>
+              <td>{{ auditoriaRespuesta.motivoCambio }}</td>
+              <td>
+                @if (auditoriaRespuesta.respuestaUsuario) {
+                  <div>
+                    <a [routerLink]="['/respuesta-usuario', auditoriaRespuesta.respuestaUsuario.id, 'view']">{{
+                      auditoriaRespuesta.respuestaUsuario.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (auditoriaRespuesta.detalleRespuesta) {
+                  <div>
+                    <a [routerLink]="['/detalle-respuesta', auditoriaRespuesta.detalleRespuesta.id, 'view']">{{
+                      auditoriaRespuesta.detalleRespuesta.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/auditoria-respuesta', auditoriaRespuesta.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/auditoria-respuesta', auditoriaRespuesta.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(auditoriaRespuesta)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (auditoriaRespuestas().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

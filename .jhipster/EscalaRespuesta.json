@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234347"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "valor",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "etiqueta",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "orden",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "1"
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "EscalaRespuesta",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (respuestaUsuario(); as respuestaUsuarioRef) {
+      <div>
+        <h2 data-cy="respuestaUsuarioDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.detail.title">Respuesta Usuario</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.fechaInicio">Fecha Inicio</span></dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.fechaInicio | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.fechaCompletado">Fecha Completado</span></dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.fechaCompletado | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'donesEspiritualesApp.EstadoRespuesta.' + (respuestaUsuarioRef.estado ?? 'null')">{{
+              { null: '', INICIADA: 'INICIADA', EN_PROGRESO: 'EN_PROGRESO', COMPLETADA: 'COMPLETADA', ABANDONADA: 'ABANDONADA' }[
+                respuestaUsuarioRef.estado ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.tiempoTotalSegundos">Tiempo Total Segundos</span>
+          </dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.tiempoTotalSegundos }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.ipAddress">Ip Address</span></dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.ipAddress }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.userAgent">User Agent</span></dt>
+          <dd>
+            <span>{{ respuestaUsuarioRef.userAgent }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.usuario">Usuario</span></dt>
+          <dd>
+            @if (respuestaUsuario()!.usuario) {
+              <div>
+                <a [routerLink]="['/usuario', respuestaUsuario()!.usuario?.id, 'view']">{{ respuestaUsuarioRef.usuario?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.cuestionario">Cuestionario</span></dt>
+          <dd>
+            @if (respuestaUsuario()!.cuestionario) {
+              <div>
+                <a [routerLink]="['/cuestionario', respuestaUsuario()!.cuestionario?.id, 'view']">{{
+                  respuestaUsuarioRef.cuestionario?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/respuesta-usuario', respuestaUsuarioRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

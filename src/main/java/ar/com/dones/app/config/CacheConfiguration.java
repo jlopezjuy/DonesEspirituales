@@ -50,6 +50,33 @@ public class CacheConfiguration {
             createCache(cm, ar.com.dones.app.domain.User.class.getName());
             createCache(cm, ar.com.dones.app.domain.Authority.class.getName());
             createCache(cm, ar.com.dones.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName());
+            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName() + ".respuestas");
+            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName() + ".sesiones");
+            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName());
+            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".preguntas");
+            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".respuestas");
+            createCache(cm, ar.com.dones.app.domain.EscalaRespuesta.class.getName());
+            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName());
+            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".preguntaDones");
+            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".resultadoDones");
+            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".interpretaciones");
+            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName());
+            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".preguntaDones");
+            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".detalleRespuestas");
+            createCache(cm, ar.com.dones.app.domain.PreguntaDon.class.getName());
+            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName());
+            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".detalleRespuestas");
+            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".resultadoDones");
+            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".sesiones");
+            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".auditorias");
+            createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName());
+            createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName() + ".auditorias");
+            createCache(cm, ar.com.dones.app.domain.ResultadoDon.class.getName());
+            createCache(cm, ar.com.dones.app.domain.Interpretacion.class.getName());
+            createCache(cm, ar.com.dones.app.domain.SesionUsuario.class.getName());
+            createCache(cm, ar.com.dones.app.domain.AuditoriaRespuesta.class.getName());
+            createCache(cm, ar.com.dones.app.domain.ConfiguracionSistema.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

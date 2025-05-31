@@ -1,0 +1,11 @@
+id;puntuacion_minima;puntuacion_maxima;nivel;descripcion_nivel;recomendaciones;areas_servicio;don_espiritual_id
+1;19289;14196;ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;1
+2;12728;18928;MUY_ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;2
+3;31520;2955;MUY_ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;3
+4;14155;19923;ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;4
+5;30098;12277;MEDIO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;5
+6;8360;5811;MUY_ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;6
+7;7532;18198;MUY_BAJO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;7
+8;25401;14451;ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;8
+9;849;15257;BAJO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;9
+10;1263;19266;ALTO;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;10

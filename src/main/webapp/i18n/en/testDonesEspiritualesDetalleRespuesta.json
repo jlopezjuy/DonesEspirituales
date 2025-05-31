@@ -1,0 +1,30 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesDetalleRespuesta": {
+      "home": {
+        "title": "Detalle Respuestas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Detalle Respuesta",
+        "createOrEditLabel": "Create or edit a Detalle Respuesta",
+        "notFound": "No Detalle Respuestas found"
+      },
+      "created": "A new Detalle Respuesta is created with identifier {{ param }}",
+      "updated": "A Detalle Respuesta is updated with identifier {{ param }}",
+      "deleted": "A Detalle Respuesta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Detalle Respuesta {{ id }}?"
+      },
+      "detail": {
+        "title": "Detalle Respuesta"
+      },
+      "id": "ID",
+      "valorRespuesta": "Valor Respuesta",
+      "timestampRespuesta": "Timestamp Respuesta",
+      "tiempoPreguntaSegundos": "Tiempo Pregunta Segundos",
+      "auditorias": "Auditorias",
+      "escalaRespuesta": "Escala Respuesta",
+      "pregunta": "Pregunta",
+      "respuestaUsuario": "Respuesta Usuario"
+    }
+  }
+}

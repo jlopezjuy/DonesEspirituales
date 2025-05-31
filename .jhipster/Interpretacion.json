@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234354"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "puntuacionMinima",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "puntuacionMaxima",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "nivel",
+      "fieldType": "NivelInterpretacion",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MUY_BAJO,BAJO,MEDIO,ALTO,MUY_ALTO"
+    },
+    {
+      "fieldName": "descripcionNivel",
+      "fieldType": "TextBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "recomendaciones",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "areasServicio",
+      "fieldType": "TextBlob"
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "Interpretacion",
+  "relationships": [
+    {
+      "otherEntityName": "donEspiritual",
+      "otherEntityRelationshipName": "interpretaciones",
+      "relationshipName": "donEspiritual",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

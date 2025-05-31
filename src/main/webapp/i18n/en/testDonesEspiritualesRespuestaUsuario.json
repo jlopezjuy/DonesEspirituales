@@ -1,0 +1,35 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesRespuestaUsuario": {
+      "home": {
+        "title": "Respuesta Usuarios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Respuesta Usuario",
+        "createOrEditLabel": "Create or edit a Respuesta Usuario",
+        "notFound": "No Respuesta Usuarios found"
+      },
+      "created": "A new Respuesta Usuario is created with identifier {{ param }}",
+      "updated": "A Respuesta Usuario is updated with identifier {{ param }}",
+      "deleted": "A Respuesta Usuario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Respuesta Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Respuesta Usuario"
+      },
+      "id": "ID",
+      "fechaInicio": "Fecha Inicio",
+      "fechaCompletado": "Fecha Completado",
+      "estado": "Estado",
+      "tiempoTotalSegundos": "Tiempo Total Segundos",
+      "ipAddress": "Ip Address",
+      "userAgent": "User Agent",
+      "detalleRespuestas": "Detalle Respuestas",
+      "resultadoDones": "Resultado Dones",
+      "sesiones": "Sesiones",
+      "auditorias": "Auditorias",
+      "usuario": "Usuario",
+      "cuestionario": "Cuestionario"
+    }
+  }
+}

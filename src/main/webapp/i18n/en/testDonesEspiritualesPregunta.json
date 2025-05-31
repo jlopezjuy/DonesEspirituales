@@ -1,0 +1,31 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesPregunta": {
+      "home": {
+        "title": "Preguntas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pregunta",
+        "createOrEditLabel": "Create or edit a Pregunta",
+        "notFound": "No Preguntas found"
+      },
+      "created": "A new Pregunta is created with identifier {{ param }}",
+      "updated": "A Pregunta is updated with identifier {{ param }}",
+      "deleted": "A Pregunta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pregunta {{ id }}?"
+      },
+      "detail": {
+        "title": "Pregunta"
+      },
+      "id": "ID",
+      "numeroPregunta": "Numero Pregunta",
+      "textoPregunta": "Texto Pregunta",
+      "obligatoria": "Obligatoria",
+      "activa": "Activa",
+      "fechaCreacion": "Fecha Creacion",
+      "preguntaDones": "Pregunta Dones",
+      "detalleRespuestas": "Detalle Respuestas",
+      "cuestionario": "Cuestionario"
+    }
+  }
+}

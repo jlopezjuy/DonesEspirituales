@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (preguntaDon(); as preguntaDonRef) {
+      <div>
+        <h2 data-cy="preguntaDonDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.detail.title">Pregunta Don</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ preguntaDonRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.peso">Peso</span></dt>
+          <dd>
+            <span>{{ preguntaDonRef.peso }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.activa">Activa</span></dt>
+          <dd>
+            <span>{{ preguntaDonRef.activa }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.pregunta">Pregunta</span></dt>
+          <dd>
+            @if (preguntaDon()!.pregunta) {
+              <div>
+                <a [routerLink]="['/pregunta', preguntaDon()!.pregunta?.id, 'view']">{{ preguntaDonRef.pregunta?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPreguntaDon.donEspiritual">Don Espiritual</span></dt>
+          <dd>
+            @if (preguntaDon()!.donEspiritual) {
+              <div>
+                <a [routerLink]="['/don-espiritual', preguntaDon()!.donEspiritual?.id, 'view']">{{ preguntaDonRef.donEspiritual?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pregunta-don', preguntaDonRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

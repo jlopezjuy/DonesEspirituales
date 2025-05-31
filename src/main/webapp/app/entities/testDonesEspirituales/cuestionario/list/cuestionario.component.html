@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="CuestionarioHeading">
+    <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.home.title">Cuestionarios</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cuestionario"
+        [routerLink]="['/cuestionario/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.home.createLabel">Crear nuevo Cuestionario</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (cuestionarios().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.home.notFound">Ningún Cuestionarios encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="titulo">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.titulo">Titulo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descripcion">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.descripcion">Descripcion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="instrucciones">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.instrucciones">Instrucciones</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="totalPreguntas">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.totalPreguntas">Total Preguntas</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activo">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.activo">Activo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaCreacion">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.fechaCreacion">Fecha Creacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaActualizacion">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.fechaActualizacion">Fecha Actualizacion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="version">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.version">Version</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cuestionario of cuestionarios(); track trackId(cuestionario)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/cuestionario', cuestionario.id, 'view']">{{ cuestionario.id }}</a>
+              </td>
+              <td>{{ cuestionario.titulo }}</td>
+              <td>{{ cuestionario.descripcion }}</td>
+              <td>{{ cuestionario.instrucciones }}</td>
+              <td>{{ cuestionario.totalPreguntas }}</td>
+              <td>{{ cuestionario.activo }}</td>
+              <td>{{ cuestionario.fechaCreacion | formatMediumDatetime }}</td>
+              <td>{{ cuestionario.fechaActualizacion | formatMediumDatetime }}</td>
+              <td>{{ cuestionario.version }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <button
+                    type="submit"
+                    [routerLink]="['/respuesta-usuario']"
+                    [queryParams]="{ 'filter[cuestionarioId.in]': cuestionario.id }"
+                    class="btn btn-info btn-sm"
+                    data-cy="filterOtherEntityButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span
+                      class="d-none d-md-inline"
+                      jhiTranslate="entity.action.show"
+                      [translateValues]="{ otherEntity: ('donesEspiritualesApp.testDonesEspiritualesCuestionario.respuestas' | translate) }"
+                      >Show Respuestas</span
+                    >
+                  </button>
+                  <a [routerLink]="['/cuestionario', cuestionario.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/cuestionario', cuestionario.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(cuestionario)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

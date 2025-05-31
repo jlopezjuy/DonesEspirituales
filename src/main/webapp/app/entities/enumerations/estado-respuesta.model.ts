@@ -1,0 +1,9 @@
+export enum EstadoRespuesta {
+  INICIADA = 'INICIADA',
+
+  EN_PROGRESO = 'EN_PROGRESO',
+
+  COMPLETADA = 'COMPLETADA',
+
+  ABANDONADA = 'ABANDONADA',
+}

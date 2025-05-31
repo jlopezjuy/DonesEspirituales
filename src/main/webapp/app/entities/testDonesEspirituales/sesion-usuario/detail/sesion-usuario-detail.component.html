@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (sesionUsuario(); as sesionUsuarioRef) {
+      <div>
+        <h2 data-cy="sesionUsuarioDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.detail.title">Sesion Usuario</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ sesionUsuarioRef.id }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestasTemporales">Respuestas Temporales</span>
+          </dt>
+          <dd>
+            <span>{{ sesionUsuarioRef.respuestasTemporales }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.fechaCreacion">Fecha Creacion</span></dt>
+          <dd>
+            <span>{{ sesionUsuarioRef.fechaCreacion | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.fechaExpiracion">Fecha Expiracion</span></dt>
+          <dd>
+            <span>{{ sesionUsuarioRef.fechaExpiracion | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.completada">Completada</span></dt>
+          <dd>
+            <span>{{ sesionUsuarioRef.completada }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.usuario">Usuario</span></dt>
+          <dd>
+            @if (sesionUsuario()!.usuario) {
+              <div>
+                <a [routerLink]="['/usuario', sesionUsuario()!.usuario?.id, 'view']">{{ sesionUsuarioRef.usuario?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestaUsuario">Respuesta Usuario</span></dt>
+          <dd>
+            @if (sesionUsuario()!.respuestaUsuario) {
+              <div>
+                <a [routerLink]="['/respuesta-usuario', sesionUsuario()!.respuestaUsuario?.id, 'view']">{{
+                  sesionUsuarioRef.respuestaUsuario?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/sesion-usuario', sesionUsuarioRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

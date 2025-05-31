@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (auditoriaRespuesta(); as auditoriaRespuestaRef) {
+      <div>
+        <h2 data-cy="auditoriaRespuestaDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.detail.title">Auditoria Respuesta</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ auditoriaRespuestaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.valorAnterior">Valor Anterior</span></dt>
+          <dd>
+            <span>{{ auditoriaRespuestaRef.valorAnterior }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.valorNuevo">Valor Nuevo</span></dt>
+          <dd>
+            <span>{{ auditoriaRespuestaRef.valorNuevo }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.timestampCambio">Timestamp Cambio</span></dt>
+          <dd>
+            <span>{{ auditoriaRespuestaRef.timestampCambio | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.motivoCambio">Motivo Cambio</span></dt>
+          <dd>
+            <span>{{ auditoriaRespuestaRef.motivoCambio }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.respuestaUsuario">Respuesta Usuario</span>
+          </dt>
+          <dd>
+            @if (auditoriaRespuesta()!.respuestaUsuario) {
+              <div>
+                <a [routerLink]="['/respuesta-usuario', auditoriaRespuesta()!.respuestaUsuario?.id, 'view']">{{
+                  auditoriaRespuestaRef.respuestaUsuario?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesAuditoriaRespuesta.detalleRespuesta">Detalle Respuesta</span>
+          </dt>
+          <dd>
+            @if (auditoriaRespuesta()!.detalleRespuesta) {
+              <div>
+                <a [routerLink]="['/detalle-respuesta', auditoriaRespuesta()!.detalleRespuesta?.id, 'view']">{{
+                  auditoriaRespuestaRef.detalleRespuesta?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/auditoria-respuesta', auditoriaRespuestaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesSesionUsuario": {
+      "home": {
+        "title": "Sesion Usuarios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sesion Usuario",
+        "createOrEditLabel": "Crear o editar Sesion Usuario",
+        "notFound": "Ningún Sesion Usuarios encontrado"
+      },
+      "created": "Un nuevo Sesion Usuario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sesion Usuario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sesion Usuario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sesion Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Sesion Usuario"
+      },
+      "id": "ID",
+      "respuestasTemporales": "Respuestas Temporales",
+      "fechaCreacion": "Fecha Creacion",
+      "fechaExpiracion": "Fecha Expiracion",
+      "completada": "Completada",
+      "usuario": "Usuario",
+      "respuestaUsuario": "Respuesta Usuario"
+    }
+  }
+}

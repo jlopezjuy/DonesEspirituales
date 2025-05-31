@@ -1,0 +1,65 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234352"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "valorRespuesta",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "timestampRespuesta",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tiempoPreguntaSegundos",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "DetalleRespuesta",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "auditoriaRespuesta",
+      "otherEntityRelationshipName": "detalleRespuesta",
+      "relationshipName": "auditorias",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "escalaRespuesta",
+      "relationshipName": "escalaRespuesta",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "pregunta",
+      "otherEntityRelationshipName": "detalleRespuestas",
+      "relationshipName": "pregunta",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "respuestaUsuario",
+      "otherEntityRelationshipName": "detalleRespuestas",
+      "relationshipName": "respuestaUsuario",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

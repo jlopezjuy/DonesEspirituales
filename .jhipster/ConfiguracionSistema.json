@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234357"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "clave",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "1000"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "tipoDato",
+      "fieldType": "TipoDato",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "STRING,INTEGER,BOOLEAN,DECIMAL,DATE"
+    },
+    {
+      "fieldName": "fechaActualizacion",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "ConfiguracionSistema",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

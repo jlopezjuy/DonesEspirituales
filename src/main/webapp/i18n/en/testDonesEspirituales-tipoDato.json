@@ -1,0 +1,12 @@
+{
+  "donesEspiritualesApp": {
+    "TipoDato": {
+      "null": "",
+      "STRING": "STRING",
+      "INTEGER": "INTEGER",
+      "BOOLEAN": "BOOLEAN",
+      "DECIMAL": "DECIMAL",
+      "DATE": "DATE"
+    }
+  }
+}

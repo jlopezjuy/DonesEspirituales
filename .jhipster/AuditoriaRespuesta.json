@@ -1,0 +1,58 @@
+{
+  "annotations": {
+    "changelogDate": "20250531234356"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "valorAnterior",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "valorNuevo",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "timestampCambio",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "motivoCambio",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    }
+  ],
+  "microserviceName": "testDonesEspirituales",
+  "name": "AuditoriaRespuesta",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "respuestaUsuario",
+      "otherEntityRelationshipName": "auditorias",
+      "relationshipName": "respuestaUsuario",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "detalleRespuesta",
+      "otherEntityRelationshipName": "auditorias",
+      "relationshipName": "detalleRespuesta",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

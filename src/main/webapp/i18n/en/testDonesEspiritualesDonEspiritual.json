@@ -1,0 +1,33 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesDonEspiritual": {
+      "home": {
+        "title": "Don Espirituals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Don Espiritual",
+        "createOrEditLabel": "Create or edit a Don Espiritual",
+        "notFound": "No Don Espirituals found"
+      },
+      "created": "A new Don Espiritual is created with identifier {{ param }}",
+      "updated": "A Don Espiritual is updated with identifier {{ param }}",
+      "deleted": "A Don Espiritual is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Don Espiritual {{ id }}?"
+      },
+      "detail": {
+        "title": "Don Espiritual"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "nombreCorto": "Nombre Corto",
+      "descripcion": "Descripcion",
+      "caracteristicas": "Caracteristicas",
+      "versiculosBiblicos": "Versiculos Biblicos",
+      "activo": "Activo",
+      "ordenPresentacion": "Orden Presentacion",
+      "preguntaDones": "Pregunta Dones",
+      "resultadoDones": "Resultado Dones",
+      "interpretaciones": "Interpretaciones"
+    }
+  }
+}
