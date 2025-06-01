@@ -1,6 +1,5 @@
 package ar.com.dones.app.service.dto;
 
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -14,7 +13,6 @@ public class SesionUsuarioDTO implements Serializable {
 
   private Long id;
 
-  @Lob
   private String respuestasTemporales;
 
   @NotNull

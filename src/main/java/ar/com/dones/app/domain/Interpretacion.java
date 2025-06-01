@@ -40,15 +40,13 @@ public class Interpretacion implements Serializable {
   @Column(name = "nivel", nullable = false)
   private NivelInterpretacion nivel;
 
-  @Lob
+  @NotNull
   @Column(name = "descripcion_nivel", nullable = false)
   private String descripcionNivel;
 
-  @Lob
   @Column(name = "recomendaciones")
   private String recomendaciones;
 
-  @Lob
   @Column(name = "areas_servicio")
   private String areasServicio;
 

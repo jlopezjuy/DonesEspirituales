@@ -33,8 +33,8 @@ enum Genero {
 // Entidades principale
 entity Cuestionario {
   titulo String required maxlength(200)
-  descripcion TextBlob
-  instrucciones TextBlob required
+  descripcion String
+  instrucciones String required
   totalPreguntas Integer required min(1) max(1000)
   activo Boolean required
   fechaCreacion Instant required
@@ -47,7 +47,7 @@ entity EscalaRespuesta {
 
   etiqueta String required maxlength(100)
 
-  descripcion TextBlob
+  descripcion String
 
   orden Integer required min(1)
 
@@ -61,11 +61,11 @@ entity DonEspiritual {
 
   nombreCorto String required maxlength(50) unique
 
-  descripcion TextBlob
+  descripcion String
 
-  caracteristicas TextBlob
+  caracteristicas String
 
-  versiculosBiblicos TextBlob
+  versiculosBiblicos String
 
   activo Boolean required
 
@@ -79,7 +79,7 @@ entity Pregunta {
 
   numeroPregunta Integer required min(1)
 
-  textoPregunta TextBlob required
+  textoPregunta String required
 
   obligatoria Boolean required
 
@@ -144,11 +144,11 @@ entity Interpretacion {
 
   nivel NivelInterpretacion required
 
-  descripcionNivel TextBlob required
+  descripcionNivel String required
 
-  recomendaciones TextBlob
+  recomendaciones String
 
-  areasServicio TextBlob
+  areasServicio String
 
 }
 
@@ -156,7 +156,7 @@ entity Interpretacion {
 
 entity SesionUsuario {
 
-  respuestasTemporales TextBlob
+  respuestasTemporales String
 
   fechaCreacion Instant required
 
@@ -188,7 +188,7 @@ entity ConfiguracionSistema {
 
   valor String required maxlength(1000)
 
-  descripcion TextBlob
+  descripcion String
 
   tipoDato TipoDato required
 

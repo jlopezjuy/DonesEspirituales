@@ -1,6 +1,5 @@
 package ar.com.dones.app.service.dto;
 
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -21,13 +20,10 @@ public class DonEspiritualDTO implements Serializable {
   @Size(max = 50)
   private String nombreCorto;
 
-  @Lob
   private String descripcion;
 
-  @Lob
   private String caracteristicas;
 
-  @Lob
   private String versiculosBiblicos;
 
   @NotNull

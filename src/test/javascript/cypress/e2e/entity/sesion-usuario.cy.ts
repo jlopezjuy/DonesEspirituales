@@ -15,7 +15,7 @@ describe('SesionUsuario e2e test', () => {
   const sesionUsuarioPageUrlPattern = new RegExp('/sesion-usuario(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const sesionUsuarioSample = { fechaCreacion: '2025-05-31T08:19:38.126Z', fechaExpiracion: '2025-05-31T13:25:38.958Z', completada: true };
+  const sesionUsuarioSample = { fechaCreacion: '2025-05-31T05:18:22.268Z', fechaExpiracion: '2025-05-31T13:11:38.549Z', completada: false };
 
   let sesionUsuario;
 
@@ -160,16 +160,16 @@ describe('SesionUsuario e2e test', () => {
     });
 
     it('should create an instance of SesionUsuario', () => {
-      cy.get(`[data-cy="respuestasTemporales"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="respuestasTemporales"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="respuestasTemporales"]`).type('um');
+      cy.get(`[data-cy="respuestasTemporales"]`).should('have.value', 'um');
 
-      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T07:51');
+      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T11:34');
       cy.get(`[data-cy="fechaCreacion"]`).blur();
-      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T07:51');
+      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T11:34');
 
-      cy.get(`[data-cy="fechaExpiracion"]`).type('2025-05-31T15:37');
+      cy.get(`[data-cy="fechaExpiracion"]`).type('2025-05-31T08:19');
       cy.get(`[data-cy="fechaExpiracion"]`).blur();
-      cy.get(`[data-cy="fechaExpiracion"]`).should('have.value', '2025-05-31T15:37');
+      cy.get(`[data-cy="fechaExpiracion"]`).should('have.value', '2025-05-31T08:19');
 
       cy.get(`[data-cy="completada"]`).should('not.be.checked');
       cy.get(`[data-cy="completada"]`).click();

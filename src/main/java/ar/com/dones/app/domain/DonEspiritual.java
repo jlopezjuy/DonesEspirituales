@@ -36,15 +36,12 @@ public class DonEspiritual implements Serializable {
   @Column(name = "nombre_corto", length = 50, nullable = false, unique = true)
   private String nombreCorto;
 
-  @Lob
   @Column(name = "descripcion")
   private String descripcion;
 
-  @Lob
   @Column(name = "caracteristicas")
   private String caracteristicas;
 
-  @Lob
   @Column(name = "versiculos_biblicos")
   private String versiculosBiblicos;
 

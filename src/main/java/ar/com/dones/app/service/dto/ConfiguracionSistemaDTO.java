@@ -1,7 +1,6 @@
 package ar.com.dones.app.service.dto;
 
 import ar.com.dones.app.domain.enumeration.TipoDato;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -23,7 +22,6 @@ public class ConfiguracionSistemaDTO implements Serializable {
   @Size(max = 1000)
   private String valor;
 
-  @Lob
   private String descripcion;
 
   @NotNull

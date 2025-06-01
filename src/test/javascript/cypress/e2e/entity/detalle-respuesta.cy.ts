@@ -32,7 +32,7 @@ describe('DetalleRespuesta e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/escala-respuestas',
-      body: {"valor":2,"etiqueta":"limply","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","orden":25957},
+      body: {"valor":9,"etiqueta":"mid er","descripcion":"ha","orden":18903},
     }).then(({ body }) => {
       escalaRespuesta = body;
     });

@@ -18,8 +18,8 @@ export const sampleWithFullData: IEscalaRespuesta = {
   id: 6241,
   valor: 0,
   etiqueta: 'consequently',
-  descripcion: '../fake-data/blob/hipster.txt',
-  orden: 8363,
+  descripcion: 'meanwhile',
+  orden: 14538,
 };
 
 export const sampleWithNewData: NewEscalaRespuesta = {

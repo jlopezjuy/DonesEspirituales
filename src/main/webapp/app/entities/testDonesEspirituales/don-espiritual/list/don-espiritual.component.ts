@@ -8,11 +8,10 @@ import SharedModule from 'app/shared/shared.module';
 import { SortByDirective, SortDirective, SortService, type SortState, sortStateSignal } from 'app/shared/sort';
 import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
+
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
-import { DataUtils } from 'app/core/util/data-util.service';
 import { IDonEspiritual } from '../don-espiritual.model';
-
 import { DonEspiritualService, EntityArrayResponseType } from '../service/don-espiritual.service';
 import { DonEspiritualDeleteDialogComponent } from '../delete/don-espiritual-delete-dialog.component';
 
@@ -36,7 +35,6 @@ export class DonEspiritualComponent implements OnInit {
   protected readonly donEspiritualService = inject(DonEspiritualService);
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected readonly sortService = inject(SortService);
-  protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
@@ -49,14 +47,6 @@ export class DonEspiritualComponent implements OnInit {
         tap(() => this.load()),
       )
       .subscribe();
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(donEspiritual: IDonEspiritual): void {

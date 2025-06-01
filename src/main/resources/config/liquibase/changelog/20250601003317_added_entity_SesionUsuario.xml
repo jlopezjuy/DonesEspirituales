@@ -14,7 +14,7 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="respuestas_temporales" type="${clobType}">
+            <column name="respuestas_temporales" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="fecha_creacion" type="${datetimeType}">
@@ -55,7 +55,7 @@
                   tableName="sesion_usuario"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="respuestas_temporales" type="clob"/>
+            <column name="respuestas_temporales" type="string"/>
             <column name="fecha_creacion" type="date"/>
             <column name="fecha_expiracion" type="date"/>
             <column name="completada" type="boolean"/>

@@ -23,13 +23,13 @@
             <column name="nivel" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="descripcion_nivel" type="${clobType}">
+            <column name="descripcion_nivel" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="recomendaciones" type="${clobType}">
+            <column name="recomendaciones" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="areas_servicio" type="${clobType}">
+            <column name="areas_servicio" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="don_espiritual_id" type="bigint">
@@ -59,9 +59,9 @@
             <column name="puntuacion_minima" type="numeric"/>
             <column name="puntuacion_maxima" type="numeric"/>
             <column name="nivel" type="string"/>
-            <column name="descripcion_nivel" type="clob"/>
-            <column name="recomendaciones" type="clob"/>
-            <column name="areas_servicio" type="clob"/>
+            <column name="descripcion_nivel" type="string"/>
+            <column name="recomendaciones" type="string"/>
+            <column name="areas_servicio" type="string"/>
             <column name="don_espiritual_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

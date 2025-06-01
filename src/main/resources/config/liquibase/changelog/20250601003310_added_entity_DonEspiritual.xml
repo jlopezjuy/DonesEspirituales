@@ -20,13 +20,13 @@
             <column name="nombre_corto" type="varchar(50)">
                 <constraints nullable="false" unique="true" uniqueConstraintName="ux_don_espiritual__nombre_corto" />
             </column>
-            <column name="descripcion" type="${clobType}">
+            <column name="descripcion" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="caracteristicas" type="${clobType}">
+            <column name="caracteristicas" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="versiculos_biblicos" type="${clobType}">
+            <column name="versiculos_biblicos" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="activo" type="boolean">
@@ -58,9 +58,9 @@
             <column name="id" type="numeric"/>
             <column name="nombre" type="string"/>
             <column name="nombre_corto" type="string"/>
-            <column name="descripcion" type="clob"/>
-            <column name="caracteristicas" type="clob"/>
-            <column name="versiculos_biblicos" type="clob"/>
+            <column name="descripcion" type="string"/>
+            <column name="caracteristicas" type="string"/>
+            <column name="versiculos_biblicos" type="string"/>
             <column name="activo" type="boolean"/>
             <column name="orden_presentacion" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

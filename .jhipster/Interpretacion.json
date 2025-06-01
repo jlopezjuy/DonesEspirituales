@@ -26,16 +26,16 @@
     },
     {
       "fieldName": "descripcionNivel",
-      "fieldType": "TextBlob",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "recomendaciones",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "areasServicio",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     }
   ],
   "name": "Interpretacion",

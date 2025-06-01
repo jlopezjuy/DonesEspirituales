@@ -39,7 +39,7 @@ describe('PreguntaDon e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/don-espirituals',
-      body: {"nombre":"toward","nombreCorto":"obedience against","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","caracteristicas":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","versiculosBiblicos":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","activo":false,"ordenPresentacion":24794},
+      body: {"nombre":"convalesce whether yum","nombreCorto":"ick how frankly","descripcion":"woefully till","caracteristicas":"now","versiculosBiblicos":"coincide nab","activo":false,"ordenPresentacion":180},
     }).then(({ body }) => {
       donEspiritual = body;
     });

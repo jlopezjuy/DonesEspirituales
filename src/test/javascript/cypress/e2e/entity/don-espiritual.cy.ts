@@ -15,7 +15,7 @@ describe('DonEspiritual e2e test', () => {
   const donEspiritualPageUrlPattern = new RegExp('/don-espiritual(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const donEspiritualSample = { nombre: 'rapidly', nombreCorto: 'sternly conjecture', activo: false };
+  const donEspiritualSample = { nombre: 'like fatherly', nombreCorto: 'fully past', activo: true };
 
   let donEspiritual;
 
@@ -166,21 +166,21 @@ describe('DonEspiritual e2e test', () => {
       cy.get(`[data-cy="nombreCorto"]`).type('tomography yowza penalise');
       cy.get(`[data-cy="nombreCorto"]`).should('have.value', 'tomography yowza penalise');
 
-      cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="descripcion"]`).type('tail mysteriously');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'tail mysteriously');
 
-      cy.get(`[data-cy="caracteristicas"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="caracteristicas"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="caracteristicas"]`).type('grown drat technician');
+      cy.get(`[data-cy="caracteristicas"]`).should('have.value', 'grown drat technician');
 
-      cy.get(`[data-cy="versiculosBiblicos"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="versiculosBiblicos"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="versiculosBiblicos"]`).type('ravage blah');
+      cy.get(`[data-cy="versiculosBiblicos"]`).should('have.value', 'ravage blah');
 
       cy.get(`[data-cy="activo"]`).should('not.be.checked');
       cy.get(`[data-cy="activo"]`).click();
       cy.get(`[data-cy="activo"]`).should('be.checked');
 
-      cy.get(`[data-cy="ordenPresentacion"]`).type('4441');
-      cy.get(`[data-cy="ordenPresentacion"]`).should('have.value', '4441');
+      cy.get(`[data-cy="ordenPresentacion"]`).type('25184');
+      cy.get(`[data-cy="ordenPresentacion"]`).should('have.value', '25184');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

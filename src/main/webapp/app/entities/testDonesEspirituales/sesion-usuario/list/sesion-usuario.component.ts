@@ -9,11 +9,10 @@ import { SortByDirective, SortDirective, SortService, type SortState, sortStateS
 import { FormatMediumDatetimePipe } from 'app/shared/date';
 import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
+
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
-import { DataUtils } from 'app/core/util/data-util.service';
 import { ISesionUsuario } from '../sesion-usuario.model';
-
 import { EntityArrayResponseType, SesionUsuarioService } from '../service/sesion-usuario.service';
 import { SesionUsuarioDeleteDialogComponent } from '../delete/sesion-usuario-delete-dialog.component';
 
@@ -37,7 +36,6 @@ export class SesionUsuarioComponent implements OnInit {
   protected readonly sesionUsuarioService = inject(SesionUsuarioService);
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected readonly sortService = inject(SortService);
-  protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
@@ -50,14 +48,6 @@ export class SesionUsuarioComponent implements OnInit {
         tap(() => this.load()),
       )
       .subscribe();
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(sesionUsuario: ISesionUsuario): void {

@@ -11,20 +11,20 @@ export const sampleWithPartialData: IDonEspiritual = {
   id: 8606,
   nombre: 'finally affiliate',
   nombreCorto: 'mortally good thin',
-  versiculosBiblicos: '../fake-data/blob/hipster.txt',
+  versiculosBiblicos: 'scarcely honestly',
   activo: true,
-  ordenPresentacion: 2037,
+  ordenPresentacion: 17626,
 };
 
 export const sampleWithFullData: IDonEspiritual = {
   id: 10443,
   nombre: 'evince but until',
   nombreCorto: 'jubilant handful',
-  descripcion: '../fake-data/blob/hipster.txt',
-  caracteristicas: '../fake-data/blob/hipster.txt',
-  versiculosBiblicos: '../fake-data/blob/hipster.txt',
-  activo: true,
-  ordenPresentacion: 2415,
+  descripcion: 'dandelion',
+  caracteristicas: 'empty via',
+  versiculosBiblicos: 'off besides lampoon',
+  activo: false,
+  ordenPresentacion: 15385,
 };
 
 export const sampleWithNewData: NewDonEspiritual = {

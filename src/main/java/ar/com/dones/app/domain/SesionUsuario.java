@@ -25,7 +25,6 @@ public class SesionUsuario implements Serializable {
   @Column(name = "id")
   private Long id;
 
-  @Lob
   @Column(name = "respuestas_temporales")
   private String respuestasTemporales;
 

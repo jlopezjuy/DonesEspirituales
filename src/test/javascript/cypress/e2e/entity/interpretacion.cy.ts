@@ -16,10 +16,10 @@ describe('Interpretacion e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const interpretacionSample = {
-    puntuacionMinima: 6003,
-    puntuacionMaxima: 16084,
+    puntuacionMinima: 15482,
+    puntuacionMaxima: 22417,
     nivel: 'MUY_ALTO',
-    descripcionNivel: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
+    descripcionNivel: 'scarily gullible',
   };
 
   let interpretacion;
@@ -35,13 +35,13 @@ describe('Interpretacion e2e test', () => {
       method: 'POST',
       url: '/api/don-espirituals',
       body: {
-        nombre: 'past',
-        nombreCorto: 'male',
-        descripcion: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        caracteristicas: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        versiculosBiblicos: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
+        nombre: 'zealous however',
+        nombreCorto: 'unless or',
+        descripcion: 'mad',
+        caracteristicas: 'messy',
+        versiculosBiblicos: 'behind internationalize',
         activo: true,
-        ordenPresentacion: 375,
+        ordenPresentacion: 14508,
       },
     }).then(({ body }) => {
       donEspiritual = body;
@@ -215,14 +215,14 @@ describe('Interpretacion e2e test', () => {
 
       cy.get(`[data-cy="nivel"]`).select('MUY_ALTO');
 
-      cy.get(`[data-cy="descripcionNivel"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="descripcionNivel"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="descripcionNivel"]`).type('nab');
+      cy.get(`[data-cy="descripcionNivel"]`).should('have.value', 'nab');
 
-      cy.get(`[data-cy="recomendaciones"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="recomendaciones"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="recomendaciones"]`).type('politely crazy');
+      cy.get(`[data-cy="recomendaciones"]`).should('have.value', 'politely crazy');
 
-      cy.get(`[data-cy="areasServicio"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="areasServicio"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="areasServicio"]`).type('passionate dreamily');
+      cy.get(`[data-cy="areasServicio"]`).should('have.value', 'passionate dreamily');
 
       cy.get(`[data-cy="donEspiritual"]`).select(1);
 

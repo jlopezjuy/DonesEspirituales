@@ -26,13 +26,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestasTemporales"
             >Respuestas Temporales</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="respuestasTemporales"
             id="field_respuestasTemporales"
             data-cy="respuestasTemporales"
             formControlName="respuestasTemporales"
-          ></textarea>
+          />
         </div>
 
         @let fechaCreacionRef = editForm.get('fechaCreacion')!;

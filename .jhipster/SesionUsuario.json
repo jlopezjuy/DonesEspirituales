@@ -8,7 +8,7 @@
   "fields": [
     {
       "fieldName": "respuestasTemporales",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "fechaCreacion",

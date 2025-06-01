@@ -34,7 +34,6 @@ public class EscalaRespuesta implements Serializable {
   @Column(name = "etiqueta", length = 100, nullable = false)
   private String etiqueta;
 
-  @Lob
   @Column(name = "descripcion")
   private String descripcion;
 

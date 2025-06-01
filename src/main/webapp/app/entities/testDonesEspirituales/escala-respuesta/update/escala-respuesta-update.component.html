@@ -74,13 +74,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.descripcion"
             >Descripcion</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="descripcion"
             id="field_descripcion"
             data-cy="descripcion"
             formControlName="descripcion"
-          ></textarea>
+          />
         </div>
 
         @let ordenRef = editForm.get('orden')!;

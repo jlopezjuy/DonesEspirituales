@@ -121,13 +121,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.descripcionNivel"
             >Descripcion Nivel</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="descripcionNivel"
             id="field_descripcionNivel"
             data-cy="descripcionNivel"
             formControlName="descripcionNivel"
-          ></textarea>
+          />
           @if (descripcionNivelRef.invalid && (descripcionNivelRef.dirty || descripcionNivelRef.touched)) {
             <div>
               @if (editForm.get('descripcionNivel')?.errors?.required) {
@@ -144,13 +145,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.recomendaciones"
             >Recomendaciones</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="recomendaciones"
             id="field_recomendaciones"
             data-cy="recomendaciones"
             formControlName="recomendaciones"
-          ></textarea>
+          />
         </div>
 
         <div class="mb-3">
@@ -160,13 +162,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.areasServicio"
             >Areas Servicio</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="areasServicio"
             id="field_areasServicio"
             data-cy="areasServicio"
             formControlName="areasServicio"
-          ></textarea>
+          />
         </div>
 
         <div class="mb-3">

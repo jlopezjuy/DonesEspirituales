@@ -20,15 +20,15 @@
     },
     {
       "fieldName": "descripcion",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "caracteristicas",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "versiculosBiblicos",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "activo",

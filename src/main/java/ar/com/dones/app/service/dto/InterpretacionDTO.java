@@ -1,7 +1,6 @@
 package ar.com.dones.app.service.dto;
 
 import ar.com.dones.app.domain.enumeration.NivelInterpretacion;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,13 +24,11 @@ public class InterpretacionDTO implements Serializable {
   @NotNull
   private NivelInterpretacion nivel;
 
-  @Lob
+  @NotNull
   private String descripcionNivel;
 
-  @Lob
   private String recomendaciones;
 
-  @Lob
   private String areasServicio;
 
   @NotNull

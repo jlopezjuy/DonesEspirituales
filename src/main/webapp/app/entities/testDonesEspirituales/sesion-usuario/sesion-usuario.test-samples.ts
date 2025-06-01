@@ -11,18 +11,18 @@ export const sampleWithRequiredData: ISesionUsuario = {
 
 export const sampleWithPartialData: ISesionUsuario = {
   id: 6322,
-  respuestasTemporales: '../fake-data/blob/hipster.txt',
-  fechaCreacion: dayjs('2025-05-31T18:08'),
-  fechaExpiracion: dayjs('2025-05-31T10:30'),
+  respuestasTemporales: 'state membership overcooked',
+  fechaCreacion: dayjs('2025-05-31T10:37'),
+  fechaExpiracion: dayjs('2025-05-31T18:02'),
   completada: false,
 };
 
 export const sampleWithFullData: ISesionUsuario = {
   id: 8178,
-  respuestasTemporales: '../fake-data/blob/hipster.txt',
-  fechaCreacion: dayjs('2025-05-31T20:27'),
-  fechaExpiracion: dayjs('2025-05-31T19:53'),
-  completada: false,
+  respuestasTemporales: 'edge personal daddy',
+  fechaCreacion: dayjs('2025-05-31T15:40'),
+  fechaExpiracion: dayjs('2025-05-31T10:25'),
+  completada: true,
 };
 
 export const sampleWithNewData: NewSesionUsuario = {

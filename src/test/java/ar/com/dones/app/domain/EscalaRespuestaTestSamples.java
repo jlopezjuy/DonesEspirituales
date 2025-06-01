@@ -12,11 +12,11 @@ public class EscalaRespuestaTestSamples {
   private static final AtomicInteger intCount = new AtomicInteger(random.nextInt() + (2 * Short.MAX_VALUE));
 
   public static EscalaRespuesta getEscalaRespuestaSample1() {
-    return new EscalaRespuesta().id(1L).valor(1).etiqueta("etiqueta1").orden(1);
+    return new EscalaRespuesta().id(1L).valor(1).etiqueta("etiqueta1").descripcion("descripcion1").orden(1);
   }
 
   public static EscalaRespuesta getEscalaRespuestaSample2() {
-    return new EscalaRespuesta().id(2L).valor(2).etiqueta("etiqueta2").orden(2);
+    return new EscalaRespuesta().id(2L).valor(2).etiqueta("etiqueta2").descripcion("descripcion2").orden(2);
   }
 
   public static EscalaRespuesta getEscalaRespuestaRandomSampleGenerator() {
@@ -24,6 +24,7 @@ public class EscalaRespuestaTestSamples {
       .id(longCount.incrementAndGet())
       .valor(intCount.incrementAndGet())
       .etiqueta(UUID.randomUUID().toString())
+      .descripcion(UUID.randomUUID().toString())
       .orden(intCount.incrementAndGet());
   }
 }

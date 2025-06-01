@@ -5,7 +5,7 @@ export const sampleWithRequiredData: IInterpretacion = {
   puntuacionMinima: 8508,
   puntuacionMaxima: 15946,
   nivel: 'MUY_ALTO',
-  descripcionNivel: '../fake-data/blob/hipster.txt',
+  descripcionNivel: 'cop-out yawningly',
 };
 
 export const sampleWithPartialData: IInterpretacion = {
@@ -13,8 +13,8 @@ export const sampleWithPartialData: IInterpretacion = {
   puntuacionMinima: 31046,
   puntuacionMaxima: 27874,
   nivel: 'BAJO',
-  descripcionNivel: '../fake-data/blob/hipster.txt',
-  recomendaciones: '../fake-data/blob/hipster.txt',
+  descripcionNivel: 'of',
+  recomendaciones: 'earth digit',
 };
 
 export const sampleWithFullData: IInterpretacion = {
@@ -22,16 +22,16 @@ export const sampleWithFullData: IInterpretacion = {
   puntuacionMinima: 23002,
   puntuacionMaxima: 1535,
   nivel: 'MEDIO',
-  descripcionNivel: '../fake-data/blob/hipster.txt',
-  recomendaciones: '../fake-data/blob/hipster.txt',
-  areasServicio: '../fake-data/blob/hipster.txt',
+  descripcionNivel: 'atop',
+  recomendaciones: 'vice kookily',
+  areasServicio: 'plus unimpressively yet',
 };
 
 export const sampleWithNewData: NewInterpretacion = {
   puntuacionMinima: 26778,
   puntuacionMaxima: 27553,
   nivel: 'ALTO',
-  descripcionNivel: '../fake-data/blob/hipster.txt',
+  descripcionNivel: 'near vice brr',
   id: null,
 };
 

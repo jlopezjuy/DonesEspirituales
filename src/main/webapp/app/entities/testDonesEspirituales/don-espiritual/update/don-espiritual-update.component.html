@@ -76,13 +76,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.descripcion"
             >Descripcion</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="descripcion"
             id="field_descripcion"
             data-cy="descripcion"
             formControlName="descripcion"
-          ></textarea>
+          />
         </div>
 
         <div class="mb-3">
@@ -92,13 +93,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.caracteristicas"
             >Caracteristicas</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="caracteristicas"
             id="field_caracteristicas"
             data-cy="caracteristicas"
             formControlName="caracteristicas"
-          ></textarea>
+          />
         </div>
 
         <div class="mb-3">
@@ -108,13 +110,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.versiculosBiblicos"
             >Versiculos Biblicos</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="versiculosBiblicos"
             id="field_versiculosBiblicos"
             data-cy="versiculosBiblicos"
             formControlName="versiculosBiblicos"
-          ></textarea>
+          />
         </div>
 
         @let activoRef = editForm.get('activo')!;

@@ -39,7 +39,7 @@ describe('ResultadoDon e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/don-espirituals',
-      body: {"nombre":"psst","nombreCorto":"posh biodegradable","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","caracteristicas":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","versiculosBiblicos":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","activo":false,"ordenPresentacion":6159},
+      body: {"nombre":"fortunately lecture huzzah","nombreCorto":"formation each for","descripcion":"apostrophize courageously abaft","caracteristicas":"sweetly rarely whether","versiculosBiblicos":"provided pulverize","activo":false,"ordenPresentacion":9117},
     }).then(({ body }) => {
       donEspiritual = body;
     });

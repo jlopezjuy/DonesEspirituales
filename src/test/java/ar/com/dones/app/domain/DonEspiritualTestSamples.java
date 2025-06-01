@@ -12,11 +12,25 @@ public class DonEspiritualTestSamples {
   private static final AtomicInteger intCount = new AtomicInteger(random.nextInt() + (2 * Short.MAX_VALUE));
 
   public static DonEspiritual getDonEspiritualSample1() {
-    return new DonEspiritual().id(1L).nombre("nombre1").nombreCorto("nombreCorto1").ordenPresentacion(1);
+    return new DonEspiritual()
+      .id(1L)
+      .nombre("nombre1")
+      .nombreCorto("nombreCorto1")
+      .descripcion("descripcion1")
+      .caracteristicas("caracteristicas1")
+      .versiculosBiblicos("versiculosBiblicos1")
+      .ordenPresentacion(1);
   }
 
   public static DonEspiritual getDonEspiritualSample2() {
-    return new DonEspiritual().id(2L).nombre("nombre2").nombreCorto("nombreCorto2").ordenPresentacion(2);
+    return new DonEspiritual()
+      .id(2L)
+      .nombre("nombre2")
+      .nombreCorto("nombreCorto2")
+      .descripcion("descripcion2")
+      .caracteristicas("caracteristicas2")
+      .versiculosBiblicos("versiculosBiblicos2")
+      .ordenPresentacion(2);
   }
 
   public static DonEspiritual getDonEspiritualRandomSampleGenerator() {
@@ -24,6 +38,9 @@ public class DonEspiritualTestSamples {
       .id(longCount.incrementAndGet())
       .nombre(UUID.randomUUID().toString())
       .nombreCorto(UUID.randomUUID().toString())
+      .descripcion(UUID.randomUUID().toString())
+      .caracteristicas(UUID.randomUUID().toString())
+      .versiculosBiblicos(UUID.randomUUID().toString())
       .ordenPresentacion(intCount.incrementAndGet());
   }
 }

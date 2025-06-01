@@ -14,18 +14,18 @@ export const sampleWithPartialData: IConfiguracionSistema = {
   id: 3671,
   clave: 'uh-huh',
   valor: 'um',
-  descripcion: '../fake-data/blob/hipster.txt',
+  descripcion: 'lovingly briefly',
   tipoDato: 'BOOLEAN',
-  fechaActualizacion: dayjs('2025-05-31T10:59'),
+  fechaActualizacion: dayjs('2025-05-31T13:53'),
 };
 
 export const sampleWithFullData: IConfiguracionSistema = {
   id: 12078,
   clave: 'however',
   valor: 'well',
-  descripcion: '../fake-data/blob/hipster.txt',
-  tipoDato: 'DECIMAL',
-  fechaActualizacion: dayjs('2025-05-31T12:31'),
+  descripcion: 'packaging mask',
+  tipoDato: 'INTEGER',
+  fechaActualizacion: dayjs('2025-05-31T17:17'),
 };
 
 export const sampleWithNewData: NewConfiguracionSistema = {

@@ -241,6 +241,23 @@ class InterpretacionResourceIT {
 
   @Test
   @Transactional
+  void checkDescripcionNivelIsRequired() throws Exception {
+    long databaseSizeBeforeTest = getRepositoryCount();
+    // set the field null
+    interpretacion.setDescripcionNivel(null);
+
+    // Create the Interpretacion, which fails.
+    InterpretacionDTO interpretacionDTO = interpretacionMapper.toDto(interpretacion);
+
+    restInterpretacionMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(interpretacionDTO)))
+      .andExpect(status().isBadRequest());
+
+    assertSameRepositoryCount(databaseSizeBeforeTest);
+  }
+
+  @Test
+  @Transactional
   void getAllInterpretacions() throws Exception {
     // Initialize the database
     insertedInterpretacion = interpretacionRepository.saveAndFlush(interpretacion);

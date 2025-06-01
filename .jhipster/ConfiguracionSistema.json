@@ -20,7 +20,7 @@
     },
     {
       "fieldName": "descripcion",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "tipoDato",

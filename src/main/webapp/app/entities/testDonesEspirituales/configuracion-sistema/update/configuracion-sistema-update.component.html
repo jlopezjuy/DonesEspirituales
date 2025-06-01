@@ -68,13 +68,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.descripcion"
             >Descripcion</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="descripcion"
             id="field_descripcion"
             data-cy="descripcion"
             formControlName="descripcion"
-          ></textarea>
+          />
         </div>
 
         @let tipoDatoRef = editForm.get('tipoDato')!;

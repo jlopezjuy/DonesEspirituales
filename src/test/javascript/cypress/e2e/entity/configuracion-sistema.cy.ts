@@ -16,10 +16,10 @@ describe('ConfiguracionSistema e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const configuracionSistemaSample = {
-    clave: 'offend superior rapid',
-    valor: 'pfft spirit',
+    clave: 'majestic pfft spirit',
+    valor: 'shakily obstruct',
     tipoDato: 'BOOLEAN',
-    fechaActualizacion: '2025-05-31T03:31:02.558Z',
+    fechaActualizacion: '2025-05-31T19:00:00.124Z',
   };
 
   let configuracionSistema;
@@ -171,14 +171,14 @@ describe('ConfiguracionSistema e2e test', () => {
       cy.get(`[data-cy="valor"]`).type('pro although pfft');
       cy.get(`[data-cy="valor"]`).should('have.value', 'pro although pfft');
 
-      cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="descripcion"]`).type('and veto');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'and veto');
 
-      cy.get(`[data-cy="tipoDato"]`).select('DECIMAL');
+      cy.get(`[data-cy="tipoDato"]`).select('DATE');
 
-      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T22:47');
+      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T20:21');
       cy.get(`[data-cy="fechaActualizacion"]`).blur();
-      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T22:47');
+      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T20:21');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

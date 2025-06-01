@@ -1,6 +1,5 @@
 package ar.com.dones.app.service.dto;
 
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -22,7 +21,6 @@ public class EscalaRespuestaDTO implements Serializable {
   @Size(max = 100)
   private String etiqueta;
 
-  @Lob
   private String descripcion;
 
   @NotNull

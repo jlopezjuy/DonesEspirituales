@@ -35,7 +35,6 @@ public class ConfiguracionSistema implements Serializable {
   @Column(name = "valor", length = 1000, nullable = false)
   private String valor;
 
-  @Lob
   @Column(name = "descripcion")
   private String descripcion;
 

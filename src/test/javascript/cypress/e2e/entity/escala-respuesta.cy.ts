@@ -15,7 +15,7 @@ describe('EscalaRespuesta e2e test', () => {
   const escalaRespuestaPageUrlPattern = new RegExp('/escala-respuesta(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const escalaRespuestaSample = { valor: 1, etiqueta: 'upwardly refute woot', orden: 28335 };
+  const escalaRespuestaSample = { valor: 4, etiqueta: 'boohoo within excluding', orden: 14824 };
 
   let escalaRespuesta;
 
@@ -166,11 +166,11 @@ describe('EscalaRespuesta e2e test', () => {
       cy.get(`[data-cy="etiqueta"]`).type('provision birdbath');
       cy.get(`[data-cy="etiqueta"]`).should('have.value', 'provision birdbath');
 
-      cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="descripcion"]`).type('whose because sternly');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'whose because sternly');
 
-      cy.get(`[data-cy="orden"]`).type('23712');
-      cy.get(`[data-cy="orden"]`).should('have.value', '23712');
+      cy.get(`[data-cy="orden"]`).type('14505');
+      cy.get(`[data-cy="orden"]`).should('have.value', '14505');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
