@@ -11,11 +11,11 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface InterpretacionMapper extends EntityMapper<InterpretacionDTO, Interpretacion> {
-    @Mapping(target = "donEspiritual", source = "donEspiritual", qualifiedByName = "donEspiritualId")
-    InterpretacionDTO toDto(Interpretacion s);
+  @Mapping(target = "donEspiritual", source = "donEspiritual", qualifiedByName = "donEspiritualId")
+  InterpretacionDTO toDto(Interpretacion s);
 
-    @Named("donEspiritualId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    DonEspiritualDTO toDtoDonEspiritualId(DonEspiritual donEspiritual);
+  @Named("donEspiritualId")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  DonEspiritualDTO toDtoDonEspiritualId(DonEspiritual donEspiritual);
 }

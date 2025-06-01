@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class InterpretacionMapperTest {
 
-    private InterpretacionMapper interpretacionMapper;
+  private InterpretacionMapper interpretacionMapper;
 
-    @BeforeEach
-    void setUp() {
-        interpretacionMapper = new InterpretacionMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    interpretacionMapper = new InterpretacionMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getInterpretacionSample1();
-        var actual = interpretacionMapper.toEntity(interpretacionMapper.toDto(expected));
-        assertInterpretacionAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getInterpretacionSample1();
+    var actual = interpretacionMapper.toEntity(interpretacionMapper.toDto(expected));
+    assertInterpretacionAllPropertiesEquals(expected, actual);
+  }
 }

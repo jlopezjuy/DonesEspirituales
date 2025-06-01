@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class AuditoriaRespuestaMapperTest {
 
-    private AuditoriaRespuestaMapper auditoriaRespuestaMapper;
+  private AuditoriaRespuestaMapper auditoriaRespuestaMapper;
 
-    @BeforeEach
-    void setUp() {
-        auditoriaRespuestaMapper = new AuditoriaRespuestaMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    auditoriaRespuestaMapper = new AuditoriaRespuestaMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getAuditoriaRespuestaSample1();
-        var actual = auditoriaRespuestaMapper.toEntity(auditoriaRespuestaMapper.toDto(expected));
-        assertAuditoriaRespuestaAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getAuditoriaRespuestaSample1();
+    var actual = auditoriaRespuestaMapper.toEntity(auditoriaRespuestaMapper.toDto(expected));
+    assertAuditoriaRespuestaAllPropertiesEquals(expected, actual);
+  }
 }

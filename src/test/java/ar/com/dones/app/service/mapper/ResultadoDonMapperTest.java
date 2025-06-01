@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class ResultadoDonMapperTest {
 
-    private ResultadoDonMapper resultadoDonMapper;
+  private ResultadoDonMapper resultadoDonMapper;
 
-    @BeforeEach
-    void setUp() {
-        resultadoDonMapper = new ResultadoDonMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    resultadoDonMapper = new ResultadoDonMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getResultadoDonSample1();
-        var actual = resultadoDonMapper.toEntity(resultadoDonMapper.toDto(expected));
-        assertResultadoDonAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getResultadoDonSample1();
+    var actual = resultadoDonMapper.toEntity(resultadoDonMapper.toDto(expected));
+    assertResultadoDonAllPropertiesEquals(expected, actual);
+  }
 }

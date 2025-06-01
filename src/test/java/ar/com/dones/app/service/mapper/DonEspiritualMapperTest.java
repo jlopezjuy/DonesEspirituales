@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class DonEspiritualMapperTest {
 
-    private DonEspiritualMapper donEspiritualMapper;
+  private DonEspiritualMapper donEspiritualMapper;
 
-    @BeforeEach
-    void setUp() {
-        donEspiritualMapper = new DonEspiritualMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    donEspiritualMapper = new DonEspiritualMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getDonEspiritualSample1();
-        var actual = donEspiritualMapper.toEntity(donEspiritualMapper.toDto(expected));
-        assertDonEspiritualAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getDonEspiritualSample1();
+    var actual = donEspiritualMapper.toEntity(donEspiritualMapper.toDto(expected));
+    assertDonEspiritualAllPropertiesEquals(expected, actual);
+  }
 }

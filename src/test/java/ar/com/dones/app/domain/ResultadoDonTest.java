@@ -11,53 +11,53 @@ import org.junit.jupiter.api.Test;
 
 class ResultadoDonTest {
 
-    @Test
-    void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(ResultadoDon.class);
-        ResultadoDon resultadoDon1 = getResultadoDonSample1();
-        ResultadoDon resultadoDon2 = new ResultadoDon();
-        assertThat(resultadoDon1).isNotEqualTo(resultadoDon2);
+  @Test
+  void equalsVerifier() throws Exception {
+    TestUtil.equalsVerifier(ResultadoDon.class);
+    ResultadoDon resultadoDon1 = getResultadoDonSample1();
+    ResultadoDon resultadoDon2 = new ResultadoDon();
+    assertThat(resultadoDon1).isNotEqualTo(resultadoDon2);
 
-        resultadoDon2.setId(resultadoDon1.getId());
-        assertThat(resultadoDon1).isEqualTo(resultadoDon2);
+    resultadoDon2.setId(resultadoDon1.getId());
+    assertThat(resultadoDon1).isEqualTo(resultadoDon2);
 
-        resultadoDon2 = getResultadoDonSample2();
-        assertThat(resultadoDon1).isNotEqualTo(resultadoDon2);
-    }
+    resultadoDon2 = getResultadoDonSample2();
+    assertThat(resultadoDon1).isNotEqualTo(resultadoDon2);
+  }
 
-    @Test
-    void interpretacionTest() {
-        ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
-        Interpretacion interpretacionBack = getInterpretacionRandomSampleGenerator();
+  @Test
+  void interpretacionTest() {
+    ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
+    Interpretacion interpretacionBack = getInterpretacionRandomSampleGenerator();
 
-        resultadoDon.setInterpretacion(interpretacionBack);
-        assertThat(resultadoDon.getInterpretacion()).isEqualTo(interpretacionBack);
+    resultadoDon.setInterpretacion(interpretacionBack);
+    assertThat(resultadoDon.getInterpretacion()).isEqualTo(interpretacionBack);
 
-        resultadoDon.interpretacion(null);
-        assertThat(resultadoDon.getInterpretacion()).isNull();
-    }
+    resultadoDon.interpretacion(null);
+    assertThat(resultadoDon.getInterpretacion()).isNull();
+  }
 
-    @Test
-    void respuestaUsuarioTest() {
-        ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
-        RespuestaUsuario respuestaUsuarioBack = getRespuestaUsuarioRandomSampleGenerator();
+  @Test
+  void respuestaUsuarioTest() {
+    ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
+    RespuestaUsuario respuestaUsuarioBack = getRespuestaUsuarioRandomSampleGenerator();
 
-        resultadoDon.setRespuestaUsuario(respuestaUsuarioBack);
-        assertThat(resultadoDon.getRespuestaUsuario()).isEqualTo(respuestaUsuarioBack);
+    resultadoDon.setRespuestaUsuario(respuestaUsuarioBack);
+    assertThat(resultadoDon.getRespuestaUsuario()).isEqualTo(respuestaUsuarioBack);
 
-        resultadoDon.respuestaUsuario(null);
-        assertThat(resultadoDon.getRespuestaUsuario()).isNull();
-    }
+    resultadoDon.respuestaUsuario(null);
+    assertThat(resultadoDon.getRespuestaUsuario()).isNull();
+  }
 
-    @Test
-    void donEspiritualTest() {
-        ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
-        DonEspiritual donEspiritualBack = getDonEspiritualRandomSampleGenerator();
+  @Test
+  void donEspiritualTest() {
+    ResultadoDon resultadoDon = getResultadoDonRandomSampleGenerator();
+    DonEspiritual donEspiritualBack = getDonEspiritualRandomSampleGenerator();
 
-        resultadoDon.setDonEspiritual(donEspiritualBack);
-        assertThat(resultadoDon.getDonEspiritual()).isEqualTo(donEspiritualBack);
+    resultadoDon.setDonEspiritual(donEspiritualBack);
+    assertThat(resultadoDon.getDonEspiritual()).isEqualTo(donEspiritualBack);
 
-        resultadoDon.donEspiritual(null);
-        assertThat(resultadoDon.getDonEspiritual()).isNull();
-    }
+    resultadoDon.donEspiritual(null);
+    assertThat(resultadoDon.getDonEspiritual()).isNull();
+  }
 }

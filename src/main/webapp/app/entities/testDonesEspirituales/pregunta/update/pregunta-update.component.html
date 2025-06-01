@@ -162,7 +162,7 @@
             formControlName="cuestionario"
             [compareWith]="compareCuestionario"
           >
-            @if (editForm.get(['cuestionario'])!.value == null) {
+            @if (editForm.get(['cuestionario'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (cuestionarioOption of cuestionariosSharedCollection; track $index) {

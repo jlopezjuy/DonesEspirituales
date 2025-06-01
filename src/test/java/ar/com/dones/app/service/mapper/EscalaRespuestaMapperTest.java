@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class EscalaRespuestaMapperTest {
 
-    private EscalaRespuestaMapper escalaRespuestaMapper;
+  private EscalaRespuestaMapper escalaRespuestaMapper;
 
-    @BeforeEach
-    void setUp() {
-        escalaRespuestaMapper = new EscalaRespuestaMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    escalaRespuestaMapper = new EscalaRespuestaMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getEscalaRespuestaSample1();
-        var actual = escalaRespuestaMapper.toEntity(escalaRespuestaMapper.toDto(expected));
-        assertEscalaRespuestaAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getEscalaRespuestaSample1();
+    var actual = escalaRespuestaMapper.toEntity(escalaRespuestaMapper.toDto(expected));
+    assertEscalaRespuestaAllPropertiesEquals(expected, actual);
+  }
 }

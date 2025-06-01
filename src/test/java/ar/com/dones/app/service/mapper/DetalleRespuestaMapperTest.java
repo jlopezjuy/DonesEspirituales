@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class DetalleRespuestaMapperTest {
 
-    private DetalleRespuestaMapper detalleRespuestaMapper;
+  private DetalleRespuestaMapper detalleRespuestaMapper;
 
-    @BeforeEach
-    void setUp() {
-        detalleRespuestaMapper = new DetalleRespuestaMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    detalleRespuestaMapper = new DetalleRespuestaMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getDetalleRespuestaSample1();
-        var actual = detalleRespuestaMapper.toEntity(detalleRespuestaMapper.toDto(expected));
-        assertDetalleRespuestaAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getDetalleRespuestaSample1();
+    var actual = detalleRespuestaMapper.toEntity(detalleRespuestaMapper.toDto(expected));
+    assertDetalleRespuestaAllPropertiesEquals(expected, actual);
+  }
 }

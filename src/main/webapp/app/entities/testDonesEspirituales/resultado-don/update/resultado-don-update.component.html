@@ -191,7 +191,7 @@
             formControlName="respuestaUsuario"
             [compareWith]="compareRespuestaUsuario"
           >
-            @if (editForm.get(['respuestaUsuario'])!.value == null) {
+            @if (editForm.get(['respuestaUsuario'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (respuestaUsuarioOption of respuestaUsuariosSharedCollection; track $index) {
@@ -225,7 +225,7 @@
             formControlName="donEspiritual"
             [compareWith]="compareDonEspiritual"
           >
-            @if (editForm.get(['donEspiritual'])!.value == null) {
+            @if (editForm.get(['donEspiritual'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (donEspiritualOption of donEspiritualsSharedCollection; track $index) {

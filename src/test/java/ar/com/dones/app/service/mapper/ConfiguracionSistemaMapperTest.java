@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class ConfiguracionSistemaMapperTest {
 
-    private ConfiguracionSistemaMapper configuracionSistemaMapper;
+  private ConfiguracionSistemaMapper configuracionSistemaMapper;
 
-    @BeforeEach
-    void setUp() {
-        configuracionSistemaMapper = new ConfiguracionSistemaMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    configuracionSistemaMapper = new ConfiguracionSistemaMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getConfiguracionSistemaSample1();
-        var actual = configuracionSistemaMapper.toEntity(configuracionSistemaMapper.toDto(expected));
-        assertConfiguracionSistemaAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getConfiguracionSistemaSample1();
+    var actual = configuracionSistemaMapper.toEntity(configuracionSistemaMapper.toDto(expected));
+    assertConfiguracionSistemaAllPropertiesEquals(expected, actual);
+  }
 }

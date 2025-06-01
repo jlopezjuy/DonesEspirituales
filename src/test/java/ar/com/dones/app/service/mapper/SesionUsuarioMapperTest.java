@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class SesionUsuarioMapperTest {
 
-    private SesionUsuarioMapper sesionUsuarioMapper;
+  private SesionUsuarioMapper sesionUsuarioMapper;
 
-    @BeforeEach
-    void setUp() {
-        sesionUsuarioMapper = new SesionUsuarioMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    sesionUsuarioMapper = new SesionUsuarioMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getSesionUsuarioSample1();
-        var actual = sesionUsuarioMapper.toEntity(sesionUsuarioMapper.toDto(expected));
-        assertSesionUsuarioAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getSesionUsuarioSample1();
+    var actual = sesionUsuarioMapper.toEntity(sesionUsuarioMapper.toDto(expected));
+    assertSesionUsuarioAllPropertiesEquals(expected, actual);
+  }
 }

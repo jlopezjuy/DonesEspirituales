@@ -15,23 +15,23 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface DetalleRespuestaMapper extends EntityMapper<DetalleRespuestaDTO, DetalleRespuesta> {
-    @Mapping(target = "escalaRespuesta", source = "escalaRespuesta", qualifiedByName = "escalaRespuestaId")
-    @Mapping(target = "pregunta", source = "pregunta", qualifiedByName = "preguntaId")
-    @Mapping(target = "respuestaUsuario", source = "respuestaUsuario", qualifiedByName = "respuestaUsuarioId")
-    DetalleRespuestaDTO toDto(DetalleRespuesta s);
+  @Mapping(target = "escalaRespuesta", source = "escalaRespuesta", qualifiedByName = "escalaRespuestaId")
+  @Mapping(target = "pregunta", source = "pregunta", qualifiedByName = "preguntaId")
+  @Mapping(target = "respuestaUsuario", source = "respuestaUsuario", qualifiedByName = "respuestaUsuarioId")
+  DetalleRespuestaDTO toDto(DetalleRespuesta s);
 
-    @Named("escalaRespuestaId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    EscalaRespuestaDTO toDtoEscalaRespuestaId(EscalaRespuesta escalaRespuesta);
+  @Named("escalaRespuestaId")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  EscalaRespuestaDTO toDtoEscalaRespuestaId(EscalaRespuesta escalaRespuesta);
 
-    @Named("preguntaId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    PreguntaDTO toDtoPreguntaId(Pregunta pregunta);
+  @Named("preguntaId")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  PreguntaDTO toDtoPreguntaId(Pregunta pregunta);
 
-    @Named("respuestaUsuarioId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    RespuestaUsuarioDTO toDtoRespuestaUsuarioId(RespuestaUsuario respuestaUsuario);
+  @Named("respuestaUsuarioId")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  RespuestaUsuarioDTO toDtoRespuestaUsuarioId(RespuestaUsuario respuestaUsuario);
 }

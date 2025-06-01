@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 class RespuestaUsuarioMapperTest {
 
-    private RespuestaUsuarioMapper respuestaUsuarioMapper;
+  private RespuestaUsuarioMapper respuestaUsuarioMapper;
 
-    @BeforeEach
-    void setUp() {
-        respuestaUsuarioMapper = new RespuestaUsuarioMapperImpl();
-    }
+  @BeforeEach
+  void setUp() {
+    respuestaUsuarioMapper = new RespuestaUsuarioMapperImpl();
+  }
 
-    @Test
-    void shouldConvertToDtoAndBack() {
-        var expected = getRespuestaUsuarioSample1();
-        var actual = respuestaUsuarioMapper.toEntity(respuestaUsuarioMapper.toDto(expected));
-        assertRespuestaUsuarioAllPropertiesEquals(expected, actual);
-    }
+  @Test
+  void shouldConvertToDtoAndBack() {
+    var expected = getRespuestaUsuarioSample1();
+    var actual = respuestaUsuarioMapper.toEntity(respuestaUsuarioMapper.toDto(expected));
+    assertRespuestaUsuarioAllPropertiesEquals(expected, actual);
+  }
 }

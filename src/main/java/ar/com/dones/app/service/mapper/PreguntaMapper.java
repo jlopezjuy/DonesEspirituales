@@ -11,11 +11,11 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface PreguntaMapper extends EntityMapper<PreguntaDTO, Pregunta> {
-    @Mapping(target = "cuestionario", source = "cuestionario", qualifiedByName = "cuestionarioId")
-    PreguntaDTO toDto(Pregunta s);
+  @Mapping(target = "cuestionario", source = "cuestionario", qualifiedByName = "cuestionarioId")
+  PreguntaDTO toDto(Pregunta s);
 
-    @Named("cuestionarioId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    CuestionarioDTO toDtoCuestionarioId(Cuestionario cuestionario);
+  @Named("cuestionarioId")
+  @BeanMapping(ignoreByDefault = true)
+  @Mapping(target = "id", source = "id")
+  CuestionarioDTO toDtoCuestionarioId(Cuestionario cuestionario);
 }

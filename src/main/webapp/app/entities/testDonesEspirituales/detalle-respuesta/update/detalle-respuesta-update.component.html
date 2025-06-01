@@ -173,7 +173,7 @@
             formControlName="pregunta"
             [compareWith]="comparePregunta"
           >
-            @if (editForm.get(['pregunta'])!.value == null) {
+            @if (editForm.get(['pregunta'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (preguntaOption of preguntasSharedCollection; track $index) {
@@ -204,7 +204,7 @@
             formControlName="respuestaUsuario"
             [compareWith]="compareRespuestaUsuario"
           >
-            @if (editForm.get(['respuestaUsuario'])!.value == null) {
+            @if (editForm.get(['respuestaUsuario'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (respuestaUsuarioOption of respuestaUsuariosSharedCollection; track $index) {

@@ -72,7 +72,7 @@
             formControlName="pregunta"
             [compareWith]="comparePregunta"
           >
-            @if (editForm.get(['pregunta'])!.value == null) {
+            @if (editForm.get(['pregunta'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (preguntaOption of preguntasSharedCollection; track $index) {
@@ -103,7 +103,7 @@
             formControlName="donEspiritual"
             [compareWith]="compareDonEspiritual"
           >
-            @if (editForm.get(['donEspiritual'])!.value == null) {
+            @if (editForm.get(['donEspiritual'])!.value === null) {
               <option [ngValue]="null" selected></option>
             }
             @for (donEspiritualOption of donEspiritualsSharedCollection; track $index) {

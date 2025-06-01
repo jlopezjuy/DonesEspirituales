@@ -10,41 +10,41 @@ import org.junit.jupiter.api.Test;
 
 class PreguntaDonTest {
 
-    @Test
-    void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(PreguntaDon.class);
-        PreguntaDon preguntaDon1 = getPreguntaDonSample1();
-        PreguntaDon preguntaDon2 = new PreguntaDon();
-        assertThat(preguntaDon1).isNotEqualTo(preguntaDon2);
+  @Test
+  void equalsVerifier() throws Exception {
+    TestUtil.equalsVerifier(PreguntaDon.class);
+    PreguntaDon preguntaDon1 = getPreguntaDonSample1();
+    PreguntaDon preguntaDon2 = new PreguntaDon();
+    assertThat(preguntaDon1).isNotEqualTo(preguntaDon2);
 
-        preguntaDon2.setId(preguntaDon1.getId());
-        assertThat(preguntaDon1).isEqualTo(preguntaDon2);
+    preguntaDon2.setId(preguntaDon1.getId());
+    assertThat(preguntaDon1).isEqualTo(preguntaDon2);
 
-        preguntaDon2 = getPreguntaDonSample2();
-        assertThat(preguntaDon1).isNotEqualTo(preguntaDon2);
-    }
+    preguntaDon2 = getPreguntaDonSample2();
+    assertThat(preguntaDon1).isNotEqualTo(preguntaDon2);
+  }
 
-    @Test
-    void preguntaTest() {
-        PreguntaDon preguntaDon = getPreguntaDonRandomSampleGenerator();
-        Pregunta preguntaBack = getPreguntaRandomSampleGenerator();
+  @Test
+  void preguntaTest() {
+    PreguntaDon preguntaDon = getPreguntaDonRandomSampleGenerator();
+    Pregunta preguntaBack = getPreguntaRandomSampleGenerator();
 
-        preguntaDon.setPregunta(preguntaBack);
-        assertThat(preguntaDon.getPregunta()).isEqualTo(preguntaBack);
+    preguntaDon.setPregunta(preguntaBack);
+    assertThat(preguntaDon.getPregunta()).isEqualTo(preguntaBack);
 
-        preguntaDon.pregunta(null);
-        assertThat(preguntaDon.getPregunta()).isNull();
-    }
+    preguntaDon.pregunta(null);
+    assertThat(preguntaDon.getPregunta()).isNull();
+  }
 
-    @Test
-    void donEspiritualTest() {
-        PreguntaDon preguntaDon = getPreguntaDonRandomSampleGenerator();
-        DonEspiritual donEspiritualBack = getDonEspiritualRandomSampleGenerator();
+  @Test
+  void donEspiritualTest() {
+    PreguntaDon preguntaDon = getPreguntaDonRandomSampleGenerator();
+    DonEspiritual donEspiritualBack = getDonEspiritualRandomSampleGenerator();
 
-        preguntaDon.setDonEspiritual(donEspiritualBack);
-        assertThat(preguntaDon.getDonEspiritual()).isEqualTo(donEspiritualBack);
+    preguntaDon.setDonEspiritual(donEspiritualBack);
+    assertThat(preguntaDon.getDonEspiritual()).isEqualTo(donEspiritualBack);
 
-        preguntaDon.donEspiritual(null);
-        assertThat(preguntaDon.getDonEspiritual()).isNull();
-    }
+    preguntaDon.donEspiritual(null);
+    assertThat(preguntaDon.getDonEspiritual()).isNull();
+  }
 }
