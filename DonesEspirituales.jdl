@@ -1,0 +1,164 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName DonesEspirituales
+    blueprints []
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angular
+    clientPackageManager npm
+    creationTimestamp 1748734231040
+    databaseType sql
+    devDatabaseType h2Disk
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation true
+    jhiPrefix jhi
+    jhipsterVersion "8.11.0"
+    jwtSecretKey "YTI0ZjFkODBjYmQ2ODk0N2ZhNjQ2OGMxNDc5Nzg4ZmY0MTA1YWRiY2VhMTQ2MmJiNmY4MDU2YTlkNWIzMmExMzUyNzYzNWZkMjgxMzZiMzg3ZmE5OGM0MDY4NDY0MzMzYmI4NGYyNWRjZTc4ZjQyMTQ5MThhODE3NDE3ZDE1ZTg="
+    languages [es, en]
+    nativeLanguage es
+    packageName ar.com.dones.app
+    prodDatabaseType postgresql
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    testFrameworks [cypress]
+    websocket spring-websocket
+    withAdminUi true
+  }
+
+  entities AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario
+}
+
+entity AuditoriaRespuesta {
+  valorAnterior Integer min(0) max(10)
+  valorNuevo Integer required min(0) max(10)
+  timestampCambio Instant required
+  motivoCambio String maxlength(500)
+}
+entity ConfiguracionSistema {
+  clave String required unique maxlength(100)
+  valor String required maxlength(1000)
+  descripcion String
+  tipoDato TipoDato required
+  fechaActualizacion Instant required
+}
+entity Cuestionario {
+  titulo String required maxlength(200)
+  descripcion String
+  instrucciones String required
+  totalPreguntas Integer required min(1) max(1000)
+  activo Boolean required
+  fechaCreacion Instant required
+  fechaActualizacion Instant
+  version Integer required min(1)
+}
+entity DetalleRespuesta {
+  valorRespuesta Integer required min(0) max(10)
+  timestampRespuesta Instant required
+  tiempoPreguntaSegundos Integer min(0)
+}
+entity DonEspiritual {
+  nombre String required maxlength(100) unique
+  nombreCorto String required maxlength(50) unique
+  descripcion String
+  caracteristicas String
+  versiculosBiblicos String
+  activo Boolean required
+  ordenPresentacion Integer min(1)
+}
+entity EscalaRespuesta {
+  valor Integer required min(0) max(10)
+  etiqueta String required maxlength(100)
+  descripcion String
+  orden Integer required min(1)
+}
+entity Interpretacion {
+  puntuacionMinima Integer required min(0)
+  puntuacionMaxima Integer required min(0)
+  nivel NivelInterpretacion required
+  descripcionNivel String required
+  recomendaciones String
+  areasServicio String
+}
+entity Pregunta {
+  numeroPregunta Integer required min(1)
+  textoPregunta String required
+  obligatoria Boolean required
+  activa Boolean required
+  fechaCreacion Instant required
+}
+entity PreguntaDon {
+  peso Integer required min(1) max(10)
+  activa Boolean required
+}
+entity RespuestaUsuario {
+  fechaInicio Instant required
+  fechaCompletado Instant
+  estado EstadoRespuesta required
+  tiempoTotalSegundos Integer min(0)
+  ipAddress String maxlength(45)
+  userAgent String maxlength(500)
+}
+entity ResultadoDon {
+  puntuacionTotal Integer required min(0)
+  porcentaje BigDecimal required min(0) max(100)
+  rankingPosicion Integer required min(1)
+  esDonPrincipal Boolean required
+}
+entity SesionUsuario {
+  respuestasTemporales String
+  fechaCreacion Instant required
+  fechaExpiracion Instant required
+  completada Boolean required
+}
+
+enum TipoDato {
+  STRING,
+  INTEGER,
+  BOOLEAN,
+  DECIMAL,
+  DATE
+}
+enum NivelInterpretacion {
+  MUY_BAJO,
+  BAJO,
+  MEDIO,
+  ALTO,
+  MUY_ALTO
+}
+enum EstadoRespuesta {
+  INICIADA,
+  EN_PROGRESO,
+  COMPLETADA,
+  ABANDONADA
+}
+
+relationship OneToMany {
+  Cuestionario{preguntas} to Pregunta{cuestionario required}
+  Cuestionario{respuestas} to RespuestaUsuario{cuestionario required}
+  DetalleRespuesta{auditorias} to AuditoriaRespuesta{detalleRespuesta required}
+  DonEspiritual{preguntaDones} to PreguntaDon{donEspiritual required}
+  DonEspiritual{resultadoDones} to ResultadoDon{donEspiritual required}
+  DonEspiritual{interpretaciones} to Interpretacion{donEspiritual required}
+  Pregunta{preguntaDones} to PreguntaDon{pregunta required}
+  Pregunta{detalleRespuestas} to DetalleRespuesta{pregunta required}
+  RespuestaUsuario{detalleRespuestas} to DetalleRespuesta{respuestaUsuario required}
+  RespuestaUsuario{resultadoDones} to ResultadoDon{respuestaUsuario required}
+  RespuestaUsuario{sesiones} to SesionUsuario{respuestaUsuario}
+  RespuestaUsuario{auditorias} to AuditoriaRespuesta{respuestaUsuario required}
+}
+relationship ManyToOne {
+  DetalleRespuesta{escalaRespuesta required} to EscalaRespuesta
+  RespuestaUsuario{user(login)} to User with builtInEntity
+  ResultadoDon{interpretacion} to Interpretacion
+  SesionUsuario{user(login)} to User with builtInEntity
+}
+
+dto AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario with mapstruct
+paginate AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario with pagination
+service AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario with serviceImpl
+search AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario with no
+clientRootFolder AuditoriaRespuesta, ConfiguracionSistema, Cuestionario, DetalleRespuesta, DonEspiritual, EscalaRespuesta, Interpretacion, Pregunta, PreguntaDon, RespuestaUsuario, ResultadoDon, SesionUsuario with testDonesEspirituales
