@@ -7,7 +7,7 @@ export const sampleWithRequiredData: IConfiguracionSistema = {
   clave: 'acceptable unique',
   valor: 'light',
   tipoDato: 'BOOLEAN',
-  fechaActualizacion: dayjs('2025-05-31T08:50'),
+  fechaActualizacion: dayjs('2025-05-31T09:39'),
 };
 
 export const sampleWithPartialData: IConfiguracionSistema = {
@@ -16,7 +16,7 @@ export const sampleWithPartialData: IConfiguracionSistema = {
   valor: 'um',
   descripcion: '../fake-data/blob/hipster.txt',
   tipoDato: 'BOOLEAN',
-  fechaActualizacion: dayjs('2025-05-31T10:09'),
+  fechaActualizacion: dayjs('2025-05-31T10:59'),
 };
 
 export const sampleWithFullData: IConfiguracionSistema = {
@@ -25,14 +25,14 @@ export const sampleWithFullData: IConfiguracionSistema = {
   valor: 'well',
   descripcion: '../fake-data/blob/hipster.txt',
   tipoDato: 'DECIMAL',
-  fechaActualizacion: dayjs('2025-05-31T11:42'),
+  fechaActualizacion: dayjs('2025-05-31T12:31'),
 };
 
 export const sampleWithNewData: NewConfiguracionSistema = {
   clave: 'gosh geez retrospectivity',
   valor: 'unnaturally',
   tipoDato: 'DECIMAL',
-  fechaActualizacion: dayjs('2025-05-31T00:09'),
+  fechaActualizacion: dayjs('2025-05-31T00:58'),
   id: null,
 };
 

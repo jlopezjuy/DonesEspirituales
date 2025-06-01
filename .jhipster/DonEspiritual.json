@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20250531234348"
+    "changelogDate": "20250601003310"
   },
   "applications": "*",
   "clientRootFolder": "testDonesEspirituales",
@@ -42,9 +42,8 @@
       "fieldValidateRulesMin": "1"
     }
   ],
-  "jpaMetamodelFiltering": true,
-  "microserviceName": "testDonesEspirituales",
   "name": "DonEspiritual",
+  "pagination": "pagination",
   "relationships": [
     {
       "otherEntityName": "preguntaDon",
@@ -69,5 +68,5 @@
     }
   ],
   "searchEngine": "no",
-  "service": "serviceClass"
+  "service": "serviceImpl"
 }

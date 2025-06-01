@@ -8,7 +8,7 @@ export const sampleWithRequiredData: IPregunta = {
   textoPregunta: '../fake-data/blob/hipster.txt',
   obligatoria: true,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T16:13'),
+  fechaCreacion: dayjs('2025-05-31T17:02'),
 };
 
 export const sampleWithPartialData: IPregunta = {
@@ -17,7 +17,7 @@ export const sampleWithPartialData: IPregunta = {
   textoPregunta: '../fake-data/blob/hipster.txt',
   obligatoria: true,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T13:10'),
+  fechaCreacion: dayjs('2025-05-31T14:00'),
 };
 
 export const sampleWithFullData: IPregunta = {
@@ -26,7 +26,7 @@ export const sampleWithFullData: IPregunta = {
   textoPregunta: '../fake-data/blob/hipster.txt',
   obligatoria: false,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T13:18'),
+  fechaCreacion: dayjs('2025-05-31T14:07'),
 };
 
 export const sampleWithNewData: NewPregunta = {
@@ -34,7 +34,7 @@ export const sampleWithNewData: NewPregunta = {
   textoPregunta: '../fake-data/blob/hipster.txt',
   obligatoria: true,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T06:16'),
+  fechaCreacion: dayjs('2025-05-31T07:06'),
   id: null,
 };
 

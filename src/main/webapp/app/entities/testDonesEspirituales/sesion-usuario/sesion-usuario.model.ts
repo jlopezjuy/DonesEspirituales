@@ -1,5 +1,5 @@
 import dayjs from 'dayjs/esm';
-import { IUsuario } from 'app/entities/testDonesEspirituales/usuario/usuario.model';
+import { IUser } from 'app/entities/user/user.model';
 import { IRespuestaUsuario } from 'app/entities/testDonesEspirituales/respuesta-usuario/respuesta-usuario.model';
 
 export interface ISesionUsuario {
@@ -8,7 +8,7 @@ export interface ISesionUsuario {
   fechaCreacion?: dayjs.Dayjs | null;
   fechaExpiracion?: dayjs.Dayjs | null;
   completada?: boolean | null;
-  usuario?: Pick<IUsuario, 'id'> | null;
+  user?: Pick<IUser, 'id' | 'login'> | null;
   respuestaUsuario?: Pick<IRespuestaUsuario, 'id'> | null;
 }
 

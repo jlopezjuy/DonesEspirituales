@@ -16,9 +16,9 @@ describe('Interpretacion e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const interpretacionSample = {
-    puntuacionMinima: 18594,
-    puntuacionMaxima: 7151,
-    nivel: 'ALTO',
+    puntuacionMinima: 6003,
+    puntuacionMaxima: 16084,
+    nivel: 'MUY_ALTO',
     descripcionNivel: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
   };
 
@@ -33,15 +33,15 @@ describe('Interpretacion e2e test', () => {
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/don-espirituals',
+      url: '/api/don-espirituals',
       body: {
-        nombre: 'hypothesize',
-        nombreCorto: 'serpentine handsome guard',
+        nombre: 'past',
+        nombreCorto: 'male',
         descripcion: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
         caracteristicas: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
         versiculosBiblicos: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
         activo: true,
-        ordenPresentacion: 2868,
+        ordenPresentacion: 375,
       },
     }).then(({ body }) => {
       donEspiritual = body;
@@ -49,14 +49,14 @@ describe('Interpretacion e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/interpretacions+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/interpretacions').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/interpretacions/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/interpretacions+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/interpretacions').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/interpretacions/*').as('deleteEntityRequest');
   });
 
   beforeEach(() => {
     // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/services/testdonesespirituales/api/don-espirituals', {
+    cy.intercept('GET', '/api/don-espirituals', {
       statusCode: 200,
       body: [donEspiritual],
     });
@@ -66,7 +66,7 @@ describe('Interpretacion e2e test', () => {
     if (interpretacion) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/interpretacions/${interpretacion.id}`,
+        url: `/api/interpretacions/${interpretacion.id}`,
       }).then(() => {
         interpretacion = undefined;
       });
@@ -77,7 +77,7 @@ describe('Interpretacion e2e test', () => {
     if (donEspiritual) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/don-espirituals/${donEspiritual.id}`,
+        url: `/api/don-espirituals/${donEspiritual.id}`,
       }).then(() => {
         donEspiritual = undefined;
       });
@@ -122,7 +122,7 @@ describe('Interpretacion e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/interpretacions',
+          url: '/api/interpretacions',
           body: {
             ...interpretacionSample,
             donEspiritual,
@@ -133,11 +133,14 @@ describe('Interpretacion e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/interpretacions+(?*|)',
+              url: '/api/interpretacions+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/interpretacions?page=0&size=20>; rel="last",<http://localhost/api/interpretacions?page=0&size=20>; rel="first"',
+              },
               body: [interpretacion],
             },
           ).as('entitiesRequestInternal');
@@ -204,13 +207,13 @@ describe('Interpretacion e2e test', () => {
     });
 
     it('should create an instance of Interpretacion', () => {
-      cy.get(`[data-cy="puntuacionMinima"]`).type('22515');
-      cy.get(`[data-cy="puntuacionMinima"]`).should('have.value', '22515');
+      cy.get(`[data-cy="puntuacionMinima"]`).type('17743');
+      cy.get(`[data-cy="puntuacionMinima"]`).should('have.value', '17743');
 
-      cy.get(`[data-cy="puntuacionMaxima"]`).type('24756');
-      cy.get(`[data-cy="puntuacionMaxima"]`).should('have.value', '24756');
+      cy.get(`[data-cy="puntuacionMaxima"]`).type('21424');
+      cy.get(`[data-cy="puntuacionMaxima"]`).should('have.value', '21424');
 
-      cy.get(`[data-cy="nivel"]`).select('MUY_BAJO');
+      cy.get(`[data-cy="nivel"]`).select('MUY_ALTO');
 
       cy.get(`[data-cy="descripcionNivel"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="descripcionNivel"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));

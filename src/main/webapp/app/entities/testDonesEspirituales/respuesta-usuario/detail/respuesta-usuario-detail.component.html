@@ -47,13 +47,9 @@
           <dd>
             <span>{{ respuestaUsuarioRef.userAgent }}</span>
           </dd>
-          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.usuario">Usuario</span></dt>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.user">User</span></dt>
           <dd>
-            @if (respuestaUsuario()!.usuario) {
-              <div>
-                <a [routerLink]="['/usuario', respuestaUsuario()!.usuario?.id, 'view']">{{ respuestaUsuarioRef.usuario?.id }}</a>
-              </div>
-            }
+            <span>{{ respuestaUsuarioRef.user?.login }}</span>
           </dd>
           <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.cuestionario">Cuestionario</span></dt>
           <dd>

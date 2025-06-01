@@ -7,11 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./admin/authority/authority.routes'),
   },
   {
-    path: 'usuario',
-    data: { pageTitle: 'donesEspiritualesApp.testDonesEspiritualesUsuario.home.title' },
-    loadChildren: () => import('./testDonesEspirituales/usuario/usuario.routes'),
-  },
-  {
     path: 'cuestionario',
     data: { pageTitle: 'donesEspiritualesApp.testDonesEspiritualesCuestionario.home.title' },
     loadChildren: () => import('./testDonesEspirituales/cuestionario/cuestionario.routes'),

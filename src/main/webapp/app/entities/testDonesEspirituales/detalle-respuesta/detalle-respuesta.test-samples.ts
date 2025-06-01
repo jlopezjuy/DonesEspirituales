@@ -5,25 +5,25 @@ import { IDetalleRespuesta, NewDetalleRespuesta } from './detalle-respuesta.mode
 export const sampleWithRequiredData: IDetalleRespuesta = {
   id: 17442,
   valorRespuesta: 9,
-  timestampRespuesta: dayjs('2025-05-31T11:00'),
+  timestampRespuesta: dayjs('2025-05-31T11:49'),
 };
 
 export const sampleWithPartialData: IDetalleRespuesta = {
   id: 19730,
   valorRespuesta: 5,
-  timestampRespuesta: dayjs('2025-05-31T22:29'),
+  timestampRespuesta: dayjs('2025-05-31T23:19'),
 };
 
 export const sampleWithFullData: IDetalleRespuesta = {
   id: 5483,
   valorRespuesta: 1,
-  timestampRespuesta: dayjs('2025-05-31T01:21'),
+  timestampRespuesta: dayjs('2025-05-31T02:10'),
   tiempoPreguntaSegundos: 20976,
 };
 
 export const sampleWithNewData: NewDetalleRespuesta = {
   valorRespuesta: 1,
-  timestampRespuesta: dayjs('2025-05-31T19:57'),
+  timestampRespuesta: dayjs('2025-05-31T20:46'),
   id: null,
 };
 

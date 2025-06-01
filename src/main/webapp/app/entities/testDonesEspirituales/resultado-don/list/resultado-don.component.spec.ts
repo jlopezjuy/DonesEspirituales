@@ -32,7 +32,6 @@ describe('ResultadoDon Management Component', () => {
                 page: '1',
                 size: '1',
                 sort: 'id,desc',
-                'filter[someId.in]': 'dc4279ea-cfb9-11ec-9d64-0242ac120002',
               }),
             ),
             snapshot: {
@@ -41,7 +40,6 @@ describe('ResultadoDon Management Component', () => {
                 page: '1',
                 size: '1',
                 sort: 'id,desc',
-                'filter[someId.in]': 'dc4279ea-cfb9-11ec-9d64-0242ac120002',
               }),
             },
           },
@@ -128,14 +126,6 @@ describe('ResultadoDon Management Component', () => {
 
     // THEN
     expect(service.query).toHaveBeenLastCalledWith(expect.objectContaining({ sort: ['id,desc'] }));
-  });
-
-  it('should calculate the filter attribute', () => {
-    // WHEN
-    comp.ngOnInit();
-
-    // THEN
-    expect(service.query).toHaveBeenLastCalledWith(expect.objectContaining({ 'someId.in': ['dc4279ea-cfb9-11ec-9d64-0242ac120002'] }));
   });
 
   describe('delete', () => {

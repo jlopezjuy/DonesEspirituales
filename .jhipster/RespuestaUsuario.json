@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20250531234351"
+    "changelogDate": "20250601003313"
   },
   "applications": "*",
   "clientRootFolder": "testDonesEspirituales",
@@ -40,8 +40,6 @@
       "fieldValidateRulesMaxlength": "500"
     }
   ],
-  "jpaMetamodelFiltering": true,
-  "microserviceName": "testDonesEspirituales",
   "name": "RespuestaUsuario",
   "pagination": "pagination",
   "relationships": [
@@ -74,12 +72,12 @@
       "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "usuario",
-      "otherEntityRelationshipName": "respuestas",
-      "relationshipName": "usuario",
-      "relationshipSide": "right",
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
-      "relationshipValidateRules": "required"
+      "relationshipWithBuiltInEntity": true
     },
     {
       "otherEntityName": "cuestionario",
@@ -91,5 +89,5 @@
     }
   ],
   "searchEngine": "no",
-  "service": "serviceClass"
+  "service": "serviceImpl"
 }

@@ -1,112 +1,66 @@
 package ar.com.dones.app.service;
 
-import ar.com.dones.app.domain.SesionUsuario;
-import ar.com.dones.app.repository.SesionUsuarioRepository;
 import ar.com.dones.app.service.dto.SesionUsuarioDTO;
-import ar.com.dones.app.service.mapper.SesionUsuarioMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Implementation for managing {@link ar.com.dones.app.domain.SesionUsuario}.
+ * Service Interface for managing {@link ar.com.dones.app.domain.SesionUsuario}.
  */
-@Service
-@Transactional
-public class SesionUsuarioService {
+public interface SesionUsuarioService {
+  /**
+   * Save a sesionUsuario.
+   *
+   * @param sesionUsuarioDTO the entity to save.
+   * @return the persisted entity.
+   */
+  SesionUsuarioDTO save(SesionUsuarioDTO sesionUsuarioDTO);
 
-    private static final Logger LOG = LoggerFactory.getLogger(SesionUsuarioService.class);
+  /**
+   * Updates a sesionUsuario.
+   *
+   * @param sesionUsuarioDTO the entity to update.
+   * @return the persisted entity.
+   */
+  SesionUsuarioDTO update(SesionUsuarioDTO sesionUsuarioDTO);
 
-    private final SesionUsuarioRepository sesionUsuarioRepository;
+  /**
+   * Partially updates a sesionUsuario.
+   *
+   * @param sesionUsuarioDTO the entity to update partially.
+   * @return the persisted entity.
+   */
+  Optional<SesionUsuarioDTO> partialUpdate(SesionUsuarioDTO sesionUsuarioDTO);
 
-    private final SesionUsuarioMapper sesionUsuarioMapper;
+  /**
+   * Get all the sesionUsuarios.
+   *
+   * @param pageable the pagination information.
+   * @return the list of entities.
+   */
+  Page<SesionUsuarioDTO> findAll(Pageable pageable);
 
-    public SesionUsuarioService(SesionUsuarioRepository sesionUsuarioRepository, SesionUsuarioMapper sesionUsuarioMapper) {
-        this.sesionUsuarioRepository = sesionUsuarioRepository;
-        this.sesionUsuarioMapper = sesionUsuarioMapper;
-    }
+  /**
+   * Get all the sesionUsuarios with eager load of many-to-many relationships.
+   *
+   * @param pageable the pagination information.
+   * @return the list of entities.
+   */
+  Page<SesionUsuarioDTO> findAllWithEagerRelationships(Pageable pageable);
 
-    /**
-     * Save a sesionUsuario.
-     *
-     * @param sesionUsuarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public SesionUsuarioDTO save(SesionUsuarioDTO sesionUsuarioDTO) {
-        LOG.debug("Request to save SesionUsuario : {}", sesionUsuarioDTO);
-        SesionUsuario sesionUsuario = sesionUsuarioMapper.toEntity(sesionUsuarioDTO);
-        sesionUsuario = sesionUsuarioRepository.save(sesionUsuario);
-        return sesionUsuarioMapper.toDto(sesionUsuario);
-    }
+  /**
+   * Get the "id" sesionUsuario.
+   *
+   * @param id the id of the entity.
+   * @return the entity.
+   */
+  Optional<SesionUsuarioDTO> findOne(Long id);
 
-    /**
-     * Update a sesionUsuario.
-     *
-     * @param sesionUsuarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public SesionUsuarioDTO update(SesionUsuarioDTO sesionUsuarioDTO) {
-        LOG.debug("Request to update SesionUsuario : {}", sesionUsuarioDTO);
-        SesionUsuario sesionUsuario = sesionUsuarioMapper.toEntity(sesionUsuarioDTO);
-        sesionUsuario = sesionUsuarioRepository.save(sesionUsuario);
-        return sesionUsuarioMapper.toDto(sesionUsuario);
-    }
-
-    /**
-     * Partially update a sesionUsuario.
-     *
-     * @param sesionUsuarioDTO the entity to update partially.
-     * @return the persisted entity.
-     */
-    public Optional<SesionUsuarioDTO> partialUpdate(SesionUsuarioDTO sesionUsuarioDTO) {
-        LOG.debug("Request to partially update SesionUsuario : {}", sesionUsuarioDTO);
-
-        return sesionUsuarioRepository
-            .findById(sesionUsuarioDTO.getId())
-            .map(existingSesionUsuario -> {
-                sesionUsuarioMapper.partialUpdate(existingSesionUsuario, sesionUsuarioDTO);
-
-                return existingSesionUsuario;
-            })
-            .map(sesionUsuarioRepository::save)
-            .map(sesionUsuarioMapper::toDto);
-    }
-
-    /**
-     * Get all the sesionUsuarios.
-     *
-     * @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<SesionUsuarioDTO> findAll() {
-        LOG.debug("Request to get all SesionUsuarios");
-        return sesionUsuarioRepository.findAll().stream().map(sesionUsuarioMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
-     * Get one sesionUsuario by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    @Transactional(readOnly = true)
-    public Optional<SesionUsuarioDTO> findOne(Long id) {
-        LOG.debug("Request to get SesionUsuario : {}", id);
-        return sesionUsuarioRepository.findById(id).map(sesionUsuarioMapper::toDto);
-    }
-
-    /**
-     * Delete the sesionUsuario by id.
-     *
-     * @param id the id of the entity.
-     */
-    public void delete(Long id) {
-        LOG.debug("Request to delete SesionUsuario : {}", id);
-        sesionUsuarioRepository.deleteById(id);
-    }
+  /**
+   * Delete the "id" sesionUsuario.
+   *
+   * @param id the id of the entity.
+   */
+  void delete(Long id);
 }

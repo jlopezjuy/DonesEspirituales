@@ -1,16 +1,14 @@
-
-
 // Enumeraciones
 
 enum EstadoRespuesta {
 
- INICIADA,
+  INICIADA,
 
- EN_PROGRESO,
+  EN_PROGRESO,
 
- COMPLETADA,
+  COMPLETADA,
 
- ABANDONADA
+  ABANDONADA
 
 }
 
@@ -18,15 +16,15 @@ enum EstadoRespuesta {
 
 enum NivelInterpretacion {
 
- MUY_BAJO,
+  MUY_BAJO,
 
- BAJO,
+  BAJO,
 
- MEDIO,
+  MEDIO,
 
- ALTO,
+  ALTO,
 
- MUY_ALTO
+  MUY_ALTO
 
 }
 
@@ -34,15 +32,15 @@ enum NivelInterpretacion {
 
 enum TipoDato {
 
- STRING,
+  STRING,
 
- INTEGER,
+  INTEGER,
 
- BOOLEAN,
+  BOOLEAN,
 
- DECIMAL,
+  DECIMAL,
 
- DATE
+  DATE
 
 }
 
@@ -50,13 +48,13 @@ enum TipoDato {
 
 enum Genero {
 
- MASCULINO,
+  MASCULINO,
 
- FEMENINO,
+  FEMENINO,
 
- OTRO,
+  OTRO,
 
- PREFIERO_NO_DECIR
+  PREFIERO_NO_DECIR
 
 }
 
@@ -65,52 +63,23 @@ enum Genero {
 // Entidades principales
 
 
-
-entity Usuario {
-
- nombre String required maxlength(100)
-
- apellido String required maxlength(100)
-
- email String required unique pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-
- telefono String maxlength(20)
-
- fechaNacimiento LocalDate
-
- genero Genero
-
- iglesia String maxlength(200)
-
- denominacion String maxlength(100)
-
- fechaRegistro Instant required
-
- ultimaActividad Instant
-
- activo Boolean required
-
-}
-
-
-
 entity Cuestionario {
 
- titulo String required maxlength(200)
+  titulo String required maxlength(200)
 
- descripcion TextBlob
+  descripcion TextBlob
 
- instrucciones TextBlob required
+  instrucciones TextBlob required
 
- totalPreguntas Integer required min(1) max(1000)
+  totalPreguntas Integer required min(1) max(1000)
 
- activo Boolean required
+  activo Boolean required
 
- fechaCreacion Instant required
+  fechaCreacion Instant required
 
- fechaActualizacion Instant
+  fechaActualizacion Instant
 
- version Integer required min(1)
+  version Integer required min(1)
 
 }
 
@@ -118,13 +87,13 @@ entity Cuestionario {
 
 entity EscalaRespuesta {
 
- valor Integer required min(0) max(10)
+  valor Integer required min(0) max(10)
 
- etiqueta String required maxlength(100)
+  etiqueta String required maxlength(100)
 
- descripcion TextBlob
+  descripcion TextBlob
 
- orden Integer required min(1)
+  orden Integer required min(1)
 
 }
 
@@ -132,19 +101,19 @@ entity EscalaRespuesta {
 
 entity DonEspiritual {
 
- nombre String required maxlength(100) unique
+  nombre String required maxlength(100) unique
 
- nombreCorto String required maxlength(50) unique
+  nombreCorto String required maxlength(50) unique
 
- descripcion TextBlob
+  descripcion TextBlob
 
- caracteristicas TextBlob
+  caracteristicas TextBlob
 
- versiculosBiblicos TextBlob
+  versiculosBiblicos TextBlob
 
- activo Boolean required
+  activo Boolean required
 
- ordenPresentacion Integer min(1)
+  ordenPresentacion Integer min(1)
 
 }
 
@@ -152,15 +121,15 @@ entity DonEspiritual {
 
 entity Pregunta {
 
- numeroPregunta Integer required min(1)
+  numeroPregunta Integer required min(1)
 
- textoPregunta TextBlob required
+  textoPregunta TextBlob required
 
- obligatoria Boolean required
+  obligatoria Boolean required
 
- activa Boolean required
+  activa Boolean required
 
- fechaCreacion Instant required
+  fechaCreacion Instant required
 
 }
 
@@ -168,9 +137,9 @@ entity Pregunta {
 
 entity PreguntaDon {
 
- peso Integer required min(1) max(10)
+  peso Integer required min(1) max(10)
 
- activa Boolean required
+  activa Boolean required
 
 }
 
@@ -178,17 +147,17 @@ entity PreguntaDon {
 
 entity RespuestaUsuario {
 
- fechaInicio Instant required
+  fechaInicio Instant required
 
- fechaCompletado Instant
+  fechaCompletado Instant
 
- estado EstadoRespuesta required
+  estado EstadoRespuesta required
 
- tiempoTotalSegundos Integer min(0)
+  tiempoTotalSegundos Integer min(0)
 
- ipAddress String maxlength(45)
+  ipAddress String maxlength(45)
 
- userAgent String maxlength(500)
+  userAgent String maxlength(500)
 
 }
 
@@ -196,11 +165,11 @@ entity RespuestaUsuario {
 
 entity DetalleRespuesta {
 
- valorRespuesta Integer required min(0) max(10)
+  valorRespuesta Integer required min(0) max(10)
 
- timestampRespuesta Instant required
+  timestampRespuesta Instant required
 
- tiempoPreguntaSegundos Integer min(0)
+  tiempoPreguntaSegundos Integer min(0)
 
 }
 
@@ -208,13 +177,13 @@ entity DetalleRespuesta {
 
 entity ResultadoDon {
 
- puntuacionTotal Integer required min(0)
+  puntuacionTotal Integer required min(0)
 
- porcentaje BigDecimal required min(0) max(100)
+  porcentaje BigDecimal required min(0) max(100)
 
- rankingPosicion Integer required min(1)
+  rankingPosicion Integer required min(1)
 
- esDonPrincipal Boolean required
+  esDonPrincipal Boolean required
 
 }
 
@@ -222,17 +191,17 @@ entity ResultadoDon {
 
 entity Interpretacion {
 
- puntuacionMinima Integer required min(0)
+  puntuacionMinima Integer required min(0)
 
- puntuacionMaxima Integer required min(0)
+  puntuacionMaxima Integer required min(0)
 
- nivel NivelInterpretacion required
+  nivel NivelInterpretacion required
 
- descripcionNivel TextBlob required
+  descripcionNivel TextBlob required
 
- recomendaciones TextBlob
+  recomendaciones TextBlob
 
- areasServicio TextBlob
+  areasServicio TextBlob
 
 }
 
@@ -240,13 +209,13 @@ entity Interpretacion {
 
 entity SesionUsuario {
 
- respuestasTemporales TextBlob
+  respuestasTemporales TextBlob
 
- fechaCreacion Instant required
+  fechaCreacion Instant required
 
- fechaExpiracion Instant required
+  fechaExpiracion Instant required
 
- completada Boolean required
+  completada Boolean required
 
 }
 
@@ -254,13 +223,13 @@ entity SesionUsuario {
 
 entity AuditoriaRespuesta {
 
- valorAnterior Integer min(0) max(10)
+  valorAnterior Integer min(0) max(10)
 
- valorNuevo Integer required min(0) max(10)
+  valorNuevo Integer required min(0) max(10)
 
- timestampCambio Instant required
+  timestampCambio Instant required
 
- motivoCambio String maxlength(500)
+  motivoCambio String maxlength(500)
 
 }
 
@@ -268,49 +237,24 @@ entity AuditoriaRespuesta {
 
 entity ConfiguracionSistema {
 
- clave String required unique maxlength(100)
+  clave String required unique maxlength(100)
 
- valor String required maxlength(1000)
+  valor String required maxlength(1000)
 
- descripcion TextBlob
+  descripcion TextBlob
 
- tipoDato TipoDato required
+  tipoDato TipoDato required
 
- fechaActualizacion Instant required
-
-}
-
-
-
-// Relaciones
-
-
-
-// Usuario - RespuestaUsuario (1:N)
-
-relationship OneToMany {
-
- Usuario{respuestas} to RespuestaUsuario{usuario required}
+  fechaActualizacion Instant required
 
 }
-
-
-
-// Usuario - SesionUsuario (1:N)
-
-relationship OneToMany {
-
- Usuario{sesiones} to SesionUsuario{usuario required}
-
-}
-
 
 
 // Cuestionario - Pregunta (1:N)
 
 relationship OneToMany {
 
- Cuestionario{preguntas} to Pregunta{cuestionario required}
+  Cuestionario{preguntas} to Pregunta{cuestionario required}
 
 }
 
@@ -320,7 +264,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- Cuestionario{respuestas} to RespuestaUsuario{cuestionario required}
+  Cuestionario{respuestas} to RespuestaUsuario{cuestionario required}
 
 }
 
@@ -330,7 +274,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- Pregunta{preguntaDones} to PreguntaDon{pregunta required}
+  Pregunta{preguntaDones} to PreguntaDon{pregunta required}
 
 }
 
@@ -340,7 +284,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- DonEspiritual{preguntaDones} to PreguntaDon{donEspiritual required}
+  DonEspiritual{preguntaDones} to PreguntaDon{donEspiritual required}
 
 }
 
@@ -350,7 +294,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- Pregunta{detalleRespuestas} to DetalleRespuesta{pregunta required}
+  Pregunta{detalleRespuestas} to DetalleRespuesta{pregunta required}
 
 }
 
@@ -360,7 +304,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- RespuestaUsuario{detalleRespuestas} to DetalleRespuesta{respuestaUsuario required}
+  RespuestaUsuario{detalleRespuestas} to DetalleRespuesta{respuestaUsuario required}
 
 }
 
@@ -370,7 +314,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- RespuestaUsuario{resultadoDones} to ResultadoDon{respuestaUsuario required}
+  RespuestaUsuario{resultadoDones} to ResultadoDon{respuestaUsuario required}
 
 }
 
@@ -380,7 +324,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- DonEspiritual{resultadoDones} to ResultadoDon{donEspiritual required}
+  DonEspiritual{resultadoDones} to ResultadoDon{donEspiritual required}
 
 }
 
@@ -390,7 +334,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- DonEspiritual{interpretaciones} to Interpretacion{donEspiritual required}
+  DonEspiritual{interpretaciones} to Interpretacion{donEspiritual required}
 
 }
 
@@ -400,7 +344,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- RespuestaUsuario{sesiones} to SesionUsuario{respuestaUsuario}
+  RespuestaUsuario{sesiones} to SesionUsuario{respuestaUsuario}
 
 }
 
@@ -410,7 +354,7 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- RespuestaUsuario{auditorias} to AuditoriaRespuesta{respuestaUsuario required}
+  RespuestaUsuario{auditorias} to AuditoriaRespuesta{respuestaUsuario required}
 
 }
 
@@ -420,30 +364,22 @@ relationship OneToMany {
 
 relationship OneToMany {
 
- DetalleRespuesta{auditorias} to AuditoriaRespuesta{detalleRespuesta required}
+  DetalleRespuesta{auditorias} to AuditoriaRespuesta{detalleRespuesta required}
 
 }
-
-
 
 // EscalaRespuesta - DetalleRespuesta (1:N)
 
 relationship ManyToOne {
-
- DetalleRespuesta{escalaRespuesta required} to EscalaRespuesta
-
+  DetalleRespuesta{escalaRespuesta required} to EscalaRespuesta
 }
-
-
-
 // Interpretacion - ResultadoDon (1:N)
 
 relationship ManyToOne {
-
- ResultadoDon{interpretacion} to Interpretacion
-
+  ResultadoDon{interpretacion} to Interpretacion,
+  RespuestaUsuario{user(login)} to User with builtInEntity,
+  SesionUsuario{user(login)} to User with builtInEntity,
 }
-
 
 
 // Configuraciones de generación
@@ -458,28 +394,15 @@ dto * with mapstruct
 
 // Servicios para entidades principales
 
-service Usuario, Cuestionario, RespuestaUsuario, ResultadoDon with serviceClass
+service * with serviceImpl
 
 
 
 // Repositorios con paginación
 
-paginate Usuario, RespuestaUsuario, DetalleRespuesta, ResultadoDon, AuditoriaRespuesta with pagination
-
-
-
-// Filtros para búsquedas
-
-filter Usuario, RespuestaUsuario, ResultadoDon, DonEspiritual
-
+paginate * with pagination
 
 
 // Validación en cliente y servidor
 
 clientRootFolder * with testDonesEspirituales
-
-
-
-// Configuraciones adicionales de microprofile
-
-microservice * with testDonesEspirituales

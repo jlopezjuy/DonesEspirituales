@@ -15,7 +15,7 @@ describe('EscalaRespuesta e2e test', () => {
   const escalaRespuestaPageUrlPattern = new RegExp('/escala-respuesta(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const escalaRespuestaSample = { valor: 5, etiqueta: 'wherever secrecy', orden: 17929 };
+  const escalaRespuestaSample = { valor: 1, etiqueta: 'upwardly refute woot', orden: 28335 };
 
   let escalaRespuesta;
 
@@ -24,16 +24,16 @@ describe('EscalaRespuesta e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/escala-respuestas+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/escala-respuestas').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/escala-respuestas/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/escala-respuestas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/escala-respuestas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/escala-respuestas/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
     if (escalaRespuesta) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/escala-respuestas/${escalaRespuesta.id}`,
+        url: `/api/escala-respuestas/${escalaRespuesta.id}`,
       }).then(() => {
         escalaRespuesta = undefined;
       });
@@ -78,7 +78,7 @@ describe('EscalaRespuesta e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/escala-respuestas',
+          url: '/api/escala-respuestas',
           body: escalaRespuestaSample,
         }).then(({ body }) => {
           escalaRespuesta = body;
@@ -86,11 +86,14 @@ describe('EscalaRespuesta e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/escala-respuestas+(?*|)',
+              url: '/api/escala-respuestas+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/escala-respuestas?page=0&size=20>; rel="last",<http://localhost/api/escala-respuestas?page=0&size=20>; rel="first"',
+              },
               body: [escalaRespuesta],
             },
           ).as('entitiesRequestInternal');
@@ -157,17 +160,17 @@ describe('EscalaRespuesta e2e test', () => {
     });
 
     it('should create an instance of EscalaRespuesta', () => {
-      cy.get(`[data-cy="valor"]`).type('0');
-      cy.get(`[data-cy="valor"]`).should('have.value', '0');
+      cy.get(`[data-cy="valor"]`).type('4');
+      cy.get(`[data-cy="valor"]`).should('have.value', '4');
 
-      cy.get(`[data-cy="etiqueta"]`).type('geez fatally');
-      cy.get(`[data-cy="etiqueta"]`).should('have.value', 'geez fatally');
+      cy.get(`[data-cy="etiqueta"]`).type('provision birdbath');
+      cy.get(`[data-cy="etiqueta"]`).should('have.value', 'provision birdbath');
 
       cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="orden"]`).type('22398');
-      cy.get(`[data-cy="orden"]`).should('have.value', '22398');
+      cy.get(`[data-cy="orden"]`).type('23712');
+      cy.get(`[data-cy="orden"]`).should('have.value', '23712');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

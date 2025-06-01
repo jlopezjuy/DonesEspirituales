@@ -19,89 +19,82 @@ import tech.jhipster.config.cache.PrefixedKeyGenerator;
 @EnableCaching
 public class CacheConfiguration {
 
-    private GitProperties gitProperties;
-    private BuildProperties buildProperties;
-    private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
+  private GitProperties gitProperties;
+  private BuildProperties buildProperties;
+  private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
 
-    public CacheConfiguration(JHipsterProperties jHipsterProperties) {
-        JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
+  public CacheConfiguration(JHipsterProperties jHipsterProperties) {
+    JHipsterProperties.Cache.Ehcache ehcache = jHipsterProperties.getCache().getEhcache();
 
-        jcacheConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
-            CacheConfigurationBuilder.newCacheConfigurationBuilder(
-                Object.class,
-                Object.class,
-                ResourcePoolsBuilder.heap(ehcache.getMaxEntries())
-            )
-                .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(ehcache.getTimeToLiveSeconds())))
-                .build()
-        );
+    jcacheConfiguration = Eh107Configuration.fromEhcacheCacheConfiguration(
+      CacheConfigurationBuilder.newCacheConfigurationBuilder(Object.class, Object.class, ResourcePoolsBuilder.heap(ehcache.getMaxEntries()))
+        .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofSeconds(ehcache.getTimeToLiveSeconds())))
+        .build()
+    );
+  }
+
+  @Bean
+  public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cacheManager) {
+    return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cacheManager);
+  }
+
+  @Bean
+  public JCacheManagerCustomizer cacheManagerCustomizer() {
+    return cm -> {
+      createCache(cm, ar.com.dones.app.repository.UserRepository.USERS_BY_LOGIN_CACHE);
+      createCache(cm, ar.com.dones.app.repository.UserRepository.USERS_BY_EMAIL_CACHE);
+      createCache(cm, ar.com.dones.app.domain.User.class.getName());
+      createCache(cm, ar.com.dones.app.domain.Authority.class.getName());
+      createCache(cm, ar.com.dones.app.domain.User.class.getName() + ".authorities");
+      createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName());
+      createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".preguntas");
+      createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".respuestas");
+      createCache(cm, ar.com.dones.app.domain.EscalaRespuesta.class.getName());
+      createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName());
+      createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".preguntaDones");
+      createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".resultadoDones");
+      createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".interpretaciones");
+      createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName());
+      createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".preguntaDones");
+      createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".detalleRespuestas");
+      createCache(cm, ar.com.dones.app.domain.PreguntaDon.class.getName());
+      createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName());
+      createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".detalleRespuestas");
+      createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".resultadoDones");
+      createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".sesiones");
+      createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".auditorias");
+      createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName());
+      createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName() + ".auditorias");
+      createCache(cm, ar.com.dones.app.domain.ResultadoDon.class.getName());
+      createCache(cm, ar.com.dones.app.domain.Interpretacion.class.getName());
+      createCache(cm, ar.com.dones.app.domain.SesionUsuario.class.getName());
+      createCache(cm, ar.com.dones.app.domain.AuditoriaRespuesta.class.getName());
+      createCache(cm, ar.com.dones.app.domain.ConfiguracionSistema.class.getName());
+      // jhipster-needle-ehcache-add-entry
+    };
+  }
+
+  private void createCache(javax.cache.CacheManager cm, String cacheName) {
+    javax.cache.Cache<Object, Object> cache = cm.getCache(cacheName);
+    if (cache != null) {
+      cache.clear();
+    } else {
+      cm.createCache(cacheName, jcacheConfiguration);
     }
+  }
 
-    @Bean
-    public HibernatePropertiesCustomizer hibernatePropertiesCustomizer(javax.cache.CacheManager cacheManager) {
-        return hibernateProperties -> hibernateProperties.put(ConfigSettings.CACHE_MANAGER, cacheManager);
-    }
+  @Autowired(required = false)
+  public void setGitProperties(GitProperties gitProperties) {
+    this.gitProperties = gitProperties;
+  }
 
-    @Bean
-    public JCacheManagerCustomizer cacheManagerCustomizer() {
-        return cm -> {
-            createCache(cm, ar.com.dones.app.repository.UserRepository.USERS_BY_LOGIN_CACHE);
-            createCache(cm, ar.com.dones.app.repository.UserRepository.USERS_BY_EMAIL_CACHE);
-            createCache(cm, ar.com.dones.app.domain.User.class.getName());
-            createCache(cm, ar.com.dones.app.domain.Authority.class.getName());
-            createCache(cm, ar.com.dones.app.domain.User.class.getName() + ".authorities");
-            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName());
-            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName() + ".respuestas");
-            createCache(cm, ar.com.dones.app.domain.Usuario.class.getName() + ".sesiones");
-            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName());
-            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".preguntas");
-            createCache(cm, ar.com.dones.app.domain.Cuestionario.class.getName() + ".respuestas");
-            createCache(cm, ar.com.dones.app.domain.EscalaRespuesta.class.getName());
-            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName());
-            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".preguntaDones");
-            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".resultadoDones");
-            createCache(cm, ar.com.dones.app.domain.DonEspiritual.class.getName() + ".interpretaciones");
-            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName());
-            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".preguntaDones");
-            createCache(cm, ar.com.dones.app.domain.Pregunta.class.getName() + ".detalleRespuestas");
-            createCache(cm, ar.com.dones.app.domain.PreguntaDon.class.getName());
-            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName());
-            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".detalleRespuestas");
-            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".resultadoDones");
-            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".sesiones");
-            createCache(cm, ar.com.dones.app.domain.RespuestaUsuario.class.getName() + ".auditorias");
-            createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName());
-            createCache(cm, ar.com.dones.app.domain.DetalleRespuesta.class.getName() + ".auditorias");
-            createCache(cm, ar.com.dones.app.domain.ResultadoDon.class.getName());
-            createCache(cm, ar.com.dones.app.domain.Interpretacion.class.getName());
-            createCache(cm, ar.com.dones.app.domain.SesionUsuario.class.getName());
-            createCache(cm, ar.com.dones.app.domain.AuditoriaRespuesta.class.getName());
-            createCache(cm, ar.com.dones.app.domain.ConfiguracionSistema.class.getName());
-            // jhipster-needle-ehcache-add-entry
-        };
-    }
+  @Autowired(required = false)
+  public void setBuildProperties(BuildProperties buildProperties) {
+    this.buildProperties = buildProperties;
+  }
 
-    private void createCache(javax.cache.CacheManager cm, String cacheName) {
-        javax.cache.Cache<Object, Object> cache = cm.getCache(cacheName);
-        if (cache != null) {
-            cache.clear();
-        } else {
-            cm.createCache(cacheName, jcacheConfiguration);
-        }
-    }
-
-    @Autowired(required = false)
-    public void setGitProperties(GitProperties gitProperties) {
-        this.gitProperties = gitProperties;
-    }
-
-    @Autowired(required = false)
-    public void setBuildProperties(BuildProperties buildProperties) {
-        this.buildProperties = buildProperties;
-    }
-
-    @Bean
-    public KeyGenerator keyGenerator() {
-        return new PrefixedKeyGenerator(this.gitProperties, this.buildProperties);
-    }
+  @Bean
+  public KeyGenerator keyGenerator() {
+    return new PrefixedKeyGenerator(this.gitProperties, this.buildProperties);
+  }
 }

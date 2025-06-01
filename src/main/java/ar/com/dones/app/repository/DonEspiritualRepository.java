@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface DonEspiritualRepository extends JpaRepository<DonEspiritual, Long>, JpaSpecificationExecutor<DonEspiritual> {}
+public interface DonEspiritualRepository extends JpaRepository<DonEspiritual, Long> {}

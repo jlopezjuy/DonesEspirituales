@@ -167,32 +167,16 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" for="field_usuario" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.usuario"
-            >Usuario</label
+          <label class="form-label" for="field_user" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesRespuestaUsuario.user"
+            >User</label
           >
-          <select
-            class="form-control"
-            id="field_usuario"
-            data-cy="usuario"
-            name="usuario"
-            formControlName="usuario"
-            [compareWith]="compareUsuario"
-          >
-            @if (editForm.get(['usuario'])!.value === null) {
-              <option [ngValue]="null" selected></option>
-            }
-            @for (usuarioOption of usuariosSharedCollection; track $index) {
-              <option [ngValue]="usuarioOption">{{ usuarioOption.id }}</option>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
             }
           </select>
         </div>
-        @if (editForm.get(['usuario'])!.invalid && (editForm.get(['usuario'])!.dirty || editForm.get(['usuario'])!.touched)) {
-          <div>
-            @if (editForm.get(['usuario'])?.errors?.required) {
-              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
-            }
-          </div>
-        }
 
         <div class="mb-3">
           <label
@@ -209,7 +193,7 @@
             formControlName="cuestionario"
             [compareWith]="compareCuestionario"
           >
-            @if (editForm.get(['cuestionario'])!.value === null) {
+            @if (editForm.get(['cuestionario'])!.value == null) {
               <option [ngValue]="null" selected></option>
             }
             @for (cuestionarioOption of cuestionariosSharedCollection; track $index) {

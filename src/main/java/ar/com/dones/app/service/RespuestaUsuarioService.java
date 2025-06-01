@@ -1,98 +1,66 @@
 package ar.com.dones.app.service;
 
-import ar.com.dones.app.domain.RespuestaUsuario;
-import ar.com.dones.app.repository.RespuestaUsuarioRepository;
 import ar.com.dones.app.service.dto.RespuestaUsuarioDTO;
-import ar.com.dones.app.service.mapper.RespuestaUsuarioMapper;
 import java.util.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Implementation for managing {@link ar.com.dones.app.domain.RespuestaUsuario}.
+ * Service Interface for managing {@link ar.com.dones.app.domain.RespuestaUsuario}.
  */
-@Service
-@Transactional
-public class RespuestaUsuarioService {
+public interface RespuestaUsuarioService {
+  /**
+   * Save a respuestaUsuario.
+   *
+   * @param respuestaUsuarioDTO the entity to save.
+   * @return the persisted entity.
+   */
+  RespuestaUsuarioDTO save(RespuestaUsuarioDTO respuestaUsuarioDTO);
 
-    private static final Logger LOG = LoggerFactory.getLogger(RespuestaUsuarioService.class);
+  /**
+   * Updates a respuestaUsuario.
+   *
+   * @param respuestaUsuarioDTO the entity to update.
+   * @return the persisted entity.
+   */
+  RespuestaUsuarioDTO update(RespuestaUsuarioDTO respuestaUsuarioDTO);
 
-    private final RespuestaUsuarioRepository respuestaUsuarioRepository;
+  /**
+   * Partially updates a respuestaUsuario.
+   *
+   * @param respuestaUsuarioDTO the entity to update partially.
+   * @return the persisted entity.
+   */
+  Optional<RespuestaUsuarioDTO> partialUpdate(RespuestaUsuarioDTO respuestaUsuarioDTO);
 
-    private final RespuestaUsuarioMapper respuestaUsuarioMapper;
+  /**
+   * Get all the respuestaUsuarios.
+   *
+   * @param pageable the pagination information.
+   * @return the list of entities.
+   */
+  Page<RespuestaUsuarioDTO> findAll(Pageable pageable);
 
-    public RespuestaUsuarioService(RespuestaUsuarioRepository respuestaUsuarioRepository, RespuestaUsuarioMapper respuestaUsuarioMapper) {
-        this.respuestaUsuarioRepository = respuestaUsuarioRepository;
-        this.respuestaUsuarioMapper = respuestaUsuarioMapper;
-    }
+  /**
+   * Get all the respuestaUsuarios with eager load of many-to-many relationships.
+   *
+   * @param pageable the pagination information.
+   * @return the list of entities.
+   */
+  Page<RespuestaUsuarioDTO> findAllWithEagerRelationships(Pageable pageable);
 
-    /**
-     * Save a respuestaUsuario.
-     *
-     * @param respuestaUsuarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public RespuestaUsuarioDTO save(RespuestaUsuarioDTO respuestaUsuarioDTO) {
-        LOG.debug("Request to save RespuestaUsuario : {}", respuestaUsuarioDTO);
-        RespuestaUsuario respuestaUsuario = respuestaUsuarioMapper.toEntity(respuestaUsuarioDTO);
-        respuestaUsuario = respuestaUsuarioRepository.save(respuestaUsuario);
-        return respuestaUsuarioMapper.toDto(respuestaUsuario);
-    }
+  /**
+   * Get the "id" respuestaUsuario.
+   *
+   * @param id the id of the entity.
+   * @return the entity.
+   */
+  Optional<RespuestaUsuarioDTO> findOne(Long id);
 
-    /**
-     * Update a respuestaUsuario.
-     *
-     * @param respuestaUsuarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public RespuestaUsuarioDTO update(RespuestaUsuarioDTO respuestaUsuarioDTO) {
-        LOG.debug("Request to update RespuestaUsuario : {}", respuestaUsuarioDTO);
-        RespuestaUsuario respuestaUsuario = respuestaUsuarioMapper.toEntity(respuestaUsuarioDTO);
-        respuestaUsuario = respuestaUsuarioRepository.save(respuestaUsuario);
-        return respuestaUsuarioMapper.toDto(respuestaUsuario);
-    }
-
-    /**
-     * Partially update a respuestaUsuario.
-     *
-     * @param respuestaUsuarioDTO the entity to update partially.
-     * @return the persisted entity.
-     */
-    public Optional<RespuestaUsuarioDTO> partialUpdate(RespuestaUsuarioDTO respuestaUsuarioDTO) {
-        LOG.debug("Request to partially update RespuestaUsuario : {}", respuestaUsuarioDTO);
-
-        return respuestaUsuarioRepository
-            .findById(respuestaUsuarioDTO.getId())
-            .map(existingRespuestaUsuario -> {
-                respuestaUsuarioMapper.partialUpdate(existingRespuestaUsuario, respuestaUsuarioDTO);
-
-                return existingRespuestaUsuario;
-            })
-            .map(respuestaUsuarioRepository::save)
-            .map(respuestaUsuarioMapper::toDto);
-    }
-
-    /**
-     * Get one respuestaUsuario by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    @Transactional(readOnly = true)
-    public Optional<RespuestaUsuarioDTO> findOne(Long id) {
-        LOG.debug("Request to get RespuestaUsuario : {}", id);
-        return respuestaUsuarioRepository.findById(id).map(respuestaUsuarioMapper::toDto);
-    }
-
-    /**
-     * Delete the respuestaUsuario by id.
-     *
-     * @param id the id of the entity.
-     */
-    public void delete(Long id) {
-        LOG.debug("Request to delete RespuestaUsuario : {}", id);
-        respuestaUsuarioRepository.deleteById(id);
-    }
+  /**
+   * Delete the "id" respuestaUsuario.
+   *
+   * @param id the id of the entity.
+   */
+  void delete(Long id);
 }

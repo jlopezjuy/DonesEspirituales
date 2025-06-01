@@ -15,7 +15,7 @@ describe('DonEspiritual e2e test', () => {
   const donEspiritualPageUrlPattern = new RegExp('/don-espiritual(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const donEspiritualSample = { nombre: 'quixotic welcome buzzing', nombreCorto: 'ouch meh yet', activo: true };
+  const donEspiritualSample = { nombre: 'rapidly', nombreCorto: 'sternly conjecture', activo: false };
 
   let donEspiritual;
 
@@ -24,16 +24,16 @@ describe('DonEspiritual e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/don-espirituals+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/don-espirituals').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/don-espirituals/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/don-espirituals+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/don-espirituals').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/don-espirituals/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
     if (donEspiritual) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/don-espirituals/${donEspiritual.id}`,
+        url: `/api/don-espirituals/${donEspiritual.id}`,
       }).then(() => {
         donEspiritual = undefined;
       });
@@ -78,7 +78,7 @@ describe('DonEspiritual e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/don-espirituals',
+          url: '/api/don-espirituals',
           body: donEspiritualSample,
         }).then(({ body }) => {
           donEspiritual = body;
@@ -86,11 +86,14 @@ describe('DonEspiritual e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/don-espirituals+(?*|)',
+              url: '/api/don-espirituals+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/don-espirituals?page=0&size=20>; rel="last",<http://localhost/api/don-espirituals?page=0&size=20>; rel="first"',
+              },
               body: [donEspiritual],
             },
           ).as('entitiesRequestInternal');
@@ -157,11 +160,11 @@ describe('DonEspiritual e2e test', () => {
     });
 
     it('should create an instance of DonEspiritual', () => {
-      cy.get(`[data-cy="nombre"]`).type('soon before');
-      cy.get(`[data-cy="nombre"]`).should('have.value', 'soon before');
+      cy.get(`[data-cy="nombre"]`).type('however explode sweet');
+      cy.get(`[data-cy="nombre"]`).should('have.value', 'however explode sweet');
 
-      cy.get(`[data-cy="nombreCorto"]`).type('eek shout');
-      cy.get(`[data-cy="nombreCorto"]`).should('have.value', 'eek shout');
+      cy.get(`[data-cy="nombreCorto"]`).type('tomography yowza penalise');
+      cy.get(`[data-cy="nombreCorto"]`).should('have.value', 'tomography yowza penalise');
 
       cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
@@ -176,8 +179,8 @@ describe('DonEspiritual e2e test', () => {
       cy.get(`[data-cy="activo"]`).click();
       cy.get(`[data-cy="activo"]`).should('be.checked');
 
-      cy.get(`[data-cy="ordenPresentacion"]`).type('32313');
-      cy.get(`[data-cy="ordenPresentacion"]`).should('have.value', '32313');
+      cy.get(`[data-cy="ordenPresentacion"]`).type('4441');
+      cy.get(`[data-cy="ordenPresentacion"]`).should('have.value', '4441');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

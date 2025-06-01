@@ -9,4 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface ResultadoDonRepository extends JpaRepository<ResultadoDon, Long>, JpaSpecificationExecutor<ResultadoDon> {}
+public interface ResultadoDonRepository extends JpaRepository<ResultadoDon, Long> {}

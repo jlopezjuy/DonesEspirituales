@@ -7,8 +7,8 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { IUsuario } from 'app/entities/testDonesEspirituales/usuario/usuario.model';
-import { UsuarioService } from 'app/entities/testDonesEspirituales/usuario/service/usuario.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/service/user.service';
 import { ICuestionario } from 'app/entities/testDonesEspirituales/cuestionario/cuestionario.model';
 import { CuestionarioService } from 'app/entities/testDonesEspirituales/cuestionario/service/cuestionario.service';
 import { EstadoRespuesta } from 'app/entities/enumerations/estado-respuesta.model';
@@ -26,19 +26,19 @@ export class RespuestaUsuarioUpdateComponent implements OnInit {
   respuestaUsuario: IRespuestaUsuario | null = null;
   estadoRespuestaValues = Object.keys(EstadoRespuesta);
 
-  usuariosSharedCollection: IUsuario[] = [];
+  usersSharedCollection: IUser[] = [];
   cuestionariosSharedCollection: ICuestionario[] = [];
 
   protected respuestaUsuarioService = inject(RespuestaUsuarioService);
   protected respuestaUsuarioFormService = inject(RespuestaUsuarioFormService);
-  protected usuarioService = inject(UsuarioService);
+  protected userService = inject(UserService);
   protected cuestionarioService = inject(CuestionarioService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: RespuestaUsuarioFormGroup = this.respuestaUsuarioFormService.createRespuestaUsuarioFormGroup();
 
-  compareUsuario = (o1: IUsuario | null, o2: IUsuario | null): boolean => this.usuarioService.compareUsuario(o1, o2);
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   compareCuestionario = (o1: ICuestionario | null, o2: ICuestionario | null): boolean =>
     this.cuestionarioService.compareCuestionario(o1, o2);
@@ -91,10 +91,7 @@ export class RespuestaUsuarioUpdateComponent implements OnInit {
     this.respuestaUsuario = respuestaUsuario;
     this.respuestaUsuarioFormService.resetForm(this.editForm, respuestaUsuario);
 
-    this.usuariosSharedCollection = this.usuarioService.addUsuarioToCollectionIfMissing<IUsuario>(
-      this.usuariosSharedCollection,
-      respuestaUsuario.usuario,
-    );
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, respuestaUsuario.user);
     this.cuestionariosSharedCollection = this.cuestionarioService.addCuestionarioToCollectionIfMissing<ICuestionario>(
       this.cuestionariosSharedCollection,
       respuestaUsuario.cuestionario,
@@ -102,15 +99,11 @@ export class RespuestaUsuarioUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
-    this.usuarioService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<IUsuario[]>) => res.body ?? []))
-      .pipe(
-        map((usuarios: IUsuario[]) =>
-          this.usuarioService.addUsuarioToCollectionIfMissing<IUsuario>(usuarios, this.respuestaUsuario?.usuario),
-        ),
-      )
-      .subscribe((usuarios: IUsuario[]) => (this.usuariosSharedCollection = usuarios));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.respuestaUsuario?.user)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
 
     this.cuestionarioService
       .query()

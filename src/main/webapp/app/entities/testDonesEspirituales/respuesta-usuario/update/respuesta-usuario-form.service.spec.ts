@@ -26,7 +26,7 @@ describe('RespuestaUsuario Form Service', () => {
             tiempoTotalSegundos: expect.any(Object),
             ipAddress: expect.any(Object),
             userAgent: expect.any(Object),
-            usuario: expect.any(Object),
+            user: expect.any(Object),
             cuestionario: expect.any(Object),
           }),
         );
@@ -44,7 +44,7 @@ describe('RespuestaUsuario Form Service', () => {
             tiempoTotalSegundos: expect.any(Object),
             ipAddress: expect.any(Object),
             userAgent: expect.any(Object),
-            usuario: expect.any(Object),
+            user: expect.any(Object),
             cuestionario: expect.any(Object),
           }),
         );

@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20250531234347"
+    "changelogDate": "20250601003309"
   },
   "applications": "*",
   "clientRootFolder": "testDonesEspirituales",
@@ -30,9 +30,9 @@
       "fieldValidateRulesMin": "1"
     }
   ],
-  "microserviceName": "testDonesEspirituales",
   "name": "EscalaRespuesta",
+  "pagination": "pagination",
   "relationships": [],
   "searchEngine": "no",
-  "service": "serviceClass"
+  "service": "serviceImpl"
 }

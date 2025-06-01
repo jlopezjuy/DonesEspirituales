@@ -16,10 +16,10 @@ describe('ConfiguracionSistema e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const configuracionSistemaSample = {
-    clave: 'after at superb',
-    valor: 'capsize whereas upright',
-    tipoDato: 'DATE',
-    fechaActualizacion: '2025-05-31T15:35:43.412Z',
+    clave: 'offend superior rapid',
+    valor: 'pfft spirit',
+    tipoDato: 'BOOLEAN',
+    fechaActualizacion: '2025-05-31T03:31:02.558Z',
   };
 
   let configuracionSistema;
@@ -29,16 +29,16 @@ describe('ConfiguracionSistema e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/configuracion-sistemas+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/configuracion-sistemas').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/configuracion-sistemas/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/configuracion-sistemas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/configuracion-sistemas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/configuracion-sistemas/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
     if (configuracionSistema) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/configuracion-sistemas/${configuracionSistema.id}`,
+        url: `/api/configuracion-sistemas/${configuracionSistema.id}`,
       }).then(() => {
         configuracionSistema = undefined;
       });
@@ -83,7 +83,7 @@ describe('ConfiguracionSistema e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/configuracion-sistemas',
+          url: '/api/configuracion-sistemas',
           body: configuracionSistemaSample,
         }).then(({ body }) => {
           configuracionSistema = body;
@@ -91,11 +91,14 @@ describe('ConfiguracionSistema e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/configuracion-sistemas+(?*|)',
+              url: '/api/configuracion-sistemas+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/configuracion-sistemas?page=0&size=20>; rel="last",<http://localhost/api/configuracion-sistemas?page=0&size=20>; rel="first"',
+              },
               body: [configuracionSistema],
             },
           ).as('entitiesRequestInternal');
@@ -162,20 +165,20 @@ describe('ConfiguracionSistema e2e test', () => {
     });
 
     it('should create an instance of ConfiguracionSistema', () => {
-      cy.get(`[data-cy="clave"]`).type('close forenenst');
-      cy.get(`[data-cy="clave"]`).should('have.value', 'close forenenst');
+      cy.get(`[data-cy="clave"]`).type('wonderfully righteously');
+      cy.get(`[data-cy="clave"]`).should('have.value', 'wonderfully righteously');
 
-      cy.get(`[data-cy="valor"]`).type('joyful blah');
-      cy.get(`[data-cy="valor"]`).should('have.value', 'joyful blah');
+      cy.get(`[data-cy="valor"]`).type('pro although pfft');
+      cy.get(`[data-cy="valor"]`).should('have.value', 'pro although pfft');
 
       cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="tipoDato"]`).select('STRING');
+      cy.get(`[data-cy="tipoDato"]`).select('DECIMAL');
 
-      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T11:00');
+      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T22:47');
       cy.get(`[data-cy="fechaActualizacion"]`).blur();
-      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T11:00');
+      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T22:47');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

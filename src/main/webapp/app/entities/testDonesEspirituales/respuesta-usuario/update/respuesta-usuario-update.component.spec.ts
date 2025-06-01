@@ -4,8 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, from, of } from 'rxjs';
 
-import { IUsuario } from 'app/entities/testDonesEspirituales/usuario/usuario.model';
-import { UsuarioService } from 'app/entities/testDonesEspirituales/usuario/service/usuario.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/service/user.service';
 import { ICuestionario } from 'app/entities/testDonesEspirituales/cuestionario/cuestionario.model';
 import { CuestionarioService } from 'app/entities/testDonesEspirituales/cuestionario/service/cuestionario.service';
 import { IRespuestaUsuario } from '../respuesta-usuario.model';
@@ -20,7 +20,7 @@ describe('RespuestaUsuario Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let respuestaUsuarioFormService: RespuestaUsuarioFormService;
   let respuestaUsuarioService: RespuestaUsuarioService;
-  let usuarioService: UsuarioService;
+  let userService: UserService;
   let cuestionarioService: CuestionarioService;
 
   beforeEach(() => {
@@ -44,33 +44,33 @@ describe('RespuestaUsuario Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     respuestaUsuarioFormService = TestBed.inject(RespuestaUsuarioFormService);
     respuestaUsuarioService = TestBed.inject(RespuestaUsuarioService);
-    usuarioService = TestBed.inject(UsuarioService);
+    userService = TestBed.inject(UserService);
     cuestionarioService = TestBed.inject(CuestionarioService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('should call Usuario query and add missing value', () => {
+    it('should call User query and add missing value', () => {
       const respuestaUsuario: IRespuestaUsuario = { id: 15546 };
-      const usuario: IUsuario = { id: 544 };
-      respuestaUsuario.usuario = usuario;
+      const user: IUser = { id: 3944 };
+      respuestaUsuario.user = user;
 
-      const usuarioCollection: IUsuario[] = [{ id: 544 }];
-      jest.spyOn(usuarioService, 'query').mockReturnValue(of(new HttpResponse({ body: usuarioCollection })));
-      const additionalUsuarios = [usuario];
-      const expectedCollection: IUsuario[] = [...additionalUsuarios, ...usuarioCollection];
-      jest.spyOn(usuarioService, 'addUsuarioToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const userCollection: IUser[] = [{ id: 3944 }];
+      jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
+      const additionalUsers = [user];
+      const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
+      jest.spyOn(userService, 'addUserToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ respuestaUsuario });
       comp.ngOnInit();
 
-      expect(usuarioService.query).toHaveBeenCalled();
-      expect(usuarioService.addUsuarioToCollectionIfMissing).toHaveBeenCalledWith(
-        usuarioCollection,
-        ...additionalUsuarios.map(expect.objectContaining),
+      expect(userService.query).toHaveBeenCalled();
+      expect(userService.addUserToCollectionIfMissing).toHaveBeenCalledWith(
+        userCollection,
+        ...additionalUsers.map(expect.objectContaining),
       );
-      expect(comp.usuariosSharedCollection).toEqual(expectedCollection);
+      expect(comp.usersSharedCollection).toEqual(expectedCollection);
     });
 
     it('should call Cuestionario query and add missing value', () => {
@@ -97,15 +97,15 @@ describe('RespuestaUsuario Management Update Component', () => {
 
     it('should update editForm', () => {
       const respuestaUsuario: IRespuestaUsuario = { id: 15546 };
-      const usuario: IUsuario = { id: 544 };
-      respuestaUsuario.usuario = usuario;
+      const user: IUser = { id: 3944 };
+      respuestaUsuario.user = user;
       const cuestionario: ICuestionario = { id: 24961 };
       respuestaUsuario.cuestionario = cuestionario;
 
       activatedRoute.data = of({ respuestaUsuario });
       comp.ngOnInit();
 
-      expect(comp.usuariosSharedCollection).toContainEqual(usuario);
+      expect(comp.usersSharedCollection).toContainEqual(user);
       expect(comp.cuestionariosSharedCollection).toContainEqual(cuestionario);
       expect(comp.respuestaUsuario).toEqual(respuestaUsuario);
     });
@@ -180,13 +180,13 @@ describe('RespuestaUsuario Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('compareUsuario', () => {
-      it('should forward to usuarioService', () => {
-        const entity = { id: 544 };
-        const entity2 = { id: 13162 };
-        jest.spyOn(usuarioService, 'compareUsuario');
-        comp.compareUsuario(entity, entity2);
-        expect(usuarioService.compareUsuario).toHaveBeenCalledWith(entity, entity2);
+    describe('compareUser', () => {
+      it('should forward to userService', () => {
+        const entity = { id: 3944 };
+        const entity2 = { id: 6275 };
+        jest.spyOn(userService, 'compareUser');
+        comp.compareUser(entity, entity2);
+        expect(userService.compareUser).toHaveBeenCalledWith(entity, entity2);
       });
     });
 

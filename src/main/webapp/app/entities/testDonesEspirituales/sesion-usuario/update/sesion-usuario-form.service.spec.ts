@@ -24,7 +24,7 @@ describe('SesionUsuario Form Service', () => {
             fechaCreacion: expect.any(Object),
             fechaExpiracion: expect.any(Object),
             completada: expect.any(Object),
-            usuario: expect.any(Object),
+            user: expect.any(Object),
             respuestaUsuario: expect.any(Object),
           }),
         );
@@ -40,7 +40,7 @@ describe('SesionUsuario Form Service', () => {
             fechaCreacion: expect.any(Object),
             fechaExpiracion: expect.any(Object),
             completada: expect.any(Object),
-            usuario: expect.any(Object),
+            user: expect.any(Object),
             respuestaUsuario: expect.any(Object),
           }),
         );

@@ -38,7 +38,7 @@ type RespuestaUsuarioFormGroupContent = {
   tiempoTotalSegundos: FormControl<RespuestaUsuarioFormRawValue['tiempoTotalSegundos']>;
   ipAddress: FormControl<RespuestaUsuarioFormRawValue['ipAddress']>;
   userAgent: FormControl<RespuestaUsuarioFormRawValue['userAgent']>;
-  usuario: FormControl<RespuestaUsuarioFormRawValue['usuario']>;
+  user: FormControl<RespuestaUsuarioFormRawValue['user']>;
   cuestionario: FormControl<RespuestaUsuarioFormRawValue['cuestionario']>;
 };
 
@@ -75,9 +75,7 @@ export class RespuestaUsuarioFormService {
       userAgent: new FormControl(respuestaUsuarioRawValue.userAgent, {
         validators: [Validators.maxLength(500)],
       }),
-      usuario: new FormControl(respuestaUsuarioRawValue.usuario, {
-        validators: [Validators.required],
-      }),
+      user: new FormControl(respuestaUsuarioRawValue.user),
       cuestionario: new FormControl(respuestaUsuarioRawValue.cuestionario, {
         validators: [Validators.required],
       }),

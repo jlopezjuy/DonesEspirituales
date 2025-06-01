@@ -4,13 +4,13 @@ import { IRespuestaUsuario, NewRespuestaUsuario } from './respuesta-usuario.mode
 
 export const sampleWithRequiredData: IRespuestaUsuario = {
   id: 5552,
-  fechaInicio: dayjs('2025-05-31T22:04'),
+  fechaInicio: dayjs('2025-05-31T22:53'),
   estado: 'COMPLETADA',
 };
 
 export const sampleWithPartialData: IRespuestaUsuario = {
   id: 31627,
-  fechaInicio: dayjs('2025-05-31T00:51'),
+  fechaInicio: dayjs('2025-05-31T01:40'),
   estado: 'ABANDONADA',
   tiempoTotalSegundos: 9016,
   ipAddress: 'but ugh because',
@@ -18,8 +18,8 @@ export const sampleWithPartialData: IRespuestaUsuario = {
 
 export const sampleWithFullData: IRespuestaUsuario = {
   id: 28311,
-  fechaInicio: dayjs('2025-05-31T21:48'),
-  fechaCompletado: dayjs('2025-05-31T00:03'),
+  fechaInicio: dayjs('2025-05-31T22:38'),
+  fechaCompletado: dayjs('2025-05-31T00:52'),
   estado: 'EN_PROGRESO',
   tiempoTotalSegundos: 6558,
   ipAddress: 'along unused',
@@ -27,7 +27,7 @@ export const sampleWithFullData: IRespuestaUsuario = {
 };
 
 export const sampleWithNewData: NewRespuestaUsuario = {
-  fechaInicio: dayjs('2025-05-31T14:22'),
+  fechaInicio: dayjs('2025-05-31T15:12'),
   estado: 'INICIADA',
   id: null,
 };

@@ -36,7 +36,7 @@ type SesionUsuarioFormGroupContent = {
   fechaCreacion: FormControl<SesionUsuarioFormRawValue['fechaCreacion']>;
   fechaExpiracion: FormControl<SesionUsuarioFormRawValue['fechaExpiracion']>;
   completada: FormControl<SesionUsuarioFormRawValue['completada']>;
-  usuario: FormControl<SesionUsuarioFormRawValue['usuario']>;
+  user: FormControl<SesionUsuarioFormRawValue['user']>;
   respuestaUsuario: FormControl<SesionUsuarioFormRawValue['respuestaUsuario']>;
 };
 
@@ -67,9 +67,7 @@ export class SesionUsuarioFormService {
       completada: new FormControl(sesionUsuarioRawValue.completada, {
         validators: [Validators.required],
       }),
-      usuario: new FormControl(sesionUsuarioRawValue.usuario, {
-        validators: [Validators.required],
-      }),
+      user: new FormControl(sesionUsuarioRawValue.user),
       respuestaUsuario: new FormControl(sesionUsuarioRawValue.respuestaUsuario),
     });
   }

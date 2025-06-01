@@ -58,7 +58,7 @@ export class TrackerService {
     return this.rxStomp;
   }
 
-  subscribe(observer: Partial<Observer<TrackerActivity>>): Subscription {
+  public subscribe(observer: Partial<Observer<TrackerActivity>>): Subscription {
     return (
       this.stomp
         .watch(DESTINATION_TRACKER)

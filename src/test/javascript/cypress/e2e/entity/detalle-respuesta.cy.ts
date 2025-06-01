@@ -15,7 +15,7 @@ describe('DetalleRespuesta e2e test', () => {
   const detalleRespuestaPageUrlPattern = new RegExp('/detalle-respuesta(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const detalleRespuestaSample = {"valorRespuesta":2,"timestampRespuesta":"2025-05-31T02:18:09.374Z"};
+  // const detalleRespuestaSample = {"valorRespuesta":1,"timestampRespuesta":"2025-05-31T01:58:37.321Z"};
 
   let detalleRespuesta;
   // let escalaRespuesta;
@@ -31,24 +31,24 @@ describe('DetalleRespuesta e2e test', () => {
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/escala-respuestas',
-      body: {"valor":1,"etiqueta":"austere curry","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","orden":9},
+      url: '/api/escala-respuestas',
+      body: {"valor":2,"etiqueta":"limply","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","orden":25957},
     }).then(({ body }) => {
       escalaRespuesta = body;
     });
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/preguntas',
-      body: {"numeroPregunta":3377,"textoPregunta":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","obligatoria":false,"activa":true,"fechaCreacion":"2025-05-31T11:07:31.735Z"},
+      url: '/api/preguntas',
+      body: {"numeroPregunta":20734,"textoPregunta":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","obligatoria":false,"activa":false,"fechaCreacion":"2025-05-31T17:11:27.267Z"},
     }).then(({ body }) => {
       pregunta = body;
     });
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/respuesta-usuarios',
-      body: {"fechaInicio":"2025-05-31T10:22:20.202Z","fechaCompletado":"2025-05-31T10:35:55.643Z","estado":"EN_PROGRESO","tiempoTotalSegundos":1134,"ipAddress":"yum accept","userAgent":"ravel"},
+      url: '/api/respuesta-usuarios',
+      body: {"fechaInicio":"2025-05-31T13:50:40.425Z","fechaCompletado":"2025-05-31T15:17:37.057Z","estado":"COMPLETADA","tiempoTotalSegundos":23337,"ipAddress":"throbbing zowie","userAgent":"forgather mortise"},
     }).then(({ body }) => {
       respuestaUsuario = body;
     });
@@ -56,30 +56,30 @@ describe('DetalleRespuesta e2e test', () => {
    */
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/detalle-respuestas+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/detalle-respuestas').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/detalle-respuestas/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/detalle-respuestas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/detalle-respuestas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/detalle-respuestas/*').as('deleteEntityRequest');
   });
 
   /* Disabled due to incompatibility
   beforeEach(() => {
     // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/services/testdonesespirituales/api/auditoria-respuestas', {
+    cy.intercept('GET', '/api/auditoria-respuestas', {
       statusCode: 200,
       body: [],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/escala-respuestas', {
+    cy.intercept('GET', '/api/escala-respuestas', {
       statusCode: 200,
       body: [escalaRespuesta],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/preguntas', {
+    cy.intercept('GET', '/api/preguntas', {
       statusCode: 200,
       body: [pregunta],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/respuesta-usuarios', {
+    cy.intercept('GET', '/api/respuesta-usuarios', {
       statusCode: 200,
       body: [respuestaUsuario],
     });
@@ -91,7 +91,7 @@ describe('DetalleRespuesta e2e test', () => {
     if (detalleRespuesta) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/detalle-respuestas/${detalleRespuesta.id}`,
+        url: `/api/detalle-respuestas/${detalleRespuesta.id}`,
       }).then(() => {
         detalleRespuesta = undefined;
       });
@@ -103,7 +103,7 @@ describe('DetalleRespuesta e2e test', () => {
     if (escalaRespuesta) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/escala-respuestas/${escalaRespuesta.id}`,
+        url: `/api/escala-respuestas/${escalaRespuesta.id}`,
       }).then(() => {
         escalaRespuesta = undefined;
       });
@@ -111,7 +111,7 @@ describe('DetalleRespuesta e2e test', () => {
     if (pregunta) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/preguntas/${pregunta.id}`,
+        url: `/api/preguntas/${pregunta.id}`,
       }).then(() => {
         pregunta = undefined;
       });
@@ -119,7 +119,7 @@ describe('DetalleRespuesta e2e test', () => {
     if (respuestaUsuario) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/respuesta-usuarios/${respuestaUsuario.id}`,
+        url: `/api/respuesta-usuarios/${respuestaUsuario.id}`,
       }).then(() => {
         respuestaUsuario = undefined;
       });
@@ -166,7 +166,7 @@ describe('DetalleRespuesta e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/detalle-respuestas',
+          url: '/api/detalle-respuestas',
           body: {
             ...detalleRespuestaSample,
             escalaRespuesta: escalaRespuesta,
@@ -179,13 +179,13 @@ describe('DetalleRespuesta e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/detalle-respuestas+(?*|)',
+              url: '/api/detalle-respuestas+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
               headers: {
-                link: '<http://localhost/services/testdonesespirituales/api/detalle-respuestas?page=0&size=20>; rel="last",<http://localhost/services/testdonesespirituales/api/detalle-respuestas?page=0&size=20>; rel="first"',
+                link: '<http://localhost/api/detalle-respuestas?page=0&size=20>; rel="last",<http://localhost/api/detalle-respuestas?page=0&size=20>; rel="first"',
               },
               body: [detalleRespuesta],
             }
@@ -266,15 +266,15 @@ describe('DetalleRespuesta e2e test', () => {
 
     // Reason: cannot create a required entity with relationship with required relationships.
     it.skip('should create an instance of DetalleRespuesta', () => {
-      cy.get(`[data-cy="valorRespuesta"]`).type('8');
-      cy.get(`[data-cy="valorRespuesta"]`).should('have.value', '8');
+      cy.get(`[data-cy="valorRespuesta"]`).type('1');
+      cy.get(`[data-cy="valorRespuesta"]`).should('have.value', '1');
 
-      cy.get(`[data-cy="timestampRespuesta"]`).type('2025-05-31T15:59');
+      cy.get(`[data-cy="timestampRespuesta"]`).type('2025-05-31T02:26');
       cy.get(`[data-cy="timestampRespuesta"]`).blur();
-      cy.get(`[data-cy="timestampRespuesta"]`).should('have.value', '2025-05-31T15:59');
+      cy.get(`[data-cy="timestampRespuesta"]`).should('have.value', '2025-05-31T02:26');
 
-      cy.get(`[data-cy="tiempoPreguntaSegundos"]`).type('21615');
-      cy.get(`[data-cy="tiempoPreguntaSegundos"]`).should('have.value', '21615');
+      cy.get(`[data-cy="tiempoPreguntaSegundos"]`).type('15528');
+      cy.get(`[data-cy="tiempoPreguntaSegundos"]`).should('have.value', '15528');
 
       cy.get(`[data-cy="escalaRespuesta"]`).select(1);
       cy.get(`[data-cy="pregunta"]`).select(1);

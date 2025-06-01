@@ -1,112 +1,58 @@
 package ar.com.dones.app.service;
 
-import ar.com.dones.app.domain.Cuestionario;
-import ar.com.dones.app.repository.CuestionarioRepository;
 import ar.com.dones.app.service.dto.CuestionarioDTO;
-import ar.com.dones.app.service.mapper.CuestionarioMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Implementation for managing {@link ar.com.dones.app.domain.Cuestionario}.
+ * Service Interface for managing {@link ar.com.dones.app.domain.Cuestionario}.
  */
-@Service
-@Transactional
-public class CuestionarioService {
+public interface CuestionarioService {
+  /**
+   * Save a cuestionario.
+   *
+   * @param cuestionarioDTO the entity to save.
+   * @return the persisted entity.
+   */
+  CuestionarioDTO save(CuestionarioDTO cuestionarioDTO);
 
-    private static final Logger LOG = LoggerFactory.getLogger(CuestionarioService.class);
+  /**
+   * Updates a cuestionario.
+   *
+   * @param cuestionarioDTO the entity to update.
+   * @return the persisted entity.
+   */
+  CuestionarioDTO update(CuestionarioDTO cuestionarioDTO);
 
-    private final CuestionarioRepository cuestionarioRepository;
+  /**
+   * Partially updates a cuestionario.
+   *
+   * @param cuestionarioDTO the entity to update partially.
+   * @return the persisted entity.
+   */
+  Optional<CuestionarioDTO> partialUpdate(CuestionarioDTO cuestionarioDTO);
 
-    private final CuestionarioMapper cuestionarioMapper;
+  /**
+   * Get all the cuestionarios.
+   *
+   * @param pageable the pagination information.
+   * @return the list of entities.
+   */
+  Page<CuestionarioDTO> findAll(Pageable pageable);
 
-    public CuestionarioService(CuestionarioRepository cuestionarioRepository, CuestionarioMapper cuestionarioMapper) {
-        this.cuestionarioRepository = cuestionarioRepository;
-        this.cuestionarioMapper = cuestionarioMapper;
-    }
+  /**
+   * Get the "id" cuestionario.
+   *
+   * @param id the id of the entity.
+   * @return the entity.
+   */
+  Optional<CuestionarioDTO> findOne(Long id);
 
-    /**
-     * Save a cuestionario.
-     *
-     * @param cuestionarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public CuestionarioDTO save(CuestionarioDTO cuestionarioDTO) {
-        LOG.debug("Request to save Cuestionario : {}", cuestionarioDTO);
-        Cuestionario cuestionario = cuestionarioMapper.toEntity(cuestionarioDTO);
-        cuestionario = cuestionarioRepository.save(cuestionario);
-        return cuestionarioMapper.toDto(cuestionario);
-    }
-
-    /**
-     * Update a cuestionario.
-     *
-     * @param cuestionarioDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public CuestionarioDTO update(CuestionarioDTO cuestionarioDTO) {
-        LOG.debug("Request to update Cuestionario : {}", cuestionarioDTO);
-        Cuestionario cuestionario = cuestionarioMapper.toEntity(cuestionarioDTO);
-        cuestionario = cuestionarioRepository.save(cuestionario);
-        return cuestionarioMapper.toDto(cuestionario);
-    }
-
-    /**
-     * Partially update a cuestionario.
-     *
-     * @param cuestionarioDTO the entity to update partially.
-     * @return the persisted entity.
-     */
-    public Optional<CuestionarioDTO> partialUpdate(CuestionarioDTO cuestionarioDTO) {
-        LOG.debug("Request to partially update Cuestionario : {}", cuestionarioDTO);
-
-        return cuestionarioRepository
-            .findById(cuestionarioDTO.getId())
-            .map(existingCuestionario -> {
-                cuestionarioMapper.partialUpdate(existingCuestionario, cuestionarioDTO);
-
-                return existingCuestionario;
-            })
-            .map(cuestionarioRepository::save)
-            .map(cuestionarioMapper::toDto);
-    }
-
-    /**
-     * Get all the cuestionarios.
-     *
-     * @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<CuestionarioDTO> findAll() {
-        LOG.debug("Request to get all Cuestionarios");
-        return cuestionarioRepository.findAll().stream().map(cuestionarioMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    /**
-     * Get one cuestionario by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
-    @Transactional(readOnly = true)
-    public Optional<CuestionarioDTO> findOne(Long id) {
-        LOG.debug("Request to get Cuestionario : {}", id);
-        return cuestionarioRepository.findById(id).map(cuestionarioMapper::toDto);
-    }
-
-    /**
-     * Delete the cuestionario by id.
-     *
-     * @param id the id of the entity.
-     */
-    public void delete(Long id) {
-        LOG.debug("Request to delete Cuestionario : {}", id);
-        cuestionarioRepository.deleteById(id);
-    }
+  /**
+   * Delete the "id" cuestionario.
+   *
+   * @param id the id of the entity.
+   */
+  void delete(Long id);
 }

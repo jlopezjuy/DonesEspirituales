@@ -4,30 +4,30 @@ import { ISesionUsuario, NewSesionUsuario } from './sesion-usuario.model';
 
 export const sampleWithRequiredData: ISesionUsuario = {
   id: 8909,
-  fechaCreacion: dayjs('2025-05-31T01:22'),
-  fechaExpiracion: dayjs('2025-05-31T22:26'),
+  fechaCreacion: dayjs('2025-05-31T02:12'),
+  fechaExpiracion: dayjs('2025-05-31T23:15'),
   completada: true,
 };
 
 export const sampleWithPartialData: ISesionUsuario = {
   id: 6322,
   respuestasTemporales: '../fake-data/blob/hipster.txt',
-  fechaCreacion: dayjs('2025-05-31T17:19'),
-  fechaExpiracion: dayjs('2025-05-31T09:41'),
+  fechaCreacion: dayjs('2025-05-31T18:08'),
+  fechaExpiracion: dayjs('2025-05-31T10:30'),
   completada: false,
 };
 
 export const sampleWithFullData: ISesionUsuario = {
   id: 8178,
   respuestasTemporales: '../fake-data/blob/hipster.txt',
-  fechaCreacion: dayjs('2025-05-31T19:38'),
-  fechaExpiracion: dayjs('2025-05-31T19:03'),
+  fechaCreacion: dayjs('2025-05-31T20:27'),
+  fechaExpiracion: dayjs('2025-05-31T19:53'),
   completada: false,
 };
 
 export const sampleWithNewData: NewSesionUsuario = {
-  fechaCreacion: dayjs('2025-05-31T23:21'),
-  fechaExpiracion: dayjs('2025-05-31T05:30'),
+  fechaCreacion: dayjs('2025-06-01T00:10'),
+  fechaExpiracion: dayjs('2025-05-31T06:19'),
   completada: false,
   id: null,
 };

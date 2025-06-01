@@ -16,11 +16,11 @@ describe('Pregunta e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const preguntaSample = {
-    numeroPregunta: 20908,
+    numeroPregunta: 9443,
     textoPregunta: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-    obligatoria: true,
-    activa: false,
-    fechaCreacion: '2025-05-31T20:27:15.850Z',
+    obligatoria: false,
+    activa: true,
+    fechaCreacion: '2025-05-31T03:51:40.967Z',
   };
 
   let pregunta;
@@ -34,16 +34,16 @@ describe('Pregunta e2e test', () => {
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/cuestionarios',
+      url: '/api/cuestionarios',
       body: {
-        titulo: 'after likewise murky',
+        titulo: 'eek hmph',
         descripcion: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
         instrucciones: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        totalPreguntas: 368,
-        activo: false,
-        fechaCreacion: '2025-05-31T04:39:20.887Z',
-        fechaActualizacion: '2025-05-31T18:34:24.753Z',
-        version: 28632,
+        totalPreguntas: 542,
+        activo: true,
+        fechaCreacion: '2025-05-31T10:41:12.635Z',
+        fechaActualizacion: '2025-05-31T21:46:38.963Z',
+        version: 2991,
       },
     }).then(({ body }) => {
       cuestionario = body;
@@ -51,24 +51,24 @@ describe('Pregunta e2e test', () => {
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/preguntas+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/preguntas').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/preguntas/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/preguntas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/preguntas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/preguntas/*').as('deleteEntityRequest');
   });
 
   beforeEach(() => {
     // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/services/testdonesespirituales/api/pregunta-dons', {
+    cy.intercept('GET', '/api/pregunta-dons', {
       statusCode: 200,
       body: [],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/detalle-respuestas', {
+    cy.intercept('GET', '/api/detalle-respuestas', {
       statusCode: 200,
       body: [],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/cuestionarios', {
+    cy.intercept('GET', '/api/cuestionarios', {
       statusCode: 200,
       body: [cuestionario],
     });
@@ -78,7 +78,7 @@ describe('Pregunta e2e test', () => {
     if (pregunta) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/preguntas/${pregunta.id}`,
+        url: `/api/preguntas/${pregunta.id}`,
       }).then(() => {
         pregunta = undefined;
       });
@@ -89,7 +89,7 @@ describe('Pregunta e2e test', () => {
     if (cuestionario) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/cuestionarios/${cuestionario.id}`,
+        url: `/api/cuestionarios/${cuestionario.id}`,
       }).then(() => {
         cuestionario = undefined;
       });
@@ -134,7 +134,7 @@ describe('Pregunta e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/preguntas',
+          url: '/api/preguntas',
           body: {
             ...preguntaSample,
             cuestionario,
@@ -145,11 +145,14 @@ describe('Pregunta e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/preguntas+(?*|)',
+              url: '/api/preguntas+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/preguntas?page=0&size=20>; rel="last",<http://localhost/api/preguntas?page=0&size=20>; rel="first"',
+              },
               body: [pregunta],
             },
           ).as('entitiesRequestInternal');
@@ -216,8 +219,8 @@ describe('Pregunta e2e test', () => {
     });
 
     it('should create an instance of Pregunta', () => {
-      cy.get(`[data-cy="numeroPregunta"]`).type('28810');
-      cy.get(`[data-cy="numeroPregunta"]`).should('have.value', '28810');
+      cy.get(`[data-cy="numeroPregunta"]`).type('7490');
+      cy.get(`[data-cy="numeroPregunta"]`).should('have.value', '7490');
 
       cy.get(`[data-cy="textoPregunta"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="textoPregunta"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
@@ -230,9 +233,9 @@ describe('Pregunta e2e test', () => {
       cy.get(`[data-cy="activa"]`).click();
       cy.get(`[data-cy="activa"]`).should('be.checked');
 
-      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T11:54');
+      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T10:08');
       cy.get(`[data-cy="fechaCreacion"]`).blur();
-      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T11:54');
+      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T10:08');
 
       cy.get(`[data-cy="cuestionario"]`).select(1);
 

@@ -35,13 +35,9 @@
           <dd>
             <span>{{ sesionUsuarioRef.completada }}</span>
           </dd>
-          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.usuario">Usuario</span></dt>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.user">User</span></dt>
           <dd>
-            @if (sesionUsuario()!.usuario) {
-              <div>
-                <a [routerLink]="['/usuario', sesionUsuario()!.usuario?.id, 'view']">{{ sesionUsuarioRef.usuario?.id }}</a>
-              </div>
-            }
+            <span>{{ sesionUsuarioRef.user?.login }}</span>
           </dd>
           <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestaUsuario">Respuesta Usuario</span></dt>
           <dd>

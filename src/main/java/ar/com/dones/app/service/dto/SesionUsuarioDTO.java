@@ -12,103 +12,102 @@ import java.util.Objects;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class SesionUsuarioDTO implements Serializable {
 
-    private Long id;
+  private Long id;
 
-    @Lob
-    private String respuestasTemporales;
+  @Lob
+  private String respuestasTemporales;
 
-    @NotNull
-    private Instant fechaCreacion;
+  @NotNull
+  private Instant fechaCreacion;
 
-    @NotNull
-    private Instant fechaExpiracion;
+  @NotNull
+  private Instant fechaExpiracion;
 
-    @NotNull
-    private Boolean completada;
+  @NotNull
+  private Boolean completada;
 
-    @NotNull
-    private UsuarioDTO usuario;
+  private UserDTO user;
 
-    private RespuestaUsuarioDTO respuestaUsuario;
+  private RespuestaUsuarioDTO respuestaUsuario;
 
-    public Long getId() {
-        return id;
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getRespuestasTemporales() {
+    return respuestasTemporales;
+  }
+
+  public void setRespuestasTemporales(String respuestasTemporales) {
+    this.respuestasTemporales = respuestasTemporales;
+  }
+
+  public Instant getFechaCreacion() {
+    return fechaCreacion;
+  }
+
+  public void setFechaCreacion(Instant fechaCreacion) {
+    this.fechaCreacion = fechaCreacion;
+  }
+
+  public Instant getFechaExpiracion() {
+    return fechaExpiracion;
+  }
+
+  public void setFechaExpiracion(Instant fechaExpiracion) {
+    this.fechaExpiracion = fechaExpiracion;
+  }
+
+  public Boolean getCompletada() {
+    return completada;
+  }
+
+  public void setCompletada(Boolean completada) {
+    this.completada = completada;
+  }
+
+  public UserDTO getUser() {
+    return user;
+  }
+
+  public void setUser(UserDTO user) {
+    this.user = user;
+  }
+
+  public RespuestaUsuarioDTO getRespuestaUsuario() {
+    return respuestaUsuario;
+  }
+
+  public void setRespuestaUsuario(RespuestaUsuarioDTO respuestaUsuario) {
+    this.respuestaUsuario = respuestaUsuario;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof SesionUsuarioDTO)) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    SesionUsuarioDTO sesionUsuarioDTO = (SesionUsuarioDTO) o;
+    if (this.id == null) {
+      return false;
     }
+    return Objects.equals(this.id, sesionUsuarioDTO.id);
+  }
 
-    public String getRespuestasTemporales() {
-        return respuestasTemporales;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.id);
+  }
 
-    public void setRespuestasTemporales(String respuestasTemporales) {
-        this.respuestasTemporales = respuestasTemporales;
-    }
-
-    public Instant getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Instant fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public Instant getFechaExpiracion() {
-        return fechaExpiracion;
-    }
-
-    public void setFechaExpiracion(Instant fechaExpiracion) {
-        this.fechaExpiracion = fechaExpiracion;
-    }
-
-    public Boolean getCompletada() {
-        return completada;
-    }
-
-    public void setCompletada(Boolean completada) {
-        this.completada = completada;
-    }
-
-    public UsuarioDTO getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioDTO usuario) {
-        this.usuario = usuario;
-    }
-
-    public RespuestaUsuarioDTO getRespuestaUsuario() {
-        return respuestaUsuario;
-    }
-
-    public void setRespuestaUsuario(RespuestaUsuarioDTO respuestaUsuario) {
-        this.respuestaUsuario = respuestaUsuario;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof SesionUsuarioDTO)) {
-            return false;
-        }
-
-        SesionUsuarioDTO sesionUsuarioDTO = (SesionUsuarioDTO) o;
-        if (this.id == null) {
-            return false;
-        }
-        return Objects.equals(this.id, sesionUsuarioDTO.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.id);
-    }
-
-    // prettier-ignore
+  // prettier-ignore
     @Override
     public String toString() {
         return "SesionUsuarioDTO{" +
@@ -117,7 +116,7 @@ public class SesionUsuarioDTO implements Serializable {
             ", fechaCreacion='" + getFechaCreacion() + "'" +
             ", fechaExpiracion='" + getFechaExpiracion() + "'" +
             ", completada='" + getCompletada() + "'" +
-            ", usuario=" + getUsuario() +
+            ", user=" + getUser() +
             ", respuestaUsuario=" + getRespuestaUsuario() +
             "}";
     }

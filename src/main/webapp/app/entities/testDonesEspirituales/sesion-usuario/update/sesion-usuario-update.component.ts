@@ -10,8 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { IUsuario } from 'app/entities/testDonesEspirituales/usuario/usuario.model';
-import { UsuarioService } from 'app/entities/testDonesEspirituales/usuario/service/usuario.service';
+import { IUser } from 'app/entities/user/user.model';
+import { UserService } from 'app/entities/user/service/user.service';
 import { IRespuestaUsuario } from 'app/entities/testDonesEspirituales/respuesta-usuario/respuesta-usuario.model';
 import { RespuestaUsuarioService } from 'app/entities/testDonesEspirituales/respuesta-usuario/service/respuesta-usuario.service';
 import { SesionUsuarioService } from '../service/sesion-usuario.service';
@@ -27,21 +27,21 @@ export class SesionUsuarioUpdateComponent implements OnInit {
   isSaving = false;
   sesionUsuario: ISesionUsuario | null = null;
 
-  usuariosSharedCollection: IUsuario[] = [];
+  usersSharedCollection: IUser[] = [];
   respuestaUsuariosSharedCollection: IRespuestaUsuario[] = [];
 
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);
   protected sesionUsuarioService = inject(SesionUsuarioService);
   protected sesionUsuarioFormService = inject(SesionUsuarioFormService);
-  protected usuarioService = inject(UsuarioService);
+  protected userService = inject(UserService);
   protected respuestaUsuarioService = inject(RespuestaUsuarioService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: SesionUsuarioFormGroup = this.sesionUsuarioFormService.createSesionUsuarioFormGroup();
 
-  compareUsuario = (o1: IUsuario | null, o2: IUsuario | null): boolean => this.usuarioService.compareUsuario(o1, o2);
+  compareUser = (o1: IUser | null, o2: IUser | null): boolean => this.userService.compareUser(o1, o2);
 
   compareRespuestaUsuario = (o1: IRespuestaUsuario | null, o2: IRespuestaUsuario | null): boolean =>
     this.respuestaUsuarioService.compareRespuestaUsuario(o1, o2);
@@ -111,10 +111,7 @@ export class SesionUsuarioUpdateComponent implements OnInit {
     this.sesionUsuario = sesionUsuario;
     this.sesionUsuarioFormService.resetForm(this.editForm, sesionUsuario);
 
-    this.usuariosSharedCollection = this.usuarioService.addUsuarioToCollectionIfMissing<IUsuario>(
-      this.usuariosSharedCollection,
-      sesionUsuario.usuario,
-    );
+    this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, sesionUsuario.user);
     this.respuestaUsuariosSharedCollection = this.respuestaUsuarioService.addRespuestaUsuarioToCollectionIfMissing<IRespuestaUsuario>(
       this.respuestaUsuariosSharedCollection,
       sesionUsuario.respuestaUsuario,
@@ -122,13 +119,11 @@ export class SesionUsuarioUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
-    this.usuarioService
+    this.userService
       .query()
-      .pipe(map((res: HttpResponse<IUsuario[]>) => res.body ?? []))
-      .pipe(
-        map((usuarios: IUsuario[]) => this.usuarioService.addUsuarioToCollectionIfMissing<IUsuario>(usuarios, this.sesionUsuario?.usuario)),
-      )
-      .subscribe((usuarios: IUsuario[]) => (this.usuariosSharedCollection = usuarios));
+      .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
+      .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.sesionUsuario?.user)))
+      .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
 
     this.respuestaUsuarioService
       .query()

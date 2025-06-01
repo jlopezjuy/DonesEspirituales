@@ -15,7 +15,7 @@ describe('ResultadoDon e2e test', () => {
   const resultadoDonPageUrlPattern = new RegExp('/resultado-don(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const resultadoDonSample = {"puntuacionTotal":29732,"porcentaje":28.23,"rankingPosicion":16454,"esDonPrincipal":true};
+  // const resultadoDonSample = {"puntuacionTotal":21873,"porcentaje":11.18,"rankingPosicion":2689,"esDonPrincipal":true};
 
   let resultadoDon;
   // let respuestaUsuario;
@@ -30,16 +30,16 @@ describe('ResultadoDon e2e test', () => {
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/respuesta-usuarios',
-      body: {"fechaInicio":"2025-05-31T04:47:58.521Z","fechaCompletado":"2025-05-31T19:36:26.158Z","estado":"EN_PROGRESO","tiempoTotalSegundos":11359,"ipAddress":"yieldingly joyfully","userAgent":"curiously aha insidious"},
+      url: '/api/respuesta-usuarios',
+      body: {"fechaInicio":"2025-05-31T04:56:34.103Z","fechaCompletado":"2025-05-31T15:06:03.729Z","estado":"ABANDONADA","tiempoTotalSegundos":10079,"ipAddress":"um crumble","userAgent":"contravene punctually"},
     }).then(({ body }) => {
       respuestaUsuario = body;
     });
     // create an instance at the required relationship entity:
     cy.authenticatedRequest({
       method: 'POST',
-      url: '/services/testdonesespirituales/api/don-espirituals',
-      body: {"nombre":"lid definitive","nombreCorto":"swanling thoroughly intrigue","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","caracteristicas":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","versiculosBiblicos":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","activo":true,"ordenPresentacion":24825},
+      url: '/api/don-espirituals',
+      body: {"nombre":"psst","nombreCorto":"posh biodegradable","descripcion":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","caracteristicas":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","versiculosBiblicos":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","activo":false,"ordenPresentacion":6159},
     }).then(({ body }) => {
       donEspiritual = body;
     });
@@ -47,25 +47,25 @@ describe('ResultadoDon e2e test', () => {
    */
 
   beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/resultado-dons+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/resultado-dons').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/resultado-dons/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/resultado-dons+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/resultado-dons').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/resultado-dons/*').as('deleteEntityRequest');
   });
 
   /* Disabled due to incompatibility
   beforeEach(() => {
     // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/services/testdonesespirituales/api/interpretacions', {
+    cy.intercept('GET', '/api/interpretacions', {
       statusCode: 200,
       body: [],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/respuesta-usuarios', {
+    cy.intercept('GET', '/api/respuesta-usuarios', {
       statusCode: 200,
       body: [respuestaUsuario],
     });
 
-    cy.intercept('GET', '/services/testdonesespirituales/api/don-espirituals', {
+    cy.intercept('GET', '/api/don-espirituals', {
       statusCode: 200,
       body: [donEspiritual],
     });
@@ -77,7 +77,7 @@ describe('ResultadoDon e2e test', () => {
     if (resultadoDon) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/resultado-dons/${resultadoDon.id}`,
+        url: `/api/resultado-dons/${resultadoDon.id}`,
       }).then(() => {
         resultadoDon = undefined;
       });
@@ -89,7 +89,7 @@ describe('ResultadoDon e2e test', () => {
     if (respuestaUsuario) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/respuesta-usuarios/${respuestaUsuario.id}`,
+        url: `/api/respuesta-usuarios/${respuestaUsuario.id}`,
       }).then(() => {
         respuestaUsuario = undefined;
       });
@@ -97,7 +97,7 @@ describe('ResultadoDon e2e test', () => {
     if (donEspiritual) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/don-espirituals/${donEspiritual.id}`,
+        url: `/api/don-espirituals/${donEspiritual.id}`,
       }).then(() => {
         donEspiritual = undefined;
       });
@@ -144,7 +144,7 @@ describe('ResultadoDon e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/resultado-dons',
+          url: '/api/resultado-dons',
           body: {
             ...resultadoDonSample,
             respuestaUsuario: respuestaUsuario,
@@ -156,13 +156,13 @@ describe('ResultadoDon e2e test', () => {
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/resultado-dons+(?*|)',
+              url: '/api/resultado-dons+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
               headers: {
-                link: '<http://localhost/services/testdonesespirituales/api/resultado-dons?page=0&size=20>; rel="last",<http://localhost/services/testdonesespirituales/api/resultado-dons?page=0&size=20>; rel="first"',
+                link: '<http://localhost/api/resultado-dons?page=0&size=20>; rel="last",<http://localhost/api/resultado-dons?page=0&size=20>; rel="first"',
               },
               body: [resultadoDon],
             }
@@ -243,14 +243,14 @@ describe('ResultadoDon e2e test', () => {
 
     // Reason: cannot create a required entity with relationship with required relationships.
     it.skip('should create an instance of ResultadoDon', () => {
-      cy.get(`[data-cy="puntuacionTotal"]`).type('26727');
-      cy.get(`[data-cy="puntuacionTotal"]`).should('have.value', '26727');
+      cy.get(`[data-cy="puntuacionTotal"]`).type('416');
+      cy.get(`[data-cy="puntuacionTotal"]`).should('have.value', '416');
 
-      cy.get(`[data-cy="porcentaje"]`).type('10.3');
-      cy.get(`[data-cy="porcentaje"]`).should('have.value', '10.3');
+      cy.get(`[data-cy="porcentaje"]`).type('69.81');
+      cy.get(`[data-cy="porcentaje"]`).should('have.value', '69.81');
 
-      cy.get(`[data-cy="rankingPosicion"]`).type('20990');
-      cy.get(`[data-cy="rankingPosicion"]`).should('have.value', '20990');
+      cy.get(`[data-cy="rankingPosicion"]`).type('25732');
+      cy.get(`[data-cy="rankingPosicion"]`).should('have.value', '25732');
 
       cy.get(`[data-cy="esDonPrincipal"]`).should('not.be.checked');
       cy.get(`[data-cy="esDonPrincipal"]`).click();

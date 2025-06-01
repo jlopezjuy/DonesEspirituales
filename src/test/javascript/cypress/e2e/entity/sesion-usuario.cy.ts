@@ -15,75 +15,27 @@ describe('SesionUsuario e2e test', () => {
   const sesionUsuarioPageUrlPattern = new RegExp('/sesion-usuario(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const sesionUsuarioSample = { fechaCreacion: '2025-05-31T23:40:31.742Z', fechaExpiracion: '2025-05-31T08:16:29.160Z', completada: false };
+  const sesionUsuarioSample = { fechaCreacion: '2025-05-31T08:19:38.126Z', fechaExpiracion: '2025-05-31T13:25:38.958Z', completada: true };
 
   let sesionUsuario;
-  let usuario;
 
   beforeEach(() => {
     cy.login(username, password);
   });
 
   beforeEach(() => {
-    // create an instance at the required relationship entity:
-    cy.authenticatedRequest({
-      method: 'POST',
-      url: '/services/testdonesespirituales/api/usuarios',
-      body: {
-        nombre: 'continually even',
-        apellido: 'see',
-        email: '(.nn@bLY+2.ac?>\\/',
-        telefono: 'er governance provid',
-        fechaNacimiento: '2025-05-31',
-        genero: 'FEMENINO',
-        iglesia: 'ah regarding continually',
-        denominacion: 'mortally naturally geez',
-        fechaRegistro: '2025-05-31T23:23:18.740Z',
-        ultimaActividad: '2025-05-31T17:27:12.691Z',
-        activo: true,
-      },
-    }).then(({ body }) => {
-      usuario = body;
-    });
-  });
-
-  beforeEach(() => {
-    cy.intercept('GET', '/services/testdonesespirituales/api/sesion-usuarios+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/services/testdonesespirituales/api/sesion-usuarios').as('postEntityRequest');
-    cy.intercept('DELETE', '/services/testdonesespirituales/api/sesion-usuarios/*').as('deleteEntityRequest');
-  });
-
-  beforeEach(() => {
-    // Simulate relationships api for better performance and reproducibility.
-    cy.intercept('GET', '/services/testdonesespirituales/api/usuarios', {
-      statusCode: 200,
-      body: [usuario],
-    });
-
-    cy.intercept('GET', '/services/testdonesespirituales/api/respuesta-usuarios', {
-      statusCode: 200,
-      body: [],
-    });
+    cy.intercept('GET', '/api/sesion-usuarios+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/sesion-usuarios').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/sesion-usuarios/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
     if (sesionUsuario) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/services/testdonesespirituales/api/sesion-usuarios/${sesionUsuario.id}`,
+        url: `/api/sesion-usuarios/${sesionUsuario.id}`,
       }).then(() => {
         sesionUsuario = undefined;
-      });
-    }
-  });
-
-  afterEach(() => {
-    if (usuario) {
-      cy.authenticatedRequest({
-        method: 'DELETE',
-        url: `/services/testdonesespirituales/api/usuarios/${usuario.id}`,
-      }).then(() => {
-        usuario = undefined;
       });
     }
   });
@@ -126,22 +78,22 @@ describe('SesionUsuario e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/services/testdonesespirituales/api/sesion-usuarios',
-          body: {
-            ...sesionUsuarioSample,
-            usuario,
-          },
+          url: '/api/sesion-usuarios',
+          body: sesionUsuarioSample,
         }).then(({ body }) => {
           sesionUsuario = body;
 
           cy.intercept(
             {
               method: 'GET',
-              url: '/services/testdonesespirituales/api/sesion-usuarios+(?*|)',
+              url: '/api/sesion-usuarios+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/sesion-usuarios?page=0&size=20>; rel="last",<http://localhost/api/sesion-usuarios?page=0&size=20>; rel="first"',
+              },
               body: [sesionUsuario],
             },
           ).as('entitiesRequestInternal');
@@ -211,19 +163,17 @@ describe('SesionUsuario e2e test', () => {
       cy.get(`[data-cy="respuestasTemporales"]`).type('../fake-data/blob/hipster.txt');
       cy.get(`[data-cy="respuestasTemporales"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
 
-      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T02:49');
+      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T07:51');
       cy.get(`[data-cy="fechaCreacion"]`).blur();
-      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T02:49');
+      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T07:51');
 
-      cy.get(`[data-cy="fechaExpiracion"]`).type('2025-05-31T08:10');
+      cy.get(`[data-cy="fechaExpiracion"]`).type('2025-05-31T15:37');
       cy.get(`[data-cy="fechaExpiracion"]`).blur();
-      cy.get(`[data-cy="fechaExpiracion"]`).should('have.value', '2025-05-31T08:10');
+      cy.get(`[data-cy="fechaExpiracion"]`).should('have.value', '2025-05-31T15:37');
 
       cy.get(`[data-cy="completada"]`).should('not.be.checked');
       cy.get(`[data-cy="completada"]`).click();
       cy.get(`[data-cy="completada"]`).should('be.checked');
-
-      cy.get(`[data-cy="usuario"]`).select(1);
 
       cy.get(entityCreateSaveButtonSelector).click();
 

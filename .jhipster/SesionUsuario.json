@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20250531234355"
+    "changelogDate": "20250601003317"
   },
   "applications": "*",
   "clientRootFolder": "testDonesEspirituales",
@@ -26,16 +26,16 @@
       "fieldValidateRules": ["required"]
     }
   ],
-  "microserviceName": "testDonesEspirituales",
   "name": "SesionUsuario",
+  "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "usuario",
-      "otherEntityRelationshipName": "sesiones",
-      "relationshipName": "usuario",
-      "relationshipSide": "right",
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
       "relationshipType": "many-to-one",
-      "relationshipValidateRules": "required"
+      "relationshipWithBuiltInEntity": true
     },
     {
       "otherEntityName": "respuestaUsuario",
@@ -46,5 +46,5 @@
     }
   ],
   "searchEngine": "no",
-  "service": "serviceClass"
+  "service": "serviceImpl"
 }

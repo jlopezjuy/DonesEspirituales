@@ -32,7 +32,6 @@ describe('DonEspiritual Management Component', () => {
                 page: '1',
                 size: '1',
                 sort: 'id,desc',
-                'filter[someId.in]': 'dc4279ea-cfb9-11ec-9d64-0242ac120002',
               }),
             ),
             snapshot: {
@@ -41,7 +40,6 @@ describe('DonEspiritual Management Component', () => {
                 page: '1',
                 size: '1',
                 sort: 'id,desc',
-                'filter[someId.in]': 'dc4279ea-cfb9-11ec-9d64-0242ac120002',
               }),
             },
           },
@@ -112,6 +110,14 @@ describe('DonEspiritual Management Component', () => {
         }),
       }),
     );
+  });
+
+  it('should load a page', () => {
+    // WHEN
+    comp.navigateToPage(1);
+
+    // THEN
+    expect(routerNavigateSpy).toHaveBeenCalled();
   });
 
   it('should calculate the sort attribute for an id', () => {

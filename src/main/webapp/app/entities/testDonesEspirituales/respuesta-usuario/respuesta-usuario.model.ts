@@ -1,5 +1,5 @@
 import dayjs from 'dayjs/esm';
-import { IUsuario } from 'app/entities/testDonesEspirituales/usuario/usuario.model';
+import { IUser } from 'app/entities/user/user.model';
 import { ICuestionario } from 'app/entities/testDonesEspirituales/cuestionario/cuestionario.model';
 import { EstadoRespuesta } from 'app/entities/enumerations/estado-respuesta.model';
 
@@ -11,7 +11,7 @@ export interface IRespuestaUsuario {
   tiempoTotalSegundos?: number | null;
   ipAddress?: string | null;
   userAgent?: string | null;
-  usuario?: Pick<IUsuario, 'id'> | null;
+  user?: Pick<IUser, 'id' | 'login'> | null;
   cuestionario?: Pick<ICuestionario, 'id'> | null;
 }
 

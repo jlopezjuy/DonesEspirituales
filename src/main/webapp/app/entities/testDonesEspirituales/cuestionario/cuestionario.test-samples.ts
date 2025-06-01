@@ -8,7 +8,7 @@ export const sampleWithRequiredData: ICuestionario = {
   instrucciones: '../fake-data/blob/hipster.txt',
   totalPreguntas: 562,
   activo: true,
-  fechaCreacion: dayjs('2025-05-31T19:53'),
+  fechaCreacion: dayjs('2025-05-31T20:42'),
   version: 30952,
 };
 
@@ -18,7 +18,7 @@ export const sampleWithPartialData: ICuestionario = {
   instrucciones: '../fake-data/blob/hipster.txt',
   totalPreguntas: 587,
   activo: false,
-  fechaCreacion: dayjs('2025-05-31T20:49'),
+  fechaCreacion: dayjs('2025-05-31T21:39'),
   version: 8421,
 };
 
@@ -29,8 +29,8 @@ export const sampleWithFullData: ICuestionario = {
   instrucciones: '../fake-data/blob/hipster.txt',
   totalPreguntas: 606,
   activo: true,
-  fechaCreacion: dayjs('2025-05-31T07:50'),
-  fechaActualizacion: dayjs('2025-05-31T00:12'),
+  fechaCreacion: dayjs('2025-05-31T08:39'),
+  fechaActualizacion: dayjs('2025-05-31T01:02'),
   version: 9600,
 };
 
@@ -39,7 +39,7 @@ export const sampleWithNewData: NewCuestionario = {
   instrucciones: '../fake-data/blob/hipster.txt',
   totalPreguntas: 577,
   activo: false,
-  fechaCreacion: dayjs('2025-05-31T11:26'),
+  fechaCreacion: dayjs('2025-05-31T12:16'),
   version: 15327,
   id: null,
 };
