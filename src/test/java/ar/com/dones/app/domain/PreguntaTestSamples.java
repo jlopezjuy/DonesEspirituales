@@ -1,6 +1,7 @@
 package ar.com.dones.app.domain;
 
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -11,14 +12,17 @@ public class PreguntaTestSamples {
   private static final AtomicInteger intCount = new AtomicInteger(random.nextInt() + (2 * Short.MAX_VALUE));
 
   public static Pregunta getPreguntaSample1() {
-    return new Pregunta().id(1L).numeroPregunta(1);
+    return new Pregunta().id(1L).numeroPregunta(1).textoPregunta("textoPregunta1");
   }
 
   public static Pregunta getPreguntaSample2() {
-    return new Pregunta().id(2L).numeroPregunta(2);
+    return new Pregunta().id(2L).numeroPregunta(2).textoPregunta("textoPregunta2");
   }
 
   public static Pregunta getPreguntaRandomSampleGenerator() {
-    return new Pregunta().id(longCount.incrementAndGet()).numeroPregunta(intCount.incrementAndGet());
+    return new Pregunta()
+      .id(longCount.incrementAndGet())
+      .numeroPregunta(intCount.incrementAndGet())
+      .textoPregunta(UUID.randomUUID().toString());
   }
 }

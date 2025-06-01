@@ -1,6 +1,5 @@
 package ar.com.dones.app.service.dto;
 
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -18,7 +17,7 @@ public class PreguntaDTO implements Serializable {
   @Min(value = 1)
   private Integer numeroPregunta;
 
-  @Lob
+  @NotNull
   private String textoPregunta;
 
   @NotNull

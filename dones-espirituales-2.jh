@@ -1,92 +1,48 @@
 // Enumeraciones
 
 enum EstadoRespuesta {
-
   INICIADA,
-
   EN_PROGRESO,
-
   COMPLETADA,
-
   ABANDONADA
-
 }
-
-
 
 enum NivelInterpretacion {
-
   MUY_BAJO,
-
   BAJO,
-
   MEDIO,
-
   ALTO,
-
   MUY_ALTO
-
 }
-
-
 
 enum TipoDato {
-
   STRING,
-
   INTEGER,
-
   BOOLEAN,
-
   DECIMAL,
-
   DATE
-
 }
-
-
 
 enum Genero {
-
   MASCULINO,
-
   FEMENINO,
-
   OTRO,
-
   PREFIERO_NO_DECIR
-
 }
 
-
-
-// Entidades principales
-
-
+// Entidades principale
 entity Cuestionario {
-
   titulo String required maxlength(200)
-
   descripcion TextBlob
-
   instrucciones TextBlob required
-
   totalPreguntas Integer required min(1) max(1000)
-
   activo Boolean required
-
   fechaCreacion Instant required
-
   fechaActualizacion Instant
-
   version Integer required min(1)
-
 }
-
-
 
 entity EscalaRespuesta {
-
   valor Integer required min(0) max(10)
 
   etiqueta String required maxlength(100)
@@ -143,22 +99,13 @@ entity PreguntaDon {
 
 }
 
-
-
 entity RespuestaUsuario {
-
   fechaInicio Instant required
-
   fechaCompletado Instant
-
   estado EstadoRespuesta required
-
   tiempoTotalSegundos Integer min(0)
-
   ipAddress String maxlength(45)
-
   userAgent String maxlength(500)
-
 }
 
 

@@ -17,7 +17,7 @@
             <column name="numero_pregunta" type="integer">
                 <constraints nullable="false" />
             </column>
-            <column name="texto_pregunta" type="${clobType}">
+            <column name="texto_pregunta" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="obligatoria" type="boolean">
@@ -55,7 +55,7 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="numero_pregunta" type="numeric"/>
-            <column name="texto_pregunta" type="clob"/>
+            <column name="texto_pregunta" type="string"/>
             <column name="obligatoria" type="boolean"/>
             <column name="activa" type="boolean"/>
             <column name="fecha_creacion" type="date"/>

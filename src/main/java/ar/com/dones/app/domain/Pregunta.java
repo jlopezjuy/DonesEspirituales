@@ -32,7 +32,7 @@ public class Pregunta implements Serializable {
   @Column(name = "numero_pregunta", nullable = false)
   private Integer numeroPregunta;
 
-  @Lob
+  @NotNull
   @Column(name = "texto_pregunta", nullable = false)
   private String textoPregunta;
 

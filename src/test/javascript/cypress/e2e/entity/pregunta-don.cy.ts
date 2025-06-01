@@ -31,7 +31,7 @@ describe('PreguntaDon e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/preguntas',
-      body: {"numeroPregunta":19388,"textoPregunta":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","obligatoria":false,"activa":false,"fechaCreacion":"2025-05-31T10:57:58.920Z"},
+      body: {"numeroPregunta":22879,"textoPregunta":"gnaw orange","obligatoria":true,"activa":true,"fechaCreacion":"2025-05-31T18:32:41.241Z"},
     }).then(({ body }) => {
       pregunta = body;
     });

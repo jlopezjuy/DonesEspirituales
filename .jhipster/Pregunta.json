@@ -14,7 +14,7 @@
     },
     {
       "fieldName": "textoPregunta",
-      "fieldType": "TextBlob",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {

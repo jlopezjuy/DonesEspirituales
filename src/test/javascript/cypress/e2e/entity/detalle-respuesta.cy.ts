@@ -40,7 +40,7 @@ describe('DetalleRespuesta e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/preguntas',
-      body: {"numeroPregunta":20734,"textoPregunta":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","obligatoria":false,"activa":false,"fechaCreacion":"2025-05-31T17:11:27.267Z"},
+      body: {"numeroPregunta":27790,"textoPregunta":"beep","obligatoria":false,"activa":false,"fechaCreacion":"2025-05-31T01:22:04.512Z"},
     }).then(({ body }) => {
       pregunta = body;
     });

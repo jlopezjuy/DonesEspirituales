@@ -7,13 +7,10 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { ICuestionario } from 'app/entities/testDonesEspirituales/cuestionario/cuestionario.model';
 import { CuestionarioService } from 'app/entities/testDonesEspirituales/cuestionario/service/cuestionario.service';
-import { PreguntaService } from '../service/pregunta.service';
 import { IPregunta } from '../pregunta.model';
+import { PreguntaService } from '../service/pregunta.service';
 import { PreguntaFormGroup, PreguntaFormService } from './pregunta-form.service';
 
 @Component({
@@ -27,8 +24,6 @@ export class PreguntaUpdateComponent implements OnInit {
 
   cuestionariosSharedCollection: ICuestionario[] = [];
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected preguntaService = inject(PreguntaService);
   protected preguntaFormService = inject(PreguntaFormService);
   protected cuestionarioService = inject(CuestionarioService);
@@ -48,23 +43,6 @@ export class PreguntaUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('donesEspiritualesApp.error', { ...err, key: `error.file.${err.key}` }),
-        ),
     });
   }
 

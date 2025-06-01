@@ -63,13 +63,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.textoPregunta"
             >Texto Pregunta</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="textoPregunta"
             id="field_textoPregunta"
             data-cy="textoPregunta"
             formControlName="textoPregunta"
-          ></textarea>
+          />
           @if (textoPreguntaRef.invalid && (textoPreguntaRef.dirty || textoPreguntaRef.touched)) {
             <div>
               @if (editForm.get('textoPregunta')?.errors?.required) {

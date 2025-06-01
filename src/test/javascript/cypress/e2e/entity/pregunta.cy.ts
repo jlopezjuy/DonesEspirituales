@@ -16,11 +16,11 @@ describe('Pregunta e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const preguntaSample = {
-    numeroPregunta: 9443,
-    textoPregunta: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-    obligatoria: false,
-    activa: true,
-    fechaCreacion: '2025-05-31T03:51:40.967Z',
+    numeroPregunta: 20734,
+    textoPregunta: 'even annex',
+    obligatoria: true,
+    activa: false,
+    fechaCreacion: '2025-05-31T13:13:39.744Z',
   };
 
   let pregunta;
@@ -222,8 +222,8 @@ describe('Pregunta e2e test', () => {
       cy.get(`[data-cy="numeroPregunta"]`).type('7490');
       cy.get(`[data-cy="numeroPregunta"]`).should('have.value', '7490');
 
-      cy.get(`[data-cy="textoPregunta"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="textoPregunta"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="textoPregunta"]`).type('mousse');
+      cy.get(`[data-cy="textoPregunta"]`).should('have.value', 'mousse');
 
       cy.get(`[data-cy="obligatoria"]`).should('not.be.checked');
       cy.get(`[data-cy="obligatoria"]`).click();
@@ -233,9 +233,9 @@ describe('Pregunta e2e test', () => {
       cy.get(`[data-cy="activa"]`).click();
       cy.get(`[data-cy="activa"]`).should('be.checked');
 
-      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T10:08');
+      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T10:57');
       cy.get(`[data-cy="fechaCreacion"]`).blur();
-      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T10:08');
+      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T10:57');
 
       cy.get(`[data-cy="cuestionario"]`).select(1);
 

@@ -5,36 +5,36 @@ import { IPregunta, NewPregunta } from './pregunta.model';
 export const sampleWithRequiredData: IPregunta = {
   id: 13882,
   numeroPregunta: 1237,
-  textoPregunta: '../fake-data/blob/hipster.txt',
+  textoPregunta: 'stark meanwhile',
   obligatoria: true,
-  activa: false,
-  fechaCreacion: dayjs('2025-05-31T17:02'),
+  activa: true,
+  fechaCreacion: dayjs('2025-05-31T09:50'),
 };
 
 export const sampleWithPartialData: IPregunta = {
   id: 9088,
   numeroPregunta: 24155,
-  textoPregunta: '../fake-data/blob/hipster.txt',
-  obligatoria: true,
+  textoPregunta: 'rudely',
+  obligatoria: false,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T14:00'),
+  fechaCreacion: dayjs('2025-05-31T04:11'),
 };
 
 export const sampleWithFullData: IPregunta = {
   id: 11237,
   numeroPregunta: 19011,
-  textoPregunta: '../fake-data/blob/hipster.txt',
+  textoPregunta: 'robust far among',
   obligatoria: false,
   activa: false,
-  fechaCreacion: dayjs('2025-05-31T14:07'),
+  fechaCreacion: dayjs('2025-05-31T13:18'),
 };
 
 export const sampleWithNewData: NewPregunta = {
   numeroPregunta: 27364,
-  textoPregunta: '../fake-data/blob/hipster.txt',
+  textoPregunta: 'practical pretty',
   obligatoria: true,
-  activa: false,
-  fechaCreacion: dayjs('2025-05-31T07:06'),
+  activa: true,
+  fechaCreacion: dayjs('2025-05-31T07:53'),
   id: null,
 };
 

@@ -203,6 +203,23 @@ class PreguntaResourceIT {
 
   @Test
   @Transactional
+  void checkTextoPreguntaIsRequired() throws Exception {
+    long databaseSizeBeforeTest = getRepositoryCount();
+    // set the field null
+    pregunta.setTextoPregunta(null);
+
+    // Create the Pregunta, which fails.
+    PreguntaDTO preguntaDTO = preguntaMapper.toDto(pregunta);
+
+    restPreguntaMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(preguntaDTO)))
+      .andExpect(status().isBadRequest());
+
+    assertSameRepositoryCount(databaseSizeBeforeTest);
+  }
+
+  @Test
+  @Transactional
   void checkObligatoriaIsRequired() throws Exception {
     long databaseSizeBeforeTest = getRepositoryCount();
     // set the field null
