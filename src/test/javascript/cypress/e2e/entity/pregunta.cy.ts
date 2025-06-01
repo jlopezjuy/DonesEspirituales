@@ -36,14 +36,14 @@ describe('Pregunta e2e test', () => {
       method: 'POST',
       url: '/api/cuestionarios',
       body: {
-        titulo: 'eek hmph',
-        descripcion: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        instrucciones: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        totalPreguntas: 542,
+        titulo: 'wherever generally',
+        descripcion: 'avow',
+        instrucciones: 'qua upon',
+        totalPreguntas: 517,
         activo: true,
-        fechaCreacion: '2025-05-31T10:41:12.635Z',
-        fechaActualizacion: '2025-05-31T21:46:38.963Z',
-        version: 2991,
+        fechaCreacion: '2025-05-31T16:07:30.257Z',
+        fechaActualizacion: '2025-05-31T01:18:43.916Z',
+        version: 8406,
       },
     }).then(({ body }) => {
       cuestionario = body;

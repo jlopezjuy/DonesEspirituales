@@ -46,13 +46,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.descripcion"
             >Descripcion</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="descripcion"
             id="field_descripcion"
             data-cy="descripcion"
             formControlName="descripcion"
-          ></textarea>
+          />
         </div>
 
         @let instruccionesRef = editForm.get('instrucciones')!;
@@ -63,13 +64,14 @@
             jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.instrucciones"
             >Instrucciones</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="instrucciones"
             id="field_instrucciones"
             data-cy="instrucciones"
             formControlName="instrucciones"
-          ></textarea>
+          />
           @if (instruccionesRef.invalid && (instruccionesRef.dirty || instruccionesRef.touched)) {
             <div>
               @if (editForm.get('instrucciones')?.errors?.required) {

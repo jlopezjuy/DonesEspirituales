@@ -17,10 +17,10 @@
             <column name="titulo" type="varchar(200)">
                 <constraints nullable="false" />
             </column>
-            <column name="descripcion" type="${clobType}">
+            <column name="descripcion" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="instrucciones" type="${clobType}">
+            <column name="instrucciones" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
             <column name="total_preguntas" type="integer">
@@ -62,8 +62,8 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="titulo" type="string"/>
-            <column name="descripcion" type="clob"/>
-            <column name="instrucciones" type="clob"/>
+            <column name="descripcion" type="string"/>
+            <column name="instrucciones" type="string"/>
             <column name="total_preguntas" type="numeric"/>
             <column name="activo" type="boolean"/>
             <column name="fecha_creacion" type="date"/>

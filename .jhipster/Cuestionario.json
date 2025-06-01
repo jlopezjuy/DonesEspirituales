@@ -14,11 +14,11 @@
     },
     {
       "fieldName": "descripcion",
-      "fieldType": "TextBlob"
+      "fieldType": "String"
     },
     {
       "fieldName": "instrucciones",
-      "fieldType": "TextBlob",
+      "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {

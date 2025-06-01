@@ -30,14 +30,14 @@ describe('RespuestaUsuario e2e test', () => {
       method: 'POST',
       url: '/api/cuestionarios',
       body: {
-        titulo: 'rotating to',
-        descripcion: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        instrucciones: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        totalPreguntas: 724,
-        activo: true,
-        fechaCreacion: '2025-05-31T02:33:41.335Z',
-        fechaActualizacion: '2025-05-31T07:22:57.734Z',
-        version: 6513,
+        titulo: 'whether',
+        descripcion: 'outside politely than',
+        instrucciones: 'comestible wombat',
+        totalPreguntas: 18,
+        activo: false,
+        fechaCreacion: '2025-05-31T20:20:44.934Z',
+        fechaActualizacion: '2025-05-31T10:08:00.965Z',
+        version: 23802,
       },
     }).then(({ body }) => {
       cuestionario = body;

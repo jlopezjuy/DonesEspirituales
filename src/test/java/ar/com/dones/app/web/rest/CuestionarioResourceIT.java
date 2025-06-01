@@ -195,6 +195,23 @@ class CuestionarioResourceIT {
 
   @Test
   @Transactional
+  void checkInstruccionesIsRequired() throws Exception {
+    long databaseSizeBeforeTest = getRepositoryCount();
+    // set the field null
+    cuestionario.setInstrucciones(null);
+
+    // Create the Cuestionario, which fails.
+    CuestionarioDTO cuestionarioDTO = cuestionarioMapper.toDto(cuestionario);
+
+    restCuestionarioMockMvc
+      .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cuestionarioDTO)))
+      .andExpect(status().isBadRequest());
+
+    assertSameRepositoryCount(databaseSizeBeforeTest);
+  }
+
+  @Test
+  @Transactional
   void checkTotalPreguntasIsRequired() throws Exception {
     long databaseSizeBeforeTest = getRepositoryCount();
     // set the field null

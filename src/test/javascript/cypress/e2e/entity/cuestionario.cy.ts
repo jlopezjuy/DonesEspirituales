@@ -16,12 +16,12 @@ describe('Cuestionario e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const cuestionarioSample = {
-    titulo: 'oof heartfelt whoa',
-    instrucciones: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-    totalPreguntas: 695,
-    activo: false,
-    fechaCreacion: '2025-05-31T19:45:28.533Z',
-    version: 4834,
+    titulo: 'brr',
+    instrucciones: 'brown',
+    totalPreguntas: 347,
+    activo: true,
+    fechaCreacion: '2025-05-31T19:17:08.726Z',
+    version: 31382,
   };
 
   let cuestionario;
@@ -170,29 +170,29 @@ describe('Cuestionario e2e test', () => {
       cy.get(`[data-cy="titulo"]`).type('wherever');
       cy.get(`[data-cy="titulo"]`).should('have.value', 'wherever');
 
-      cy.get(`[data-cy="descripcion"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="descripcion"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="descripcion"]`).type('well-to-do');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'well-to-do');
 
-      cy.get(`[data-cy="instrucciones"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="instrucciones"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="instrucciones"]`).type('extra-large inside ack');
+      cy.get(`[data-cy="instrucciones"]`).should('have.value', 'extra-large inside ack');
 
-      cy.get(`[data-cy="totalPreguntas"]`).type('5');
-      cy.get(`[data-cy="totalPreguntas"]`).should('have.value', '5');
+      cy.get(`[data-cy="totalPreguntas"]`).type('148');
+      cy.get(`[data-cy="totalPreguntas"]`).should('have.value', '148');
 
       cy.get(`[data-cy="activo"]`).should('not.be.checked');
       cy.get(`[data-cy="activo"]`).click();
       cy.get(`[data-cy="activo"]`).should('be.checked');
 
-      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T23:17');
+      cy.get(`[data-cy="fechaCreacion"]`).type('2025-05-31T04:18');
       cy.get(`[data-cy="fechaCreacion"]`).blur();
-      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T23:17');
+      cy.get(`[data-cy="fechaCreacion"]`).should('have.value', '2025-05-31T04:18');
 
-      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T10:01');
+      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T07:38');
       cy.get(`[data-cy="fechaActualizacion"]`).blur();
-      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T10:01');
+      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T07:38');
 
-      cy.get(`[data-cy="version"]`).type('21116');
-      cy.get(`[data-cy="version"]`).should('have.value', '21116');
+      cy.get(`[data-cy="version"]`).type('2535');
+      cy.get(`[data-cy="version"]`).should('have.value', '2535');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -32,11 +32,10 @@ public class Cuestionario implements Serializable {
   @Column(name = "titulo", length = 200, nullable = false)
   private String titulo;
 
-  @Lob
   @Column(name = "descripcion")
   private String descripcion;
 
-  @Lob
+  @NotNull
   @Column(name = "instrucciones", nullable = false)
   private String instrucciones;
 
