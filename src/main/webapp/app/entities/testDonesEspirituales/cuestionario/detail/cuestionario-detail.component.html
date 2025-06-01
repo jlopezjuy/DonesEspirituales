@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cuestionario(); as cuestionarioRef) {
+      <div>
+        <h2 data-cy="cuestionarioDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.detail.title">Cuestionario</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.titulo">Titulo</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.titulo }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.instrucciones">Instrucciones</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.instrucciones }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.totalPreguntas">Total Preguntas</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.totalPreguntas }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.activo">Activo</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.fechaCreacion">Fecha Creacion</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.fechaCreacion | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.fechaActualizacion">Fecha Actualizacion</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.fechaActualizacion | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesCuestionario.version">Version</span></dt>
+          <dd>
+            <span>{{ cuestionarioRef.version }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cuestionario', cuestionarioRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesConfiguracionSistema": {
+      "home": {
+        "title": "Configuracion Sistemas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Configuracion Sistema",
+        "createOrEditLabel": "Crear o editar Configuracion Sistema",
+        "notFound": "Ningún Configuracion Sistemas encontrado"
+      },
+      "created": "Un nuevo Configuracion Sistema ha sido creado con el identificador {{ param }}",
+      "updated": "Un Configuracion Sistema ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Configuracion Sistema ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Configuracion Sistema {{ id }}?"
+      },
+      "detail": {
+        "title": "Configuracion Sistema"
+      },
+      "id": "ID",
+      "clave": "Clave",
+      "valor": "Valor",
+      "descripcion": "Descripcion",
+      "tipoDato": "Tipo Dato",
+      "fechaActualizacion": "Fecha Actualizacion"
+    }
+  }
+}

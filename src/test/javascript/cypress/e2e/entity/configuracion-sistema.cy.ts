@@ -1,0 +1,195 @@
+import {
+  entityConfirmDeleteButtonSelector,
+  entityCreateButtonSelector,
+  entityCreateCancelButtonSelector,
+  entityCreateSaveButtonSelector,
+  entityDeleteButtonSelector,
+  entityDetailsBackButtonSelector,
+  entityDetailsButtonSelector,
+  entityEditButtonSelector,
+  entityTableSelector,
+} from '../../support/entity';
+
+describe('ConfiguracionSistema e2e test', () => {
+  const configuracionSistemaPageUrl = '/configuracion-sistema';
+  const configuracionSistemaPageUrlPattern = new RegExp('/configuracion-sistema(\\?.*)?$');
+  const username = Cypress.env('E2E_USERNAME') ?? 'user';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'user';
+  const configuracionSistemaSample = {
+    clave: 'majestic pfft spirit',
+    valor: 'shakily obstruct',
+    tipoDato: 'BOOLEAN',
+    fechaActualizacion: '2025-05-31T19:00:00.124Z',
+  };
+
+  let configuracionSistema;
+
+  beforeEach(() => {
+    cy.login(username, password);
+  });
+
+  beforeEach(() => {
+    cy.intercept('GET', '/api/configuracion-sistemas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/configuracion-sistemas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/configuracion-sistemas/*').as('deleteEntityRequest');
+  });
+
+  afterEach(() => {
+    if (configuracionSistema) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/configuracion-sistemas/${configuracionSistema.id}`,
+      }).then(() => {
+        configuracionSistema = undefined;
+      });
+    }
+  });
+
+  it('ConfiguracionSistemas menu should load ConfiguracionSistemas page', () => {
+    cy.visit('/');
+    cy.clickOnEntityMenuItem('configuracion-sistema');
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response?.body.length === 0) {
+        cy.get(entityTableSelector).should('not.exist');
+      } else {
+        cy.get(entityTableSelector).should('exist');
+      }
+    });
+    cy.getEntityHeading('ConfiguracionSistema').should('exist');
+    cy.url().should('match', configuracionSistemaPageUrlPattern);
+  });
+
+  describe('ConfiguracionSistema page', () => {
+    describe('create button click', () => {
+      beforeEach(() => {
+        cy.visit(configuracionSistemaPageUrl);
+        cy.wait('@entitiesRequest');
+      });
+
+      it('should load create ConfiguracionSistema page', () => {
+        cy.get(entityCreateButtonSelector).click();
+        cy.url().should('match', new RegExp('/configuracion-sistema/new$'));
+        cy.getEntityCreateUpdateHeading('ConfiguracionSistema');
+        cy.get(entityCreateSaveButtonSelector).should('exist');
+        cy.get(entityCreateCancelButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', configuracionSistemaPageUrlPattern);
+      });
+    });
+
+    describe('with existing value', () => {
+      beforeEach(() => {
+        cy.authenticatedRequest({
+          method: 'POST',
+          url: '/api/configuracion-sistemas',
+          body: configuracionSistemaSample,
+        }).then(({ body }) => {
+          configuracionSistema = body;
+
+          cy.intercept(
+            {
+              method: 'GET',
+              url: '/api/configuracion-sistemas+(?*|)',
+              times: 1,
+            },
+            {
+              statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/configuracion-sistemas?page=0&size=20>; rel="last",<http://localhost/api/configuracion-sistemas?page=0&size=20>; rel="first"',
+              },
+              body: [configuracionSistema],
+            },
+          ).as('entitiesRequestInternal');
+        });
+
+        cy.visit(configuracionSistemaPageUrl);
+
+        cy.wait('@entitiesRequestInternal');
+      });
+
+      it('detail button click should load details ConfiguracionSistema page', () => {
+        cy.get(entityDetailsButtonSelector).first().click();
+        cy.getEntityDetailsHeading('configuracionSistema');
+        cy.get(entityDetailsBackButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', configuracionSistemaPageUrlPattern);
+      });
+
+      it('edit button click should load edit ConfiguracionSistema page and go back', () => {
+        cy.get(entityEditButtonSelector).first().click();
+        cy.getEntityCreateUpdateHeading('ConfiguracionSistema');
+        cy.get(entityCreateSaveButtonSelector).should('exist');
+        cy.get(entityCreateCancelButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', configuracionSistemaPageUrlPattern);
+      });
+
+      it('edit button click should load edit ConfiguracionSistema page and save', () => {
+        cy.get(entityEditButtonSelector).first().click();
+        cy.getEntityCreateUpdateHeading('ConfiguracionSistema');
+        cy.get(entityCreateSaveButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', configuracionSistemaPageUrlPattern);
+      });
+
+      it('last delete button click should delete instance of ConfiguracionSistema', () => {
+        cy.get(entityDeleteButtonSelector).last().click();
+        cy.getEntityDeleteDialogHeading('configuracionSistema').should('exist');
+        cy.get(entityConfirmDeleteButtonSelector).click();
+        cy.wait('@deleteEntityRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(204);
+        });
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', configuracionSistemaPageUrlPattern);
+
+        configuracionSistema = undefined;
+      });
+    });
+  });
+
+  describe('new ConfiguracionSistema page', () => {
+    beforeEach(() => {
+      cy.visit(`${configuracionSistemaPageUrl}`);
+      cy.get(entityCreateButtonSelector).click();
+      cy.getEntityCreateUpdateHeading('ConfiguracionSistema');
+    });
+
+    it('should create an instance of ConfiguracionSistema', () => {
+      cy.get(`[data-cy="clave"]`).type('wonderfully righteously');
+      cy.get(`[data-cy="clave"]`).should('have.value', 'wonderfully righteously');
+
+      cy.get(`[data-cy="valor"]`).type('pro although pfft');
+      cy.get(`[data-cy="valor"]`).should('have.value', 'pro although pfft');
+
+      cy.get(`[data-cy="descripcion"]`).type('and veto');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'and veto');
+
+      cy.get(`[data-cy="tipoDato"]`).select('DATE');
+
+      cy.get(`[data-cy="fechaActualizacion"]`).type('2025-05-31T20:21');
+      cy.get(`[data-cy="fechaActualizacion"]`).blur();
+      cy.get(`[data-cy="fechaActualizacion"]`).should('have.value', '2025-05-31T20:21');
+
+      cy.get(entityCreateSaveButtonSelector).click();
+
+      cy.wait('@postEntityRequest').then(({ response }) => {
+        expect(response?.statusCode).to.equal(201);
+        configuracionSistema = response.body;
+      });
+      cy.wait('@entitiesRequest').then(({ response }) => {
+        expect(response?.statusCode).to.equal(200);
+      });
+      cy.url().should('match', configuracionSistemaPageUrlPattern);
+    });
+  });
+});

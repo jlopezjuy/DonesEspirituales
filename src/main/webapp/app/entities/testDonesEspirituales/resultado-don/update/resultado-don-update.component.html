@@ -1,0 +1,264 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-resultado-don-heading"
+        data-cy="ResultadoDonCreateUpdateHeading"
+        jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.home.createOrEditLabel"
+      >
+        Crear o editar Resultado Don
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let puntuacionTotalRef = editForm.get('puntuacionTotal')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_puntuacionTotal"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.puntuacionTotal"
+            >Puntuacion Total</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="puntuacionTotal"
+            id="field_puntuacionTotal"
+            data-cy="puntuacionTotal"
+            formControlName="puntuacionTotal"
+          />
+          @if (puntuacionTotalRef.invalid && (puntuacionTotalRef.dirty || puntuacionTotalRef.touched)) {
+            <div>
+              @if (editForm.get('puntuacionTotal')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('puntuacionTotal')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >Este campo debe ser mayor que 0.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('puntuacionTotal')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let porcentajeRef = editForm.get('porcentaje')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_porcentaje" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.porcentaje"
+            >Porcentaje</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="porcentaje"
+            id="field_porcentaje"
+            data-cy="porcentaje"
+            formControlName="porcentaje"
+          />
+          @if (porcentajeRef.invalid && (porcentajeRef.dirty || porcentajeRef.touched)) {
+            <div>
+              @if (editForm.get('porcentaje')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('porcentaje')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >Este campo debe ser mayor que 0.</small
+                >
+              }
+              @if (editForm.get('porcentaje')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '100' }"
+                  >Este campo no puede ser mayor que 100.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('porcentaje')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let rankingPosicionRef = editForm.get('rankingPosicion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_rankingPosicion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.rankingPosicion"
+            >Ranking Posicion</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="rankingPosicion"
+            id="field_rankingPosicion"
+            data-cy="rankingPosicion"
+            formControlName="rankingPosicion"
+          />
+          @if (rankingPosicionRef.invalid && (rankingPosicionRef.dirty || rankingPosicionRef.touched)) {
+            <div>
+              @if (editForm.get('rankingPosicion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('rankingPosicion')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >Este campo debe ser mayor que 1.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('rankingPosicion')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let esDonPrincipalRef = editForm.get('esDonPrincipal')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_esDonPrincipal"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.esDonPrincipal"
+            >Es Don Principal</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="esDonPrincipal"
+            id="field_esDonPrincipal"
+            data-cy="esDonPrincipal"
+            formControlName="esDonPrincipal"
+          />
+          @if (esDonPrincipalRef.invalid && (esDonPrincipalRef.dirty || esDonPrincipalRef.touched)) {
+            <div>
+              @if (editForm.get('esDonPrincipal')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_interpretacion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.interpretacion"
+            >Interpretacion</label
+          >
+          <select
+            class="form-control"
+            id="field_interpretacion"
+            data-cy="interpretacion"
+            name="interpretacion"
+            formControlName="interpretacion"
+            [compareWith]="compareInterpretacion"
+          >
+            <option [ngValue]="null"></option>
+            @for (interpretacionOption of interpretacionsSharedCollection; track $index) {
+              <option [ngValue]="interpretacionOption">{{ interpretacionOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_respuestaUsuario"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.respuestaUsuario"
+            >Respuesta Usuario</label
+          >
+          <select
+            class="form-control"
+            id="field_respuestaUsuario"
+            data-cy="respuestaUsuario"
+            name="respuestaUsuario"
+            formControlName="respuestaUsuario"
+            [compareWith]="compareRespuestaUsuario"
+          >
+            @if (editForm.get(['respuestaUsuario'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (respuestaUsuarioOption of respuestaUsuariosSharedCollection; track $index) {
+              <option [ngValue]="respuestaUsuarioOption">{{ respuestaUsuarioOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['respuestaUsuario'])!.invalid &&
+          (editForm.get(['respuestaUsuario'])!.dirty || editForm.get(['respuestaUsuario'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['respuestaUsuario'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_donEspiritual"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.donEspiritual"
+            >Don Espiritual</label
+          >
+          <select
+            class="form-control"
+            id="field_donEspiritual"
+            data-cy="donEspiritual"
+            name="donEspiritual"
+            formControlName="donEspiritual"
+            [compareWith]="compareDonEspiritual"
+          >
+            @if (editForm.get(['donEspiritual'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (donEspiritualOption of donEspiritualsSharedCollection; track $index) {
+              <option [ngValue]="donEspiritualOption">{{ donEspiritualOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['donEspiritual'])!.invalid && (editForm.get(['donEspiritual'])!.dirty || editForm.get(['donEspiritual'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['donEspiritual'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

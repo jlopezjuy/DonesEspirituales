@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (resultadoDon(); as resultadoDonRef) {
+      <div>
+        <h2 data-cy="resultadoDonDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.detail.title">Resultado Don</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ resultadoDonRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.puntuacionTotal">Puntuacion Total</span></dt>
+          <dd>
+            <span>{{ resultadoDonRef.puntuacionTotal }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.porcentaje">Porcentaje</span></dt>
+          <dd>
+            <span>{{ resultadoDonRef.porcentaje }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.rankingPosicion">Ranking Posicion</span></dt>
+          <dd>
+            <span>{{ resultadoDonRef.rankingPosicion }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.esDonPrincipal">Es Don Principal</span></dt>
+          <dd>
+            <span>{{ resultadoDonRef.esDonPrincipal }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.interpretacion">Interpretacion</span></dt>
+          <dd>
+            @if (resultadoDon()!.interpretacion) {
+              <div>
+                <a [routerLink]="['/interpretacion', resultadoDon()!.interpretacion?.id, 'view']">{{
+                  resultadoDonRef.interpretacion?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.respuestaUsuario">Respuesta Usuario</span></dt>
+          <dd>
+            @if (resultadoDon()!.respuestaUsuario) {
+              <div>
+                <a [routerLink]="['/respuesta-usuario', resultadoDon()!.respuestaUsuario?.id, 'view']">{{
+                  resultadoDonRef.respuestaUsuario?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesResultadoDon.donEspiritual">Don Espiritual</span></dt>
+          <dd>
+            @if (resultadoDon()!.donEspiritual) {
+              <div>
+                <a [routerLink]="['/don-espiritual', resultadoDon()!.donEspiritual?.id, 'view']">{{ resultadoDonRef.donEspiritual?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/resultado-don', resultadoDonRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

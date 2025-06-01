@@ -1,0 +1,126 @@
+id;numero_pregunta;texto_pregunta;obligatoria;activa;fecha_creacion;cuestionario_id
+1;22312;¿Le gusta hablar con la gente y presentarles la voluntad de Dios para ellos?;false;false;2025-05-31T08:36:25;1
+2;8926;¿Siente gozo cuando le piden que haga trabajos manuales especiales en su Iglesia?;false;true;2025-05-31T05:14:31;1
+3;16168;¿Comprende en detalle las doctrinas bíblicas de la Iglesia?;true;true;2025-05-31T17:00:49;1
+4;30623;¿Se siente capaz de consolar a alguien que está perplejo o que sufre?;false;false;2025-05-31T20:19:43;1
+5;31874;¿Administra bien su dinero de tal manera que puede dar libremente a la causa de Dios?;false;false;2025-05-31T08:46:02;1
+6;1045;¿Le gusta estar entre la gente y participar en sus actividades?;false;true;2025-05-31T05:40:29;1
+7;27218;¿Se compadece y trata de ayudar a drogadictos, desahuciados, gente de la calle, etc.?;false;true;2025-05-31T02:35:20;1
+8;19844;¿Descubre fácilmente nuevas verdades bíblicas por usted mismo?;true;false;2025-05-31T15:44:37;1
+9;26155;¿Le es fácil elegir entre las distintas alternativas bíblicas para solucionar problemas complicados en la Iglesia?;true;true;2025-05-31T22:25:12;1
+10;8784;¿Cree firmemente en las promesas divinas?;false;true;2025-05-31T22:22:10;1
+11;22312;¿Se compadece por los que sufren enfermedades?;false;false;2025-05-31T08:36:25;1
+12;8926;¿Contesta Dios sus oraciones en forma especial, a veces sobrenatural?;false;true;2025-05-31T05:14:31;1
+13;16168;¿Percibe claramente la diferencia entre la verdad y el error?;true;true;2025-05-31T17:00:49;1
+14;30623;¿Ha orado secretamente en algún idioma desconocido por usted?;false;false;2025-05-31T20:19:43;1
+15;31874;¿Ha declarado en su propio idioma algún mensaje que ha sido dado en un idioma desconocido por usted?;false;false;2025-05-31T08:46:02;1
+16;1045;¿Se siente llamado por Dios para ser responsable por el cuidado y liderazgo del pueblo de Dios?;false;true;2025-05-31T05:40:29;1
+17;27218;¿Le gusta ayudar a los dirigentes de la Iglesia para que ellos puedan dedicar más tiempo a asuntos esenciales para la Iglesia?;false;true;2025-05-31T02:35:20;1
+18;19844;¿Se goza al solucionar problemas complicados de la Iglesia?;true;false;2025-05-31T15:44:37;1
+19;26155;¿Siente gozo al compartir con otros la Palabra de Dios?;true;true;2025-05-31T22:25:12;1
+20;8784;¿Le gusta la idea de visitar a los hermanos de la Iglesia regularmente?;false;true;2025-05-31T22:22:10;1
+21;22312;¿Le agrada la idea de quedarse sin casar para dedicar todo su tiempo a la Iglesia?;false;false;2025-05-31T08:36:25;1
+22;8926;¿Se interesa en buscar y encontrar a personas que no tienen comida o alojamiento?;false;true;2025-05-31T05:14:31;1
+23;16168;¿Se adapta fácilmente a otras culturas?;true;true;2025-05-31T17:00:49;1
+24;30623;¿Pierde la noción del tiempo cuando ora?;false;false;2025-05-31T20:19:43;1
+25;31874;¿Cree que su fe es lo suficientemente fuerte como para poder arrojar al diablo de alguna persona posesionada?;false;false;2025-05-31T08:46:02;1
+26;1045;¿Siente que puede animar y fortalecer a los desanimados?;false;true;2025-05-31T05:40:29;1
+27;27218;¿Le gusta participar en el orden y la limpieza de la Iglesia?;false;true;2025-05-31T02:35:20;1
+28;19844;¿Le gusta leer comentarios bíblicos y estudiar a fondo pasajes difíciles de la Biblia?;true;false;2025-05-31T15:44:37;1
+29;26155;¿La gente le busca a usted para que les aconseje acerca de sus problemas?;true;true;2025-05-31T22:25:12;1
+30;8784;¿Da usted con mucha liberalidad objetos o dinero ala Iglesia?;false;true;2025-05-31T22:22:10;1
+31;22312;¿Le gusta planear actividades para la Iglesia y llevarlas a cabo?;false;false;2025-05-31T08:36:25;1
+32;8926;¿Es sensible a las necesidades de los ancianos y deshabilitados y procura ayudarles de alguna manera?;false;true;2025-05-31T05:14:31;1
+33;16168;¿Se goza en buscar soluciones a problemas complicados en la iglesia?;true;true;2025-05-31T17:00:49;1
+34;30623;¿Estudia o lee bastante para aprender verdades bíblicas?;false;false;2025-05-31T20:19:43;1
+35;31874;¿Lee la Biblia y ora varias veces todos los días?;false;false;2025-05-31T08:46:02;1
+36;1045;¿Siente inclinación a orar por los enfermos?;false;true;2025-05-31T05:40:29;1
+37;27218;¿Cree que en el nombre de Dios, mediante la fe y la oración usted es capaz de alterar el orden natural de las cosas?;false;true;2025-05-31T02:35:20;1
+38;19844;¿Puede discernir los motivos que mueven a la gente?;true;false;2025-05-31T15:44:37;1
+39;26155;¿Ha sentido la necesidad de dar algún mensaje a la iglesia en un idioma desconocido por usted?;true;true;2025-05-31T22:25:12;1
+40;8784;¿Ha experimentado el entender algún idioma que usted no ha estudiado nunca?;false;true;2025-05-31T22:22:10;1
+41;22312;¿Es capaz de iniciar un grupo de creyentes o consolidar algún grupo existente?;false;false;2025-05-31T08:36:25;1
+42;8926;¿Le gusta ayudar en la oficina del pastor?;false;true;2025-05-31T05:14:31;1
+43;16168;¿Puede predecir con exactitud el resultado de sus decisiones?;true;true;2025-05-31T17:00:49;1
+44;30623;¿Se siente cómodo al pedirle a alguien que acepte a Jesús como su Salvador?;false;false;2025-05-31T20:19:43;1
+45;31874;¿Cree que le gustaría visitar a los intereses de la Iglesia y estudiar la Biblia con ellos?;false;false;2025-05-31T08:46:02;1
+46;1045;¿Le es fácil pensar en no vivir el resto de su vida en intimidad con alguien del sexo opuesto?;false;true;2025-05-31T05:40:29;1
+47;27218;¿Se alegra cuando alguien le visita y le pide quedarse en su casa por algunos días?;false;true;2025-05-31T02:35:20;1
+48;19844;¿Se siente cómodo entre gente de otra raza o nacionalidad?;true;false;2025-05-31T15:44:37;1
+49;26155;¿Toma los pedidos de oración con mucha seriedad y ora por ellos en su hogar?;true;true;2025-05-31T22:25:12;1
+50;8784;¿No tiene temor a la idea de estar frente a frente con un endemoniado?;false;true;2025-05-31T22:22:10;1
+51;22312;¿Ha amonestado a otras personas produciendo corrección y arrepentimiento?;false;false;2025-05-31T08:36:25;1
+52;8926;¿Siente satisfacción al realizar trabajos domésticos en la casa de Dios?;false;true;2025-05-31T05:14:31;1
+53;16168;¿Le gusta compartir con otros sus descubrimientos o su entendimiento de la Palabra de Dios?;true;true;2025-05-31T17:00:49;1
+54;30623;¿Encuentra fácil aplicar principios bíblicos a los problemas que se presentan en la Iglesia?;false;false;2025-05-31T20:19:43;1
+55;31874;¿Le gusta animar a otros para que den dinero con liberalidad a la Iglesia?;false;false;2025-05-31T08:46:02;1
+56;1045;¿Se siente cómodo al delegar responsabilidades a otros?;false;true;2025-05-31T05:40:29;1
+57;27218;¿Le gustaría pertenecer a un grupo de Visitación a los encarcelados?;false;true;2025-05-31T02:35:20;1
+58;19844;¿Le resulta fácil entender verdades bíblicas que son dificiles para otros?;true;false;2025-05-31T15:44:37;1
+59;26155;¿Se siente seguro de conocer la voluntad de Dios para el progreso de la Iglesía?;true;true;2025-05-31T22:25:12;1
+60;8784;¿Confia plenamente en el poder de Dios durante situaciones dificiles?;false;true;2025-05-31T22:22:10;1
+61;22312;¿Se cree usted capaz de curar enfermos en el nombre de Dios?;false;false;2025-05-31T08:36:25;1
+62;8926;¿Cree que Dios puede usarlo para realizar actos sobrenaturales?;false;true;2025-05-31T05:14:31;1
+63;16168;¿Sabe cuando una persona es influenciada por Dios o por el diablo?;true;true;2025-05-31T17:00:49;1
+64;30623;¿Ha hablado en algün idioma desconocido?;false;false;2025-05-31T20:19:43;1
+65;31874;¿Le gustaría poder interpretar algún mensaje brindado en un idioma desconocido?;false;false;2025-05-31T08:46:02;1
+66;1045;¿Es consultado por otros hermanos en cuanto a problemas eclesiásticos o doctrinales?;false;true;2025-05-31T05:40:29;1
+67;27218;¿Se preocupa por los necesitados y procura ayudarlos?;false;true;2025-05-31T02:35:20;1
+68;19844;¿Se siente hábil al desarrollar planes y llevarlos a feliz término?;true;false;2025-05-31T15:44:37;1
+69;26155;Prefiere dedicar su tiempo libre a compartir el evangelio con otros?;true;true;2025-05-31T22:25:12;1
+70;8784;¿Le gusta la idea de tener que predicar en la Iglesia cada semana?;false;true;2025-05-31T22:22:10;1
+71;22312;¿Cree que no se perdería de ninguna bendición si se queda sin casar?;false;false;2025-05-31T08:36:25;1
+72;8926;¿Es "mi casa es su casa" su dicho favorito y lo practica constantemente?;false;true;2025-05-31T05:14:31;1
+73;16168;Disfrutaria de la vida viviendo en un país extranjero?;true;true;2025-05-31T17:00:49;1
+74;30623;¿Le gusta orar por la Iglesia constantemente?;false;false;2025-05-31T20:19:43;1
+75;31874;¿Le agrada la idea de poder confrontar al demonio cara a cara y poder dominarlo en el nombre de Jesús?;false;false;2025-05-31T08:46:02;1
+76;1045;¿Ha sido impresionado con mensaje especiales los cuales da a conocer sin importar las consecuencias?;false;true;2025-05-31T05:40:29;1
+77;27218;¿Se siente comodo obedeciendo órdenes en vez de darlas?;false;true;2025-05-31T02:35:20;1
+78;19844;¿Se siente capaz de explicar a otros claramente las enseñanzas bíblicas?;true;false;2025-05-31T15:44:37;1
+79;26155;¿Le gusta animar a los inconstantes y desanimados?;true;true;2025-05-31T22:25:12;1
+80;8784;¿Se siente conmovido y procura hacer algo cuando la Iglesia necesita ayuda financiera?;false;true;2025-05-31T22:22:10;1
+81;22312;¿Siente que su influencia afecta a otros positivamente para trabajar por el Señor?;false;false;2025-05-31T08:36:25;1
+82;8926;Le resulta muy dificil pasar por alto a algún limosnero?;false;true;2025-05-31T05:14:31;1
+83;16168;¿Le resulta fácil el presentar alternativas a problemas sin tener que tomar posiciones?;true;true;2025-05-31T17:00:49;1
+84;30623;¿Cree usted que domina completamente las verdades bíblicas?;false;false;2025-05-31T20:19:43;1
+85;31874;Por lo general ¿no se desanima cuando las cosas no andan bien en la Iglesia?;false;false;2025-05-31T08:46:02;1
+86;1045;¿Ora usted de tal manera por los enfermos que estos sienten curación?;false;true;2025-05-31T05:40:29;1
+87;27218;¿Ha realizado usted algún milagro por el poder de Dios?;false;true;2025-05-31T02:35:20;1
+88;19844;¿Puede usted reconocer los dones espirituales en los demás?;true;false;2025-05-31T15:44:37;1
+89;26155;¿Le atrae la idea de poder hablar en lenguas?;true;true;2025-05-31T22:25:12;1
+90;8784;¿Cree usted que los dones de lenguas e interpretación son realmente necesarios en estos dias para la proclamación del Evangelio?;false;true;2025-05-31T22:22:10;1
+91;22312;¿Son sus opiniones tomadas en serio y seguidas por el resto de los hermanos en la Iglesia?;false;false;2025-05-31T08:36:25;1
+92;8926;¿Le gusta ir y distribuir literatura, revistas y folletos?;false;true;2025-05-31T05:14:31;1
+93;16168;Prefiere presidir reuniones y trazar blancos en vez de ser solo un participante?;true;true;2025-05-31T17:00:49;1
+94;30623;¿Siente el deseo de hablar con incrédulos con el fin de ganarlos para Cristo?;false;false;2025-05-31T20:19:43;1
+95;31874;¿Le emociona la idea de poder ser el pastor de su Iglesia?;false;false;2025-05-31T08:46:02;1
+96;1045;¿Piensa usted que si se casara su familia le sería un estorbo para su ministerio en vez de una bendición?;false;true;2025-05-31T05:40:29;1
+97;27218;¿Le gusta saludar a las visitas de la Iglesia e invitarlas a comer o incluso a dormir en su casa si es necesario?;false;true;2025-05-31T02:35:20;1
+98;19844;¿Siente la necesidad de ser un predicador en otros países?;true;false;2025-05-31T15:44:37;1
+99;26155;¿Es la oración su ejercicio espiritual favorito?;true;true;2025-05-31T22:25:12;1
+100;8784;¿Ha utilizado alguna vez el poder de Dios para arrojar al demonio fuera de alguna persona?;false;true;2025-05-31T22:22:10;1
+101;22312;¿Es el progreso general del cuerpo de Cristo y la satisfacción de las necesidades de los hermanos una obsesión en su vida?;false;false;2025-05-31T08:36:25;1
+102;8926;¿Siente mucha alegría y satisfacción cuando puede servir a alguien?;false;true;2025-05-31T05:14:31;1
+103;16168;¿Le gusta enseñar acerca de la Biblia y siente que sus alumnos practican sus enseñanzas?;true;true;2025-05-31T17:00:49;1
+104;30623;¿Siente el fuerte deseo de llamar la atención a los que están obrando incorrectamente?;false;false;2025-05-31T20:19:43;1
+105;31874;¿Es usted capaz de conseguir grandes cantidades de dinero para la causa del Señor?;false;false;2025-05-31T08:46:02;1
+106;1045;¿Se siente capaz de reclutar a otros hermanos y ponerlos a trabajar a favor de la Iglesia?;false;true;2025-05-31T05:40:29;1
+107;27218;¿Recorre fácilmente la segunda milla y pone la otra mejilla?;false;true;2025-05-31T02:35:20;1
+108;19844;¿Otros líderes y dirigentes buscan por lo general su consejo y les hace entender claramente sus planes los cuales resultan ser una bendición para la Iglesia?;true;false;2025-05-31T15:44:37;1
+109;26155;¿Es buscado por los demás hermanos para que les conteste sus preguntas e inquietudes?;true;true;2025-05-31T22:25:12;1
+110;8784;De las gracias cristianas, ¿es la fe una de sus favoritas?;false;true;2025-05-31T22:22:10;1
+111;22312;¿Se preocupa por la salud física de sus semejantes y siente el deseo de hacer algo al respecto?;false;false;2025-05-31T08:36:25;1
+112;8926;¿Ha sentido alguna vez el deseo y la fuerte inclinación de pedirle a Dios que efectúe algún acto sobrenatural para provecho de otro, creyendo que Dios contestará su pedido?;false;true;2025-05-31T05:14:31;1
+113;16168;¿Percibe la presencia del mal antes que sea evidente?;true;true;2025-05-31T17:00:49;1
+114;30623;¿Cree que el don de lenguas es necesario actualmente para la edificación del cuerpo de Cristo?;false;false;2025-05-31T20:19:43;1
+115;31874;¿Cree que sea necesario y beneficioso para la Iglesia el brindar mensajes en idiomas desconocidos e interpretarlos?;false;false;2025-05-31T08:46:02;1
+116;1045;¿Ha sentido que es su deber llamarle la atención a algún administrador o dirigente de la Iglesia que no está obrando bien?;false;true;2025-05-31T05:40:29;1
+117;27218;¿Le gusta la idea de ser maestro de una clase bíblica?;false;true;2025-05-31T02:35:20;1
+118;19844;¿Se siente capacitado para presidir o supervisar al resto de la hermandad de la Iglesia?;true;false;2025-05-31T15:44:37;1
+119;26155;¿Entiende claramente los pasos que llevan a una persona a la salvación?;true;true;2025-05-31T22:25:12;1
+120;8784;¿Le gustaría organizar, planificar y supervisar todas las actividades de la Iglesia?;false;true;2025-05-31T22:22:10;1
+121;22312;¿Se considera capaz de quedarse sin casar sin el temor de "quemarse"?;false;false;2025-05-31T08:36:25;1
+122;8926;¿Tiene regularmente invitados a su mesa y a su casa?;false;true;2025-05-31T05:14:31;1
+123;16168;¿No le molesta separarse de sus familiares por largos períodos de tiempo, o para siempre, con tal de predicar el Evangelio en otros países?;true;true;2025-05-31T17:00:49;1
+124;30623;¿Contesta Dios sus oraciones frecuentemente y en forma tangible?;false;false;2025-05-31T20:19:43;1
+125;31874;¿Es atraído a situaciones donde hay endemoniados y es buscado para arrojar al demonio debido al uso que usted hace del poder de Dios?;false;false;2025-05-31T08:46:02;1

@@ -1,0 +1,355 @@
+// Enumeraciones
+
+enum EstadoRespuesta {
+  INICIADA,
+  EN_PROGRESO,
+  COMPLETADA,
+  ABANDONADA
+}
+
+enum NivelInterpretacion {
+  MUY_BAJO,
+  BAJO,
+  MEDIO,
+  ALTO,
+  MUY_ALTO
+}
+
+enum TipoDato {
+  STRING,
+  INTEGER,
+  BOOLEAN,
+  DECIMAL,
+  DATE
+}
+
+enum Genero {
+  MASCULINO,
+  FEMENINO,
+  OTRO,
+  PREFIERO_NO_DECIR
+}
+
+// Entidades principale
+entity Cuestionario {
+  titulo String required maxlength(200)
+  descripcion String
+  instrucciones String required
+  totalPreguntas Integer required min(1) max(1000)
+  activo Boolean required
+  fechaCreacion Instant required
+  fechaActualizacion Instant
+  version Integer required min(1)
+}
+
+entity EscalaRespuesta {
+  valor Integer required min(0) max(10)
+
+  etiqueta String required maxlength(100)
+
+  descripcion String
+
+  orden Integer required min(1)
+
+}
+
+
+
+entity DonEspiritual {
+
+  nombre String required maxlength(100) unique
+
+  nombreCorto String required maxlength(50) unique
+
+  descripcion String
+
+  caracteristicas String
+
+  versiculosBiblicos String
+
+  activo Boolean required
+
+  ordenPresentacion Integer min(1)
+
+}
+
+
+
+entity Pregunta {
+
+  numeroPregunta Integer required min(1)
+
+  textoPregunta String required
+
+  obligatoria Boolean required
+
+  activa Boolean required
+
+  fechaCreacion Instant required
+
+}
+
+
+
+entity PreguntaDon {
+
+  peso Integer required min(1) max(10)
+
+  activa Boolean required
+
+}
+
+entity RespuestaUsuario {
+  fechaInicio Instant required
+  fechaCompletado Instant
+  estado EstadoRespuesta required
+  tiempoTotalSegundos Integer min(0)
+  ipAddress String maxlength(45)
+  userAgent String maxlength(500)
+}
+
+
+
+entity DetalleRespuesta {
+
+  valorRespuesta Integer required min(0) max(10)
+
+  timestampRespuesta Instant required
+
+  tiempoPreguntaSegundos Integer min(0)
+
+}
+
+
+
+entity ResultadoDon {
+
+  puntuacionTotal Integer required min(0)
+
+  porcentaje BigDecimal required min(0) max(100)
+
+  rankingPosicion Integer required min(1)
+
+  esDonPrincipal Boolean required
+
+}
+
+
+
+entity Interpretacion {
+
+  puntuacionMinima Integer required min(0)
+
+  puntuacionMaxima Integer required min(0)
+
+  nivel NivelInterpretacion required
+
+  descripcionNivel String required
+
+  recomendaciones String
+
+  areasServicio String
+
+}
+
+
+
+entity SesionUsuario {
+
+  respuestasTemporales String
+
+  fechaCreacion Instant required
+
+  fechaExpiracion Instant required
+
+  completada Boolean required
+
+}
+
+
+
+entity AuditoriaRespuesta {
+
+  valorAnterior Integer min(0) max(10)
+
+  valorNuevo Integer required min(0) max(10)
+
+  timestampCambio Instant required
+
+  motivoCambio String maxlength(500)
+
+}
+
+
+
+entity ConfiguracionSistema {
+
+  clave String required unique maxlength(100)
+
+  valor String required maxlength(1000)
+
+  descripcion String
+
+  tipoDato TipoDato required
+
+  fechaActualizacion Instant required
+
+}
+
+
+// Cuestionario - Pregunta (1:N)
+
+relationship OneToMany {
+
+  Cuestionario{preguntas} to Pregunta{cuestionario required}
+
+}
+
+
+
+// Cuestionario - RespuestaUsuario (1:N)
+
+relationship OneToMany {
+
+  Cuestionario{respuestas} to RespuestaUsuario{cuestionario required}
+
+}
+
+
+
+// Pregunta - PreguntaDon (1:N)
+
+relationship OneToMany {
+
+  Pregunta{preguntaDones} to PreguntaDon{pregunta required}
+
+}
+
+
+
+// DonEspiritual - PreguntaDon (1:N)
+
+relationship OneToMany {
+
+  DonEspiritual{preguntaDones} to PreguntaDon{donEspiritual required}
+
+}
+
+
+
+// Pregunta - DetalleRespuesta (1:N)
+
+relationship OneToMany {
+
+  Pregunta{detalleRespuestas} to DetalleRespuesta{pregunta required}
+
+}
+
+
+
+// RespuestaUsuario - DetalleRespuesta (1:N)
+
+relationship OneToMany {
+
+  RespuestaUsuario{detalleRespuestas} to DetalleRespuesta{respuestaUsuario required}
+
+}
+
+
+
+// RespuestaUsuario - ResultadoDon (1:N)
+
+relationship OneToMany {
+
+  RespuestaUsuario{resultadoDones} to ResultadoDon{respuestaUsuario required}
+
+}
+
+
+
+// DonEspiritual - ResultadoDon (1:N)
+
+relationship OneToMany {
+
+  DonEspiritual{resultadoDones} to ResultadoDon{donEspiritual required}
+
+}
+
+
+
+// DonEspiritual - Interpretacion (1:N)
+
+relationship OneToMany {
+
+  DonEspiritual{interpretaciones} to Interpretacion{donEspiritual required}
+
+}
+
+
+
+// RespuestaUsuario - SesionUsuario (1:N)
+
+relationship OneToMany {
+
+  RespuestaUsuario{sesiones} to SesionUsuario{respuestaUsuario}
+
+}
+
+
+
+// RespuestaUsuario - AuditoriaRespuesta (1:N)
+
+relationship OneToMany {
+
+  RespuestaUsuario{auditorias} to AuditoriaRespuesta{respuestaUsuario required}
+
+}
+
+
+
+// DetalleRespuesta - AuditoriaRespuesta (1:N)
+
+relationship OneToMany {
+
+  DetalleRespuesta{auditorias} to AuditoriaRespuesta{detalleRespuesta required}
+
+}
+
+// EscalaRespuesta - DetalleRespuesta (1:N)
+
+relationship ManyToOne {
+  DetalleRespuesta{escalaRespuesta required} to EscalaRespuesta
+}
+// Interpretacion - ResultadoDon (1:N)
+
+relationship ManyToOne {
+  ResultadoDon{interpretacion} to Interpretacion,
+  RespuestaUsuario{user(login)} to User with builtInEntity,
+  SesionUsuario{user(login)} to User with builtInEntity,
+}
+
+
+// Configuraciones de generación
+
+
+
+// DTOs para todas las entidades
+
+dto * with mapstruct
+
+
+
+// Servicios para entidades principales
+
+service * with serviceImpl
+
+
+
+// Repositorios con paginación
+
+paginate * with pagination
+
+
+// Validación en cliente y servidor
+
+clientRootFolder * with testDonesEspirituales

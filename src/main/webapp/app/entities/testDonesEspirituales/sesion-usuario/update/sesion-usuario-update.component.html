@@ -1,0 +1,181 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-sesion-usuario-heading"
+        data-cy="SesionUsuarioCreateUpdateHeading"
+        jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.home.createOrEditLabel"
+      >
+        Crear o editar Sesion Usuario
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_respuestasTemporales"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestasTemporales"
+            >Respuestas Temporales</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="respuestasTemporales"
+            id="field_respuestasTemporales"
+            data-cy="respuestasTemporales"
+            formControlName="respuestasTemporales"
+          />
+        </div>
+
+        @let fechaCreacionRef = editForm.get('fechaCreacion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_fechaCreacion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.fechaCreacion"
+            >Fecha Creacion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaCreacion"
+              data-cy="fechaCreacion"
+              type="datetime-local"
+              class="form-control"
+              name="fechaCreacion"
+              formControlName="fechaCreacion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (fechaCreacionRef.invalid && (fechaCreacionRef.dirty || fechaCreacionRef.touched)) {
+            <div>
+              @if (editForm.get('fechaCreacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('fechaCreacion')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >Este campo debe ser una fecha y hora.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let fechaExpiracionRef = editForm.get('fechaExpiracion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_fechaExpiracion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.fechaExpiracion"
+            >Fecha Expiracion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaExpiracion"
+              data-cy="fechaExpiracion"
+              type="datetime-local"
+              class="form-control"
+              name="fechaExpiracion"
+              formControlName="fechaExpiracion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (fechaExpiracionRef.invalid && (fechaExpiracionRef.dirty || fechaExpiracionRef.touched)) {
+            <div>
+              @if (editForm.get('fechaExpiracion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('fechaExpiracion')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >Este campo debe ser una fecha y hora.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let completadaRef = editForm.get('completada')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_completada" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.completada"
+            >Completada</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="completada"
+            id="field_completada"
+            data-cy="completada"
+            formControlName="completada"
+          />
+          @if (completadaRef.invalid && (completadaRef.dirty || completadaRef.touched)) {
+            <div>
+              @if (editForm.get('completada')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_user" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.user"
+            >User</label
+          >
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_respuestaUsuario"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesSesionUsuario.respuestaUsuario"
+            >Respuesta Usuario</label
+          >
+          <select
+            class="form-control"
+            id="field_respuestaUsuario"
+            data-cy="respuestaUsuario"
+            name="respuestaUsuario"
+            formControlName="respuestaUsuario"
+            [compareWith]="compareRespuestaUsuario"
+          >
+            <option [ngValue]="null"></option>
+            @for (respuestaUsuarioOption of respuestaUsuariosSharedCollection; track $index) {
+              <option [ngValue]="respuestaUsuarioOption">{{ respuestaUsuarioOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (configuracionSistema(); as configuracionSistemaRef) {
+      <div>
+        <h2 data-cy="configuracionSistemaDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.detail.title">Configuracion Sistema</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ configuracionSistemaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.clave">Clave</span></dt>
+          <dd>
+            <span>{{ configuracionSistemaRef.clave }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.valor">Valor</span></dt>
+          <dd>
+            <span>{{ configuracionSistemaRef.valor }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ configuracionSistemaRef.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.tipoDato">Tipo Dato</span></dt>
+          <dd>
+            <span [jhiTranslate]="'donesEspiritualesApp.TipoDato.' + (configuracionSistemaRef.tipoDato ?? 'null')">{{
+              { null: '', STRING: 'STRING', INTEGER: 'INTEGER', BOOLEAN: 'BOOLEAN', DECIMAL: 'DECIMAL', DATE: 'DATE' }[
+                configuracionSistemaRef.tipoDato ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.fechaActualizacion"
+              >Fecha Actualizacion</span
+            >
+          </dt>
+          <dd>
+            <span>{{ configuracionSistemaRef.fechaActualizacion | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/configuracion-sistema', configuracionSistemaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

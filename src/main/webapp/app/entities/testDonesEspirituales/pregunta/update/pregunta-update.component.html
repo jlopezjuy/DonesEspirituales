@@ -1,0 +1,202 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-pregunta-heading"
+        data-cy="PreguntaCreateUpdateHeading"
+        jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.home.createOrEditLabel"
+      >
+        Crear o editar Pregunta
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let numeroPreguntaRef = editForm.get('numeroPregunta')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numeroPregunta"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.numeroPregunta"
+            >Numero Pregunta</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroPregunta"
+            id="field_numeroPregunta"
+            data-cy="numeroPregunta"
+            formControlName="numeroPregunta"
+          />
+          @if (numeroPreguntaRef.invalid && (numeroPreguntaRef.dirty || numeroPreguntaRef.touched)) {
+            <div>
+              @if (editForm.get('numeroPregunta')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('numeroPregunta')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >Este campo debe ser mayor que 1.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('numeroPregunta')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let textoPreguntaRef = editForm.get('textoPregunta')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_textoPregunta"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.textoPregunta"
+            >Texto Pregunta</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="textoPregunta"
+            id="field_textoPregunta"
+            data-cy="textoPregunta"
+            formControlName="textoPregunta"
+          />
+          @if (textoPreguntaRef.invalid && (textoPreguntaRef.dirty || textoPreguntaRef.touched)) {
+            <div>
+              @if (editForm.get('textoPregunta')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let obligatoriaRef = editForm.get('obligatoria')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_obligatoria" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.obligatoria"
+            >Obligatoria</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="obligatoria"
+            id="field_obligatoria"
+            data-cy="obligatoria"
+            formControlName="obligatoria"
+          />
+          @if (obligatoriaRef.invalid && (obligatoriaRef.dirty || obligatoriaRef.touched)) {
+            <div>
+              @if (editForm.get('obligatoria')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let activaRef = editForm.get('activa')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_activa" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.activa"
+            >Activa</label
+          >
+          <input type="checkbox" class="form-check" name="activa" id="field_activa" data-cy="activa" formControlName="activa" />
+          @if (activaRef.invalid && (activaRef.dirty || activaRef.touched)) {
+            <div>
+              @if (editForm.get('activa')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let fechaCreacionRef = editForm.get('fechaCreacion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_fechaCreacion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.fechaCreacion"
+            >Fecha Creacion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaCreacion"
+              data-cy="fechaCreacion"
+              type="datetime-local"
+              class="form-control"
+              name="fechaCreacion"
+              formControlName="fechaCreacion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (fechaCreacionRef.invalid && (fechaCreacionRef.dirty || fechaCreacionRef.touched)) {
+            <div>
+              @if (editForm.get('fechaCreacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('fechaCreacion')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >Este campo debe ser una fecha y hora.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cuestionario" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesPregunta.cuestionario"
+            >Cuestionario</label
+          >
+          <select
+            class="form-control"
+            id="field_cuestionario"
+            data-cy="cuestionario"
+            name="cuestionario"
+            formControlName="cuestionario"
+            [compareWith]="compareCuestionario"
+          >
+            @if (editForm.get(['cuestionario'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (cuestionarioOption of cuestionariosSharedCollection; track $index) {
+              <option [ngValue]="cuestionarioOption">{{ cuestionarioOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['cuestionario'])!.invalid && (editForm.get(['cuestionario'])!.dirty || editForm.get(['cuestionario'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['cuestionario'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

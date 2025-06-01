@@ -1,0 +1,187 @@
+import {
+  entityConfirmDeleteButtonSelector,
+  entityCreateButtonSelector,
+  entityCreateCancelButtonSelector,
+  entityCreateSaveButtonSelector,
+  entityDeleteButtonSelector,
+  entityDetailsBackButtonSelector,
+  entityDetailsButtonSelector,
+  entityEditButtonSelector,
+  entityTableSelector,
+} from '../../support/entity';
+
+describe('EscalaRespuesta e2e test', () => {
+  const escalaRespuestaPageUrl = '/escala-respuesta';
+  const escalaRespuestaPageUrlPattern = new RegExp('/escala-respuesta(\\?.*)?$');
+  const username = Cypress.env('E2E_USERNAME') ?? 'user';
+  const password = Cypress.env('E2E_PASSWORD') ?? 'user';
+  const escalaRespuestaSample = { valor: 4, etiqueta: 'boohoo within excluding', orden: 14824 };
+
+  let escalaRespuesta;
+
+  beforeEach(() => {
+    cy.login(username, password);
+  });
+
+  beforeEach(() => {
+    cy.intercept('GET', '/api/escala-respuestas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/escala-respuestas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/escala-respuestas/*').as('deleteEntityRequest');
+  });
+
+  afterEach(() => {
+    if (escalaRespuesta) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/escala-respuestas/${escalaRespuesta.id}`,
+      }).then(() => {
+        escalaRespuesta = undefined;
+      });
+    }
+  });
+
+  it('EscalaRespuestas menu should load EscalaRespuestas page', () => {
+    cy.visit('/');
+    cy.clickOnEntityMenuItem('escala-respuesta');
+    cy.wait('@entitiesRequest').then(({ response }) => {
+      if (response?.body.length === 0) {
+        cy.get(entityTableSelector).should('not.exist');
+      } else {
+        cy.get(entityTableSelector).should('exist');
+      }
+    });
+    cy.getEntityHeading('EscalaRespuesta').should('exist');
+    cy.url().should('match', escalaRespuestaPageUrlPattern);
+  });
+
+  describe('EscalaRespuesta page', () => {
+    describe('create button click', () => {
+      beforeEach(() => {
+        cy.visit(escalaRespuestaPageUrl);
+        cy.wait('@entitiesRequest');
+      });
+
+      it('should load create EscalaRespuesta page', () => {
+        cy.get(entityCreateButtonSelector).click();
+        cy.url().should('match', new RegExp('/escala-respuesta/new$'));
+        cy.getEntityCreateUpdateHeading('EscalaRespuesta');
+        cy.get(entityCreateSaveButtonSelector).should('exist');
+        cy.get(entityCreateCancelButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', escalaRespuestaPageUrlPattern);
+      });
+    });
+
+    describe('with existing value', () => {
+      beforeEach(() => {
+        cy.authenticatedRequest({
+          method: 'POST',
+          url: '/api/escala-respuestas',
+          body: escalaRespuestaSample,
+        }).then(({ body }) => {
+          escalaRespuesta = body;
+
+          cy.intercept(
+            {
+              method: 'GET',
+              url: '/api/escala-respuestas+(?*|)',
+              times: 1,
+            },
+            {
+              statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/escala-respuestas?page=0&size=20>; rel="last",<http://localhost/api/escala-respuestas?page=0&size=20>; rel="first"',
+              },
+              body: [escalaRespuesta],
+            },
+          ).as('entitiesRequestInternal');
+        });
+
+        cy.visit(escalaRespuestaPageUrl);
+
+        cy.wait('@entitiesRequestInternal');
+      });
+
+      it('detail button click should load details EscalaRespuesta page', () => {
+        cy.get(entityDetailsButtonSelector).first().click();
+        cy.getEntityDetailsHeading('escalaRespuesta');
+        cy.get(entityDetailsBackButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', escalaRespuestaPageUrlPattern);
+      });
+
+      it('edit button click should load edit EscalaRespuesta page and go back', () => {
+        cy.get(entityEditButtonSelector).first().click();
+        cy.getEntityCreateUpdateHeading('EscalaRespuesta');
+        cy.get(entityCreateSaveButtonSelector).should('exist');
+        cy.get(entityCreateCancelButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', escalaRespuestaPageUrlPattern);
+      });
+
+      it('edit button click should load edit EscalaRespuesta page and save', () => {
+        cy.get(entityEditButtonSelector).first().click();
+        cy.getEntityCreateUpdateHeading('EscalaRespuesta');
+        cy.get(entityCreateSaveButtonSelector).click();
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', escalaRespuestaPageUrlPattern);
+      });
+
+      it('last delete button click should delete instance of EscalaRespuesta', () => {
+        cy.get(entityDeleteButtonSelector).last().click();
+        cy.getEntityDeleteDialogHeading('escalaRespuesta').should('exist');
+        cy.get(entityConfirmDeleteButtonSelector).click();
+        cy.wait('@deleteEntityRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(204);
+        });
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          expect(response?.statusCode).to.equal(200);
+        });
+        cy.url().should('match', escalaRespuestaPageUrlPattern);
+
+        escalaRespuesta = undefined;
+      });
+    });
+  });
+
+  describe('new EscalaRespuesta page', () => {
+    beforeEach(() => {
+      cy.visit(`${escalaRespuestaPageUrl}`);
+      cy.get(entityCreateButtonSelector).click();
+      cy.getEntityCreateUpdateHeading('EscalaRespuesta');
+    });
+
+    it('should create an instance of EscalaRespuesta', () => {
+      cy.get(`[data-cy="valor"]`).type('4');
+      cy.get(`[data-cy="valor"]`).should('have.value', '4');
+
+      cy.get(`[data-cy="etiqueta"]`).type('provision birdbath');
+      cy.get(`[data-cy="etiqueta"]`).should('have.value', 'provision birdbath');
+
+      cy.get(`[data-cy="descripcion"]`).type('whose because sternly');
+      cy.get(`[data-cy="descripcion"]`).should('have.value', 'whose because sternly');
+
+      cy.get(`[data-cy="orden"]`).type('14505');
+      cy.get(`[data-cy="orden"]`).should('have.value', '14505');
+
+      cy.get(entityCreateSaveButtonSelector).click();
+
+      cy.wait('@postEntityRequest').then(({ response }) => {
+        expect(response?.statusCode).to.equal(201);
+        escalaRespuesta = response.body;
+      });
+      cy.wait('@entitiesRequest').then(({ response }) => {
+        expect(response?.statusCode).to.equal(200);
+      });
+      cy.url().should('match', escalaRespuestaPageUrlPattern);
+    });
+  });
+});

@@ -1,0 +1,30 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesResultadoDon": {
+      "home": {
+        "title": "Resultado Dons",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Resultado Don",
+        "createOrEditLabel": "Crear o editar Resultado Don",
+        "notFound": "Ningún Resultado Dons encontrado"
+      },
+      "created": "Un nuevo Resultado Don ha sido creado con el identificador {{ param }}",
+      "updated": "Un Resultado Don ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Resultado Don ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Resultado Don {{ id }}?"
+      },
+      "detail": {
+        "title": "Resultado Don"
+      },
+      "id": "ID",
+      "puntuacionTotal": "Puntuacion Total",
+      "porcentaje": "Porcentaje",
+      "rankingPosicion": "Ranking Posicion",
+      "esDonPrincipal": "Es Don Principal",
+      "interpretacion": "Interpretacion",
+      "respuestaUsuario": "Respuesta Usuario",
+      "donEspiritual": "Don Espiritual"
+    }
+  }
+}

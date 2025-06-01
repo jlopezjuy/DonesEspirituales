@@ -1,0 +1,189 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-don-espiritual-heading"
+        data-cy="DonEspiritualCreateUpdateHeading"
+        jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.home.createOrEditLabel"
+      >
+        Crear o editar Don Espiritual
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let nombreRef = editForm.get('nombre')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.nombre"
+            >Nombre</label
+          >
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          @if (nombreRef.invalid && (nombreRef.dirty || nombreRef.touched)) {
+            <div>
+              @if (editForm.get('nombre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('nombre')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '100' }"
+                  >Este campo no puede superar más de 100 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let nombreCortoRef = editForm.get('nombreCorto')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_nombreCorto"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.nombreCorto"
+            >Nombre Corto</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nombreCorto"
+            id="field_nombreCorto"
+            data-cy="nombreCorto"
+            formControlName="nombreCorto"
+          />
+          @if (nombreCortoRef.invalid && (nombreCortoRef.dirty || nombreCortoRef.touched)) {
+            <div>
+              @if (editForm.get('nombreCorto')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('nombreCorto')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '50' }"
+                  >Este campo no puede superar más de 50 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_descripcion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.descripcion"
+            >Descripcion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_caracteristicas"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.caracteristicas"
+            >Caracteristicas</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="caracteristicas"
+            id="field_caracteristicas"
+            data-cy="caracteristicas"
+            formControlName="caracteristicas"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_versiculosBiblicos"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.versiculosBiblicos"
+            >Versiculos Biblicos</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="versiculosBiblicos"
+            id="field_versiculosBiblicos"
+            data-cy="versiculosBiblicos"
+            formControlName="versiculosBiblicos"
+          />
+        </div>
+
+        @let activoRef = editForm.get('activo')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_activo" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.activo"
+            >Activo</label
+          >
+          <input type="checkbox" class="form-check" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+          @if (activoRef.invalid && (activoRef.dirty || activoRef.touched)) {
+            <div>
+              @if (editForm.get('activo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ordenPresentacionRef = editForm.get('ordenPresentacion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_ordenPresentacion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesDonEspiritual.ordenPresentacion"
+            >Orden Presentacion</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ordenPresentacion"
+            id="field_ordenPresentacion"
+            data-cy="ordenPresentacion"
+            formControlName="ordenPresentacion"
+          />
+          @if (ordenPresentacionRef.invalid && (ordenPresentacionRef.dirty || ordenPresentacionRef.touched)) {
+            <div>
+              @if (editForm.get('ordenPresentacion')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '1' }"
+                  >Este campo debe ser mayor que 1.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('ordenPresentacion')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

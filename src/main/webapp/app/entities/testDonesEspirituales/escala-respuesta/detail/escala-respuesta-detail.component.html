@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (escalaRespuesta(); as escalaRespuestaRef) {
+      <div>
+        <h2 data-cy="escalaRespuestaDetailsHeading">
+          <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.detail.title">Escala Respuesta</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ escalaRespuestaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.valor">Valor</span></dt>
+          <dd>
+            <span>{{ escalaRespuestaRef.valor }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.etiqueta">Etiqueta</span></dt>
+          <dd>
+            <span>{{ escalaRespuestaRef.etiqueta }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.descripcion">Descripcion</span></dt>
+          <dd>
+            <span>{{ escalaRespuestaRef.descripcion }}</span>
+          </dd>
+          <dt><span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesEscalaRespuesta.orden">Orden</span></dt>
+          <dd>
+            <span>{{ escalaRespuestaRef.orden }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/escala-respuesta', escalaRespuestaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,72 @@
+{
+  "annotations": {
+    "changelogDate": "20250601003310"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "nombreCorto",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caracteristicas",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "versiculosBiblicos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activo",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ordenPresentacion",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min"],
+      "fieldValidateRulesMin": "1"
+    }
+  ],
+  "name": "DonEspiritual",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "preguntaDon",
+      "otherEntityRelationshipName": "donEspiritual",
+      "relationshipName": "preguntaDones",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "resultadoDon",
+      "otherEntityRelationshipName": "donEspiritual",
+      "relationshipName": "resultadoDones",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "interpretacion",
+      "otherEntityRelationshipName": "donEspiritual",
+      "relationshipName": "interpretaciones",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

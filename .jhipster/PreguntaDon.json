@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20250601003312"
+  },
+  "applications": "*",
+  "clientRootFolder": "testDonesEspirituales",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "peso",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "10",
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "activa",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "PreguntaDon",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "pregunta",
+      "otherEntityRelationshipName": "preguntaDones",
+      "relationshipName": "pregunta",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "donEspiritual",
+      "otherEntityRelationshipName": "preguntaDones",
+      "relationshipName": "donEspiritual",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

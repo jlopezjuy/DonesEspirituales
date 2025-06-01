@@ -1,0 +1,30 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesInterpretacion": {
+      "home": {
+        "title": "Interpretacions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Interpretacion",
+        "createOrEditLabel": "Crear o editar Interpretacion",
+        "notFound": "Ningún Interpretacions encontrado"
+      },
+      "created": "Un nuevo Interpretacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Interpretacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Interpretacion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Interpretacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Interpretacion"
+      },
+      "id": "ID",
+      "puntuacionMinima": "Puntuacion Minima",
+      "puntuacionMaxima": "Puntuacion Maxima",
+      "nivel": "Nivel",
+      "descripcionNivel": "Descripcion Nivel",
+      "recomendaciones": "Recomendaciones",
+      "areasServicio": "Areas Servicio",
+      "donEspiritual": "Don Espiritual"
+    }
+  }
+}

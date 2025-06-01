@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-configuracion-sistema-heading"
+        data-cy="ConfiguracionSistemaCreateUpdateHeading"
+        jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.home.createOrEditLabel"
+      >
+        Crear o editar Configuracion Sistema
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.id"
+              >ID</label
+            >
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let claveRef = editForm.get('clave')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_clave" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.clave"
+            >Clave</label
+          >
+          <input type="text" class="form-control" name="clave" id="field_clave" data-cy="clave" formControlName="clave" />
+          @if (claveRef.invalid && (claveRef.dirty || claveRef.touched)) {
+            <div>
+              @if (editForm.get('clave')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('clave')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '100' }"
+                  >Este campo no puede superar más de 100 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let valorRef = editForm.get('valor')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_valor" jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.valor"
+            >Valor</label
+          >
+          <input type="text" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+          @if (valorRef.invalid && (valorRef.dirty || valorRef.touched)) {
+            <div>
+              @if (editForm.get('valor')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('valor')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '1000' }"
+                  >Este campo no puede superar más de 1000 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_descripcion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.descripcion"
+            >Descripcion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+        </div>
+
+        @let tipoDatoRef = editForm.get('tipoDato')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_tipoDato"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.tipoDato"
+            >Tipo Dato</label
+          >
+          <select class="form-control" name="tipoDato" formControlName="tipoDato" id="field_tipoDato" data-cy="tipoDato">
+            <option [ngValue]="null">{{ 'donesEspiritualesApp.TipoDato.null' | translate }}</option>
+            @for (tipoDato of tipoDatoValues; track $index) {
+              <option [value]="tipoDato">{{ 'donesEspiritualesApp.TipoDato.' + tipoDato | translate }}</option>
+            }
+          </select>
+          @if (tipoDatoRef.invalid && (tipoDatoRef.dirty || tipoDatoRef.touched)) {
+            <div>
+              @if (editForm.get('tipoDato')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let fechaActualizacionRef = editForm.get('fechaActualizacion')!;
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_fechaActualizacion"
+            jhiTranslate="donesEspiritualesApp.testDonesEspiritualesConfiguracionSistema.fechaActualizacion"
+            >Fecha Actualizacion</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaActualizacion"
+              data-cy="fechaActualizacion"
+              type="datetime-local"
+              class="form-control"
+              name="fechaActualizacion"
+              formControlName="fechaActualizacion"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (fechaActualizacionRef.invalid && (fechaActualizacionRef.dirty || fechaActualizacionRef.touched)) {
+            <div>
+              @if (editForm.get('fechaActualizacion')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('fechaActualizacion')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >Este campo debe ser una fecha y hora.</small
+              >
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

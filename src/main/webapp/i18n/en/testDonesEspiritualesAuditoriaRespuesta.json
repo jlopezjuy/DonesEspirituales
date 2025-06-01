@@ -1,0 +1,29 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesAuditoriaRespuesta": {
+      "home": {
+        "title": "Auditoria Respuestas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Auditoria Respuesta",
+        "createOrEditLabel": "Create or edit a Auditoria Respuesta",
+        "notFound": "No Auditoria Respuestas found"
+      },
+      "created": "A new Auditoria Respuesta is created with identifier {{ param }}",
+      "updated": "A Auditoria Respuesta is updated with identifier {{ param }}",
+      "deleted": "A Auditoria Respuesta is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Auditoria Respuesta {{ id }}?"
+      },
+      "detail": {
+        "title": "Auditoria Respuesta"
+      },
+      "id": "ID",
+      "valorAnterior": "Valor Anterior",
+      "valorNuevo": "Valor Nuevo",
+      "timestampCambio": "Timestamp Cambio",
+      "motivoCambio": "Motivo Cambio",
+      "respuestaUsuario": "Respuesta Usuario",
+      "detalleRespuesta": "Detalle Respuesta"
+    }
+  }
+}

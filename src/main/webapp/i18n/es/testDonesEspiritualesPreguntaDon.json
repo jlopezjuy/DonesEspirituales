@@ -1,0 +1,27 @@
+{
+  "donesEspiritualesApp": {
+    "testDonesEspiritualesPreguntaDon": {
+      "home": {
+        "title": "Pregunta Dons",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Pregunta Don",
+        "createOrEditLabel": "Crear o editar Pregunta Don",
+        "notFound": "Ningún Pregunta Dons encontrado"
+      },
+      "created": "Un nuevo Pregunta Don ha sido creado con el identificador {{ param }}",
+      "updated": "Un Pregunta Don ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Pregunta Don ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Pregunta Don {{ id }}?"
+      },
+      "detail": {
+        "title": "Pregunta Don"
+      },
+      "id": "ID",
+      "peso": "Peso",
+      "activa": "Activa",
+      "pregunta": "Pregunta",
+      "donEspiritual": "Don Espiritual"
+    }
+  }
+}

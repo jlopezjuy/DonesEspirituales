@@ -1,0 +1,170 @@
+<div>
+  <h2 id="page-heading" data-cy="InterpretacionHeading">
+    <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.home.title">Interpretacions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-interpretacion"
+        [routerLink]="['/interpretacion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.home.createLabel">Crear nuevo Interpretacion</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (interpretacions().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.home.notFound">Ningún Interpretacions encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="puntuacionMinima">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.puntuacionMinima">Puntuacion Minima</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="puntuacionMaxima">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.puntuacionMaxima">Puntuacion Maxima</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nivel">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.nivel">Nivel</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descripcionNivel">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.descripcionNivel">Descripcion Nivel</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="recomendaciones">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.recomendaciones">Recomendaciones</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="areasServicio">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.areasServicio">Areas Servicio</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="donEspiritual.id">
+              <div class="d-flex">
+                <span jhiTranslate="donesEspiritualesApp.testDonesEspiritualesInterpretacion.donEspiritual">Don Espiritual</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (interpretacion of interpretacions(); track trackId(interpretacion)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/interpretacion', interpretacion.id, 'view']">{{ interpretacion.id }}</a>
+              </td>
+              <td>{{ interpretacion.puntuacionMinima }}</td>
+              <td>{{ interpretacion.puntuacionMaxima }}</td>
+              <td [jhiTranslate]="'donesEspiritualesApp.NivelInterpretacion.' + (interpretacion.nivel ?? 'null')">
+                {{
+                  { null: '', MUY_BAJO: 'MUY_BAJO', BAJO: 'BAJO', MEDIO: 'MEDIO', ALTO: 'ALTO', MUY_ALTO: 'MUY_ALTO' }[
+                    interpretacion.nivel ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ interpretacion.descripcionNivel }}</td>
+              <td>{{ interpretacion.recomendaciones }}</td>
+              <td>{{ interpretacion.areasServicio }}</td>
+              <td>
+                @if (interpretacion.donEspiritual) {
+                  <div>
+                    <a [routerLink]="['/don-espiritual', interpretacion.donEspiritual.id, 'view']">{{ interpretacion.donEspiritual.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/interpretacion', interpretacion.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/interpretacion', interpretacion.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(interpretacion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (interpretacions().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
